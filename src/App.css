@@ -1,42 +1,228 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+:root {
+  --section-width: 90%;
+  --section-height: 68vh;
+
+  --xl-heading: 3.4rem;
+  --l-heading: 2.4rem;
+  --main-heading: 2rem;
+  --m-heading: 1.75rem;
+  --ms-heading: 1.25rem;
+  --s-heading: 1.125rem;
+  --text: 1rem;
+
+  --bp-tablet: 600px;
+  --bp-laptop: 1024px;
+  --bp-desktop: 1640px;
+
+  --section-margin: 80px;
+  --heading-margin: 50px;
+
+  --background-color: #fefefe;
+  --primary-color: #004aad;
+  --big-btn-color: #E94C4F;
+  --primary-light-color: #3d70c0;
+  --primary-dark-color: #002a6a;
+  --secondary-color: #ff0000;
+  --secondary-light-color: #ff7765;
+  --secondary-dark-color: #9e0000;
+
+  --text-color: #002140;
+  --text-light-color: #72767E;
+  --text-white-color: white;
+  --text-gray-color: #9e9e9e;
+  --border-color: #c6c6c6;
+  --shadow: #bdbdbd;
+  --shadow-light: #e2e2e2;
+
+  --s-radius: 6px;
+  --m-radius: 8px;
+  --l-radius: 24px;
+
+  --nav-height: 70px;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+html {
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background: var(--background-color);
+  color: var(--text-color);
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: 100vh;
+}
+
+h1 {
+  font-size: var(--l-heading);
+  font-weight: 600;
+}
+h2 {
+  font-size: var(--main-heading);
+  font-weight: 600;
+}
+h3 {
+  font-size: var(--m-heading);
+  font-weight: 700;
+}
+h4 {
+  font-size: var(--ms-heading);
+  font-weight: 600;
+}
+h5 {
+  font-size: var(--s-heading);
+  font-weight: 500;
+}
+h6 {
+  font-size: var(--xl-heading);
+}
+p,
+li,
+button,
+input,
+select,
+article,
+title,
+header,
+textarea,
+a,
+label,
+span {
+  font-size: var(--text);
+  color: var(--text-light-color);
+}
+span,
+a {
+  color: var(--text-color);
+  font-weight: 500;
+}
+
+
+button {
+  cursor: pointer;
+  outline: none;
+  color: var(--text-white-color);
+  transition: all 0.15s ease-in-out;
+  background-color: var(--primary-color);
+  border-radius: var(--s-radius);
+  padding: 10px 16px;
+  min-width: 120px;
+  max-height: 45px;
+  border: none;
+  touch-action: pinch-zoom;
+  white-space: nowrap;
+}
+
+.secondary-btn {
+  background-color: var(--secondary-color);
+}
+.secondary-btn:hover {
+  background-color: var(--secondary-dark-color);
+}
+.outline-btn {
+  color: var(--text-gray-color);
+  background-color: transparent;
+  border: 1px solid var(--text-gray-color);
+  padding: 8px 10px;
+
+  &:hover {
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+  }
+}
+.icon {
+  padding: 0;
+  min-width: 30px;
+  background-color: transparent;
+  color: gray;
+  transition: all 0.1s ease-in-out;
+}
+.icon:hover {
+  transform: scale(1.1);
+  background-color: transparent;
+}
+input {
+  outline: none;
+  border-radius: var(--s-radius);
+  color: var(--text-color);
+  padding: 6px 14px;
+  border: 2px solid var(--border-color);
+  height: 38px;
+}
+input:focus {
+  border-color: var(--primary-color);
+}
+input::placeholder {
+  color: var(--text-gray-color);
+}
+textarea {
+  color: var(--text-color);
+  border-color: var(--border-color);
+}
+textarea::placeholder {
+  font-family: "Poppins", sans-serif;
+}
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--primary-color);
+  outline-color: var(--primary-color);
+}
+a {
+  text-decoration: none;
+  cursor: pointer;
+}
+select {
+  border-radius: var(--s-radius);
+  padding: 10px 14px;
+}
+li {
+  list-style: none;
+ 
+}
+
+#mobile-error {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
+@media (max-width: 600px) {
+  :root {
+    --section-margin: 50px;
+    --heading-margin: 30px;
+    --section-width: 90%;
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+    --xl-heading: 3rem;
+    --l-heading: 2.2rem;
+    --main-heading: 1.75rem;
+    --m-heading: 1.375rem;
+    --ms-heading: 1.125rem;
+    --s-heading: 1rem;
+    --text: 0.9rem;
   }
-  to {
-    transform: rotate(360deg);
+  button {
+    padding: 8px 12px;
+    min-width: 100px;
   }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+  input,
+  select,
+  button {
+    height: 42px;
   }
 }
 
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
+.green-btn{
+  background: transparent;
+  border: 2px solid var(--primary-color);
+  color: var(--primary-color);
 }
