@@ -5,9 +5,10 @@ import {
   sendEmailVerification,
 } from "firebase/auth";
 import { auth } from "../firebase";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import SignupImg from "../assets/signup.jpg";
-import CircularProgress from '@mui/material/CircularProgress';
+import CircularProgress from "@mui/material/CircularProgress";
+import Logo from "../assets/logo.png";
 
 export default function Signup() {
   const [email, setEmail] = useState("");
@@ -33,34 +34,22 @@ export default function Signup() {
     } catch (error) {
       alert(error.message);
     } finally {
-        setLoading(false);
-      }
+      setLoading(false);
+    }
   };
-
-//   if (verificationSent) {
-//     return (
-//       <StyledSignup>
-//         <div className="signup_container">
-//           <h2>Verify your email</h2>
-//           <p>We've sent a verification link to {email}</p>
-//           <p>
-//             Please check your email and click the verification link to complete
-//             signup.
-//           </p>
-//         </div>
-//       </StyledSignup>
-//     );
-//   }
 
   return (
     <StyledSignup>
       <div className="signup_container">
-        
         <div className="left_side">
           <img src={SignupImg} alt="" />
         </div>
         <div className="right_side">
-        <h2>Signup</h2>
+          <div className="image">
+            <img src={Logo} alt="" />
+          </div>
+
+          <h2>Signup</h2>
           <input
             type="email"
             placeholder="Enter your email"
@@ -71,7 +60,16 @@ export default function Signup() {
             placeholder="Enter your password"
             onChange={(e) => setPassword(e.target.value)}
           />
-          <button onClick={handleSignup} disabled={loading}>{loading ? <CircularProgress size={24} sx={{ color: 'white' }} /> : "Signup"}</button>
+          <button onClick={handleSignup} disabled={loading}>
+            {loading ? (
+              <CircularProgress size={24} sx={{ color: "white" }} />
+            ) : (
+              "Signup"
+            )}
+          </button>
+          <p>
+            Already have an account? <Link to="/login">Login</Link>
+          </p>
         </div>
       </div>
     </StyledSignup>
@@ -96,6 +94,16 @@ const StyledSignup = styled.div`
       display: flex;
       flex-direction: column;
       gap: 1rem;
+      .image {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        img {
+          width: 100px;
+          height: 100px;
+          object-fit: contain;
+        }
+      }
       h2 {
         text-align: center;
       }
@@ -125,9 +133,15 @@ const StyledSignup = styled.div`
       justify-content: center;
       .right_side {
         flex-basis: 100%;
+        .image{
+          img{
+            width: 200px;
+            height: 200px;
+          }
+        }
       }
       .left_side {
-        flex-basis: 100%;
+        display: none;
       }
     }
   }

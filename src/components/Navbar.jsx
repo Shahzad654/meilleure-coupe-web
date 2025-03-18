@@ -56,8 +56,7 @@ export default function Navbar() {
           </div>
         ) : (
           <div className="auth_btn">
-            <button onClick={() => navigate('/signup')} className="outline-btn">Signup</button>
-            <button onClick={() => navigate('/login')}>Login</button>
+            <button onClick={() => navigate('/login')}>Get Started</button>
           </div>
         )}
 
@@ -76,7 +75,7 @@ const StyledNavbar = styled.div`
     align-items: center;
     gap: 2rem;
     height: var(--nav-height);
-    width: 80%;
+    width: 90%;
     margin: auto;
     
     .logo_container {

@@ -2,13 +2,14 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { userActions } from "../store/userSlice";
 import LoginImg from "../assets/login.jpg";
-import CircularProgress from '@mui/material/CircularProgress';
-import MuiAlert from '@mui/material/Alert';
-import Snackbar from '@mui/material/Snackbar';
+import CircularProgress from "@mui/material/CircularProgress";
+import MuiAlert from "@mui/material/Alert";
+import Snackbar from "@mui/material/Snackbar";
+import Logo from "../assets/logo.png";
 
 const Alert = React.forwardRef(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
@@ -20,14 +21,14 @@ export default function Login() {
   const [loading, setLoading] = useState(false);
   const [snackbar, setSnackbar] = useState({
     open: false,
-    message: '',
-    severity: 'success'
+    message: "",
+    severity: "success",
   });
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const handleCloseSnackbar = (event, reason) => {
-    if (reason === 'clickaway') {
+    if (reason === "clickaway") {
       return;
     }
     setSnackbar({ ...snackbar, open: false });
@@ -51,8 +52,8 @@ export default function Login() {
       );
       setSnackbar({
         open: true,
-        message: 'Successfully logged in!',
-        severity: 'success'
+        message: "Successfully logged in!",
+        severity: "success",
       });
       setTimeout(() => {
         navigate("/");
@@ -61,7 +62,7 @@ export default function Login() {
       setSnackbar({
         open: true,
         message: error.message,
-        severity: 'error'
+        severity: "error",
       });
     } finally {
       setLoading(false);
@@ -76,6 +77,10 @@ export default function Login() {
         </div>
 
         <div className="right_side">
+          <div className="image">
+            <img src={Logo} alt="" />
+          </div>
+
           <h2>Login</h2>
           <input
             type="email"
@@ -92,21 +97,26 @@ export default function Login() {
             onChange={(e) => setPassword(e.target.value)}
           />
           <button onClick={handleLogin} disabled={loading}>
-            {loading ? <CircularProgress size={24} sx={{ color: 'white' }} /> : "Login"}
+            {loading ? (
+              <CircularProgress size={24} sx={{ color: "white" }} />
+            ) : (
+              "Login"
+            )}
           </button>
           <p>Forget Password?</p>
+          <p className="signup_link">Don't have an account? <Link to="/signup">Signup</Link></p>
         </div>
       </div>
       <Snackbar
         open={snackbar.open}
         autoHideDuration={3000}
         onClose={handleCloseSnackbar}
-        anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+        anchorOrigin={{ vertical: "top", horizontal: "center" }}
       >
-        <Alert 
+        <Alert
           onClose={handleCloseSnackbar}
           severity={snackbar.severity}
-          sx={{ width: '100%' }}
+          sx={{ width: "100%" }}
         >
           {snackbar.message}
         </Alert>
@@ -119,7 +129,7 @@ const StyledLogin = styled.div`
   height: calc(100vh - var(--nav-height));
   display: flex;
   align-items: center;
-  
+
   .login_container {
     display: flex;
     justify-content: space-between;
@@ -133,7 +143,18 @@ const StyledLogin = styled.div`
       display: flex;
       flex-direction: column;
       gap: 1rem;
-      h2{
+      .image {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        img {
+          width: 100px;
+          height: 100px;
+          object-fit: contain;
+        }
+      }
+
+      h2 {
         text-align: center;
       }
       button {
@@ -142,8 +163,13 @@ const StyledLogin = styled.div`
         align-items: center;
         justify-content: center;
       }
-      p{
+      p {
         color: var(--secondary-color);
+        cursor: pointer;
+        text-decoration: underline;
+      }
+      .signup_link{
+        color: var(--text-color);
         cursor: pointer;
       }
     }
@@ -156,15 +182,22 @@ const StyledLogin = styled.div`
       }
     }
   }
-  
-  @media (max-width: 640px){
-    .login_container{
+
+  @media (max-width: 640px) {
+    .login_container {
       justify-content: center;
-      .right_side{
+      .right_side {
         flex-basis: 100%;
+        .image{
+          img{
+            width: 200px;
+            height: 200px;
+          }
+        }
       }
-      .left_side{
-        flex-basis: 100%;
+      .left_side {
+        display: none;
+        
       }
     }
   }
