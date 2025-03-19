@@ -9,6 +9,7 @@ import { auth } from './firebase'
 import { onAuthStateChanged } from 'firebase/auth'
 import { useDispatch } from 'react-redux'
 import { userActions } from './store/userSlice'
+import Footer from './components/Footer'
 
 function App() {
   const dispatch = useDispatch()
@@ -48,6 +49,7 @@ function App() {
         <Route path='/login' element={<Login/>}/>
        
       </Routes>
+      <Footer/>
     </BrowserRouter>
   )
 }

@@ -1,22 +1,87 @@
 import React from "react";
 import styled from "styled-components";
-import HeroImg from "../assets/heroimg2.jpg";
+import HeroImg from "../assets/heroimg3.jpg";
+import Cat1 from "../assets/cat.svg";
+import Cat2 from "../assets/dog.svg";
+import Cat3 from "../assets/birds.svg";
+import Cat4 from "../assets/fish.png";
+import Cat5 from "../assets/rabit.png";
+import Banner from "../assets/accent.jpg";
 
 export default function Home() {
   return (
     <StyledHome>
       <div className="main_container">
-        <div className="image_container">
-          <div className="overlay"></div>
-          <img src={HeroImg} alt="" />
+        <div className="right_side">
+          <h1>The Best place to but top quality products for your pets</h1>
+          <p>Shop by pet, brans or products on sale</p>
+          <button className="secondary-btn">Shop Now</button>
         </div>
-        <div className="hero_content">
-       
-          <h1>
-            Healthy Pets <span>Happy Homes</span>
-          </h1>
-          <p>Give Your Pets the Love They Deserve with Premium Organic Food & Supplies – Because Their Health and Happiness Matter!</p>
-          <button className="outline-btn">Shop Now</button>
+        <div className="left_side">
+          <div className="image_border">
+            <img src={HeroImg} alt="" />
+          </div>
+        </div>
+      </div>
+
+      <div className="categories_container">
+        <div className="categories_header">
+          <h2>Categories</h2>
+        </div>
+
+        <div className="card_container">
+          <div className="card">
+            <div className="image_wrapper">
+              <img src={Cat1} alt="Cat" />
+            </div>
+            <h4>Cats</h4>
+          </div>
+
+          <div className="card">
+            <div className="image_wrapper">
+              <img src={Cat2} alt="Dog" />
+            </div>
+            <h4>Dogs</h4>
+          </div>
+
+          <div className="card">
+            <div className="image_wrapper">
+              <img src={Cat3} alt="Bird" />
+            </div>
+            <h4>Birds</h4>
+          </div>
+
+          <div className="card">
+            <div className="image_wrapper">
+              <img src={Cat4} alt="fish" />
+            </div>
+            <h4>Fish</h4>
+          </div>
+
+          <div className="card">
+            <div className="image_wrapper">
+              <img src={Cat5} alt="Rabbit" />
+            </div>
+            <h4>Rabbit</h4>
+          </div>
+        </div>
+
+        <div className="button_container">
+        <button className="secondary-btn">See More</button>
+        </div>
+
+        
+      </div>
+
+      <div className="banner_container">
+        <div className="banner_image">
+          <img src={Banner} alt="" />
+        </div>
+
+        <div className="banner_content">
+          <h2>Welcome to Petilio – The perfect pet store website solution</h2>
+          <p>We offer a wide range of products for your pets, from food to toys and accessories</p>
+          <button>Shop Now</button>
         </div>
       </div>
     </StyledHome>
@@ -24,67 +89,189 @@ export default function Home() {
 }
 
 const StyledHome = styled.div`
-  margin-top: 2%;
-  height: calc(100vh - var(--nav-height));
+  width: 90%;
+  margin: var(--section-margin) auto;
+
   .main_container {
-    height: 100%;
-    position: relative;
-    .image_container {
-      height: 100%;
-      position: relative;
-      .overlay {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.5);
-        z-index: 1;
-      }
-      img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        opacity: 0.9;
-      }
-    }
-    .hero_content {
-      position: absolute;
-      top: 50%;
-      left: 30%;
-      transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+
+    .right_side {
+      flex-basis: 45%;
       display: flex;
-      justify-content: center;
+      justify-content: space-between;
       align-items: flex-start;
       flex-direction: column;
-      gap: 2rem;
-      z-index: 2;
-      h1 {
-        max-width: 15ch;
-        color: white;
-        font-size: var(--xl-heading);
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-        span {
-          font-size: var(--xl-heading);
-          font-weight: 600;
-          color: var(--primary-color);
-          text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      gap: 1.5rem;
+    }
+
+    .left_side {
+      flex-basis: 50%;
+      .image_border {
+        img {
+          width: 100%;
+          height: auto;
+          border-top-left-radius: 500px;
+          border-top-right-radius: var(--l-radius);
+          border-bottom-right-radius: var(--l-radius);
+          border-bottom-left-radius: var(--l-radius);
         }
-      }
-      p {
-        color: white;
-        max-width: 40ch;
-        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
       }
     }
   }
 
-  @media (max-width: 950px) {
+  .categories_container {
+    margin-top: var(--section-margin);
+
+    .categories_header {
+      h2 {
+        text-align: center;
+      }
+    }
+
+    .card_container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin-top: var(--section-margin);
+
+      .card {
+        width: 120px;
+        height: 120px;
+        border-radius: var(--l-radius);
+        background-color: var(--primary-color);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 10px;
+        transition: transform 0.3s ease;
+        cursor: pointer;
+
+        &:hover {
+          transform: translateY(-5px);
+        }
+
+        .image_wrapper {
+          width: 60px;
+          height: 60px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin-bottom: 8px;
+
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+          }
+        }
+
+        h4 {
+          margin: 0;
+          color: white;
+          font-size: 14px;
+          text-align: center;
+        }
+      }
+    }
+
+    .button_container{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: var(--section-margin);
+    }
+
+  }
+
+  .banner_container{
+    margin-top: var(--section-margin);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+
+    .banner_image{
+      flex-basis: 45%;
+      img{
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+        border-radius: var(--l-radius);
+      }
+    }
+
+    .banner_content{
+      flex-basis: 45%;  
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      gap: 1.5rem;
+      
+    }
+  }
+
+  @media (max-width: 800px) {
     .main_container {
-      .hero_content {
-        left: 50%;
-        transform: translate(-50%, -50%);
-        
+      .right_side {
+        flex-basis: 100%;
+        align-items: center;
+        h1,
+        p {
+          text-align: center;
+        }
+      }
+
+      .left_side {
+        flex-basis: 100%;
+        .image_border {
+          img {
+            width: 100%;
+            height: auto;
+            border-radius: var(--l-radius);
+          }
+        }
+      }
+    }
+
+    .categories_container {
+      .card_container {
+        gap: 1.5rem;
+        justify-content: center;
+
+        .card {
+          width: 100px;
+          height: 100px;
+
+          .image_wrapper {
+            width: 50px;
+            height: 50px;
+          }
+
+          h4 {
+            font-size: 12px;
+          }
+        }
+      }
+    }
+
+    .banner_container{
+      .banner_image{
+        flex-basis: 100%;
+      }
+
+      .banner_content{
+        flex-basis: 100%;
+        align-items: center;
+        text-align: center;
       }
     }
   }
