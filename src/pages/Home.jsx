@@ -7,9 +7,14 @@ import Cat3 from "../assets/birds.svg";
 import Cat4 from "../assets/fish.png";
 import Cat5 from "../assets/rabit.png";
 import Banner from "../assets/accent.jpg";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
-export default function Home() {
+export default function Home() {  
+
   return (
+    <>
+    <Navbar/>
     <StyledHome>
       <div className="main_container">
         <div className="right_side">
@@ -30,7 +35,7 @@ export default function Home() {
         </div>
 
         <div className="card_container">
-          <div className="card">
+          <div className="card" >
             <div className="image_wrapper">
               <img src={Cat1} alt="Cat" />
             </div>
@@ -44,7 +49,7 @@ export default function Home() {
             <h4>Dogs</h4>
           </div>
 
-          <div className="card">
+          <div className="card" >
             <div className="image_wrapper">
               <img src={Cat3} alt="Bird" />
             </div>
@@ -58,7 +63,7 @@ export default function Home() {
             <h4>Fish</h4>
           </div>
 
-          <div className="card">
+          <div className="card" >
             <div className="image_wrapper">
               <img src={Cat5} alt="Rabbit" />
             </div>
@@ -67,10 +72,8 @@ export default function Home() {
         </div>
 
         <div className="button_container">
-        <button className="secondary-btn">See More</button>
+          <button className="secondary-btn">See More</button>
         </div>
-
-        
       </div>
 
       <div className="banner_container">
@@ -79,12 +82,14 @@ export default function Home() {
         </div>
 
         <div className="banner_content">
-          <h2>Welcome to Petilio – The perfect pet store website solution</h2>
+          <h2>Welcome to La Meilleure Coupe The perfect pet store website solution</h2>
           <p>We offer a wide range of products for your pets, from food to toys and accessories</p>
           <button>Shop Now</button>
         </div>
       </div>
     </StyledHome>
+    <Footer/>
+    </>
   );
 }
 
@@ -141,15 +146,15 @@ const StyledHome = styled.div`
       margin-top: var(--section-margin);
 
       .card {
-        width: 120px;
-        height: 120px;
+        width: 180px;
+        height: 180px;
         border-radius: var(--l-radius);
         background-color: var(--primary-color);
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        padding: 10px;
+        padding: 15px;
         transition: transform 0.3s ease;
         cursor: pointer;
 
@@ -158,12 +163,12 @@ const StyledHome = styled.div`
         }
 
         .image_wrapper {
-          width: 60px;
-          height: 60px;
+          width: 90px;
+          height: 90px;
           display: flex;
           align-items: center;
           justify-content: center;
-          margin-bottom: 8px;
+          margin-bottom: 12px;
 
           img {
             width: 100%;
@@ -175,7 +180,7 @@ const StyledHome = styled.div`
         h4 {
           margin: 0;
           color: white;
-          font-size: 14px;
+          font-size: 16px;
           text-align: center;
         }
       }
@@ -187,7 +192,6 @@ const StyledHome = styled.div`
       align-items: center;
       margin-top: var(--section-margin);
     }
-
   }
 
   .banner_container{
@@ -248,16 +252,16 @@ const StyledHome = styled.div`
         justify-content: center;
 
         .card {
-          width: 100px;
-          height: 100px;
+          width: 150px;
+          height: 150px;
 
           .image_wrapper {
-            width: 50px;
-            height: 50px;
+            width: 70px;
+            height: 70px;
           }
 
           h4 {
-            font-size: 12px;
+            font-size: 14px;
           }
         }
       }

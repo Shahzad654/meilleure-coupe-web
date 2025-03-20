@@ -3,6 +3,7 @@ import styled from "styled-components";
 import {
   createUserWithEmailAndPassword,
   sendEmailVerification,
+  signOut,
 } from "firebase/auth";
 import { auth } from "../firebase";
 import { Link, useNavigate } from "react-router-dom";
@@ -28,6 +29,7 @@ export default function Signup() {
       );
 
       await sendEmailVerification(userCredential.user);
+      await signOut(auth);
       setVerificationSent(true);
       alert("Please check your email to verify your account");
       navigate("/login");

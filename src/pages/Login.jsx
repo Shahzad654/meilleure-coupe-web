@@ -44,6 +44,15 @@ export default function Login() {
         password
       );
 
+      if (!userCredential.user.emailVerified) {
+        setSnackbar({
+          open: true,
+          message: "Please verify your email before logging in",
+          severity: "error",
+        });
+        return;
+      }
+
       dispatch(
         userActions.setCurrentUser({
           email: userCredential.user.email,
