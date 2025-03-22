@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import {
   createUserWithEmailAndPassword,
@@ -6,10 +6,11 @@ import {
   signOut,
 } from "firebase/auth";
 import { auth } from "../firebase";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import SignupImg from "../assets/signup.jpg";
 import CircularProgress from "@mui/material/CircularProgress";
 import Logo from "../assets/logo.png";
+import { useSelector } from "react-redux";
 
 export default function Signup() {
   const [email, setEmail] = useState("");
@@ -17,6 +18,15 @@ export default function Signup() {
   const [verificationSent, setVerificationSent] = useState(false);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
+  const user = useSelector((state) => state.user.currentUser);
+
+  useEffect(() => {
+    // If user is already logged in, redirect to home
+    if (user.email) {
+      navigate("/", { replace: true });
+    }
+  }, [user, navigate]);
 
   const handleSignup = async (e) => {
     e.preventDefault();
@@ -32,7 +42,7 @@ export default function Signup() {
       await signOut(auth);
       setVerificationSent(true);
       alert("Please check your email to verify your account");
-      navigate("/login");
+      navigate("/profile-setup", { replace: true });
     } catch (error) {
       alert(error.message);
     } finally {

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { userActions } from "../store/userSlice";
 import LoginImg from "../assets/login.jpg";
@@ -10,6 +10,8 @@ import CircularProgress from "@mui/material/CircularProgress";
 import MuiAlert from "@mui/material/Alert";
 import Snackbar from "@mui/material/Snackbar";
 import Logo from "../assets/logo.png";
+import { doc, setDoc, getDoc } from "firebase/firestore";
+import { db } from "../firebase";
 
 const Alert = React.forwardRef(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
@@ -25,6 +27,7 @@ export default function Login() {
     severity: "success",
   });
   const navigate = useNavigate();
+  const location = useLocation();
   const dispatch = useDispatch();
 
   const handleCloseSnackbar = (event, reason) => {
@@ -53,6 +56,47 @@ export default function Login() {
         return;
       }
 
+      const profileInfo = localStorage.getItem('user_info');
+      console.log('Profile Info from localStorage:', profileInfo);
+
+      if(profileInfo){
+        try {
+          const parsedProfileInfo = JSON.parse(profileInfo);
+          console.log('Parsed Profile Info:', parsedProfileInfo);
+
+          await setDoc(doc(db, 'userInfo', userCredential.user.uid), {
+            ...parsedProfileInfo,
+            email: userCredential.user.email,
+            createdAt: new Date().toISOString()
+          });
+          console.log('Data saved to Firebase');
+
+          dispatch(userActions.setUserInfo(parsedProfileInfo));
+          console.log('Data dispatched to Redux');
+
+          localStorage.removeItem('user_info');
+          console.log('LocalStorage cleared');
+        } catch (error) {
+          console.error('Error saving profile data:', error);
+          setSnackbar({
+            open: true,
+            message: "Error saving profile data. Please try again.",
+            severity: "error",
+          });
+        }
+      } else {
+        console.log('No profile info found in localStorage, fetching from Firebase');
+        try {
+          const userDoc = await getDoc(doc(db, 'userInfo', userCredential.user.uid));
+          if (userDoc.exists()) {
+            dispatch(userActions.setUserInfo(userDoc.data()));
+            console.log('User data fetched from Firebase and set to Redux');
+          }
+        } catch (error) {
+          console.error('Error fetching user data from Firebase:', error);
+        }
+      }
+        
       dispatch(
         userActions.setCurrentUser({
           email: userCredential.user.email,
@@ -65,7 +109,9 @@ export default function Login() {
         severity: "success",
       });
       setTimeout(() => {
-        navigate("/");
+        
+        const from = location.state?.from?.pathname || "/";
+        navigate(from, { replace: true });
       }, 1000);
     } catch (error) {
       setSnackbar({

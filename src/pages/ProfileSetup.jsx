@@ -29,7 +29,13 @@ export default function ProfileSetup() {
   const navigate = useNavigate()
   const user = useSelector(state => state.user.currentUser)
 
- 
+  useEffect(() => {
+    // If user is already logged in and has completed profile setup, redirect to home
+    if (user.email && !localStorage.getItem('user_info')) {
+      navigate("/", { replace: true });
+    }
+  }, [user, navigate]);
+
   useEffect(() => {
     const savedData = localStorage.getItem(STORAGE_KEY)
     if (savedData) {
@@ -107,14 +113,20 @@ export default function ProfileSetup() {
   const handleSubmit = async () => {
     if (validateStep(activeStep)) {
       try {
-      
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(formData))
+        console.log('Form Data before saving:', formData);
+        const jsonData = JSON.stringify(formData);
+        console.log('JSON stringified data:', jsonData);
         
-        localStorage.removeItem(STORAGE_KEY)
-       
-        navigate('/login')
+        localStorage.setItem('user_info', jsonData);
+        const savedData = localStorage.getItem('user_info');
+        console.log('Data retrieved from localStorage after saving:', savedData);
+        
+        localStorage.removeItem(STORAGE_KEY);
+        console.log('Temporary storage key removed');
+        
+        navigate('/login', { replace: true });
       } catch (error) {
-        console.error('Error saving profile data:', error)
+        console.error('Error in handleSubmit:', error);
       }
     }
   }
