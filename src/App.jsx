@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import './App.css'
 import Navbar from './components/Navbar'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
@@ -13,9 +13,16 @@ import Footer from './components/Footer'
 import About from './pages/About'
 import ProfileSetup from './pages/ProfileSetup'
 import ProfilePage from './pages/ProfilePage'
+import EditProfile from './pages/EditProfile'
 import { doc, getDoc } from 'firebase/firestore'
+import CircularProgress from '@mui/material/CircularProgress'
+import ContactUs from './pages/ContactUs'
+import LoadingAnimation from './animations/loading.json'
+import Lottie from 'react-lottie-player'
+
 
 function App() {
+  const [loading, setLoading] = useState(true)
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -55,10 +62,29 @@ function App() {
           })
         )
       }
+      setLoading(false)
     })
 
     return () => unsubscribe()
   }, [dispatch])
+
+  if (loading) {
+    return (
+      <div style={{ 
+        display: 'flex', 
+        justifyContent: 'center', 
+        alignItems: 'center', 
+        height: '100vh' 
+      }}>
+        <Lottie
+          animationData={LoadingAnimation}
+          style={{ width: 200, height: 200 }}
+          loop
+          play
+        />
+      </div>
+    )
+  }
 
   return (
     <BrowserRouter>
@@ -70,6 +96,8 @@ function App() {
         <Route path='/about' element={<About />}/>
         <Route path='/profile-setup' element={<ProfileSetup />}/>
         <Route path='/profile' element={<ProfilePage />}/>
+        <Route path='/edit-profile' element={<EditProfile />}/>
+        <Route path='/contact' element={<ContactUs />}/>
       </Routes>
       {/* <Footer/> */}
     </BrowserRouter>

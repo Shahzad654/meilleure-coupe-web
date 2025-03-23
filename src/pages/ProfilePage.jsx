@@ -1,33 +1,33 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 import ProfileImg from "../assets/profile.png";
 import { useSelector } from "react-redux";
 import CircularProgress from "@mui/material/CircularProgress";
 
 export default function ProfilePage() {
-    const user = useSelector((state) => state.user.userInfo);
-    const [loading, setLoading] = useState(true);
-    
-    useEffect(() => {
-      
-      setLoading(true);
-      const timer = setTimeout(() => {
-        setLoading(false);
-      }, 3000);
-      
-      return () => clearTimeout(timer);
-    }, []);
-    
-    console.log(user);
-    
+  const user = useSelector((state) => state.user.userInfo);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setLoading(true);
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 3000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  console.log(user);
+
   return (
     <>
       <Navbar />
       <StyledProfilePage>
         {loading ? (
           <div className="loader_container">
-            <CircularProgress size={40} color="#ff0000"/>
+            <CircularProgress size={40} sx={{ color: "#ff0000" }}/>
           </div>
         ) : (
           <>
@@ -39,10 +39,15 @@ export default function ProfilePage() {
                     <img src={ProfileImg} alt="" />
                   </div>
                   <div className="user_info">
-                    <h3>{user.firstName} {user.lastName}</h3>
+                    <h3>
+                      {user.firstName} {user.lastName}
+                    </h3>
                     <p>{user.email}</p>
                     <p>{user.phoneNumber}</p>
-                    <p>{user.streetAddress}, {user.city}, {user.state}, {user.zipCode}</p>
+                    <p>
+                      {user.streetAddress}, {user.city}, {user.state},{" "}
+                      {user.zipCode}
+                    </p>
                   </div>
                 </div>
                 {/* <hr /> */}
@@ -94,6 +99,8 @@ export default function ProfilePage() {
           </>
         )}
       </StyledProfilePage>
+
+      <Footer/>
     </>
   );
 }
@@ -303,5 +310,29 @@ const StyledProfilePage = styled.div`
       }
     }
   }
+
+  @media (max-width: 380px) {
+    .main_container {
+      .profile_container {
+        .right_container{
+            .orders_list{
+                grid-template-columns: none;
+                .order_card{
+                    .order_header{
+                        justify-content: center;
+                        flex-direction: column;
+                        /* align-items: center; */
+                    }
+                    .order_total{
+                        text-align: left;
+                        
+                    }
+                }
+            }
+        }
+    }
+}
+  }
+  
 
 `;
