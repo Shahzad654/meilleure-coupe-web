@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import './App.css'
-import Navbar from './components/Navbar'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Home from './pages/Home'
 import Signup from './pages/Signup'
@@ -9,16 +8,15 @@ import { auth, db } from './firebase'
 import { onAuthStateChanged, signOut } from 'firebase/auth'
 import { useDispatch } from 'react-redux'
 import { userActions } from './store/userSlice'
-import Footer from './components/Footer'
 import About from './pages/About'
 import ProfileSetup from './pages/ProfileSetup'
 import ProfilePage from './pages/ProfilePage'
 import EditProfile from './pages/EditProfile'
 import { doc, getDoc } from 'firebase/firestore'
-import CircularProgress from '@mui/material/CircularProgress'
 import ContactUs from './pages/ContactUs'
 import LoadingAnimation from './animations/loading.json'
 import Lottie from 'react-lottie-player'
+import Product from './pages/Product'
 
 
 function App() {
@@ -88,7 +86,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      {/* <Navbar/> */}
+     
       <Routes>
         <Route path='/' element={<Home />}/>
         <Route path='/signup' element={<Signup />}/>
@@ -98,8 +96,9 @@ function App() {
         <Route path='/profile' element={<ProfilePage />}/>
         <Route path='/edit-profile' element={<EditProfile />}/>
         <Route path='/contact' element={<ContactUs />}/>
+        <Route path='/products/:category' element={<Product />}/>
       </Routes>
-      {/* <Footer/> */}
+      
     </BrowserRouter>
   )
 }

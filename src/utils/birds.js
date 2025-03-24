@@ -1,10 +1,11 @@
-import MorbidPearl from '../assets/images/birds/morbid-pearl.png';
-import CharDonerMix from '../assets/images/birds/char-doner-mix.png';
-import FruitGranule from '../assets/images/birds/fruit-granule.png';
-import GrasseeBreedingPatee from '../assets/images/birds/grasse-breeding-patee.png';
+import MorbidPearl from '../assets/prodcuts/birds/MorbidPearl.jpg';
+import CharDonerMix from '../assets/prodcuts/birds/CharDonerMix.jpg';
+import FruitGranule from '../assets/prodcuts/birds/FruitGranule.jpg';
+import GrasseeBreedingPatee from '../assets/prodcuts/birds/GrasseBreedingPatee.jpg';
 
 export const birdProducts = [
   {
+    category: "Birds",
     name: "Morbid Pearl",
     price: "29.99$",
     slug: "birds-morbid-pearl",
@@ -12,6 +13,7 @@ export const birdProducts = [
     image: MorbidPearl
   },
   {
+    category: "Birds",
     name: "Char Doner Mix",
     price: "89.99$",
     slug: "birds-char-doner-mix",
@@ -19,13 +21,15 @@ export const birdProducts = [
     image: CharDonerMix
   },
   {
+    category: "Birds",
     name: "Fruit Granule",
     price: "24.99$",
     slug: "birds-fruit-granule",
     description: "Colorful and engaging toy set including swings, bells, and chewable items to keep your bird entertained.",
     image: FruitGranule
   },
-  {     
+  {   
+    category: "Birds",  
     name: "Grasse Breeding Patee",
     price: "19.99$",
     slug: "birds-grasse-breeding-patee",

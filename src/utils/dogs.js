@@ -1,10 +1,11 @@
-import BeefTreat from '../assets/images/BeefTreats.jpg';
-import ChickenTreat from '../assets/images/ChickenTreats.jpg';
-import ChickenTreat2 from '../assets/images/ChickenFlavorTreats.jpg';
-import DogToy from '../assets/images/dogropetoy.jpg';
+import BeefTreat from '../assets/prodcuts/BeefDogTreats.jpg';
+import ChickenTreat from '../assets/prodcuts/ChickenTreats.jpg';
+import ChickenTreat2 from '../assets/prodcuts/ChickenFlavorTreats.jpg';
+import DogToy from '../assets/prodcuts/dogropetoy.jpg';
 
 export const dogProducts = [
   {
+    category: "Dogs",
     name: "Beef Treats",
     price: 49.99,
     slug: "dogs-beef-treats",
@@ -12,6 +13,7 @@ export const dogProducts = [
     image: BeefTreat
   },
   {
+    category: "Dogs",
     name: "Chicken Treats",
     price: 39.99,
     slug: "dogs-chicken-treats",
@@ -19,6 +21,7 @@ export const dogProducts = [
     image: ChickenTreat
   },
   {
+    category: "Dogs",
     name: "Chicken Flavor Treats",
     price: 34.99,
     slug: "dogs-chicken-flavor-treats",
@@ -26,6 +29,7 @@ export const dogProducts = [
     image: ChickenTreat2
   },
   {
+    category: "Dogs",
     name: "Dog Rope Toy",
     price: 24.99,
     slug: "dogs-rope-toy",

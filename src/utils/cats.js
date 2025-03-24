@@ -1,8 +1,8 @@
 
 
-
 export const catProducts = [
   {
+    category: "Cats",
     name: "Premium Cat Food",
     price: 39.99,
     slug: "premium-cat-food",

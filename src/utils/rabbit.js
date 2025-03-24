@@ -1,8 +1,9 @@
-import RabbitMix from '../assets/images/rabbit/rabbitmix.jpg';
-import GuineaPigMix from '../assets/images/rabbit/guineapigmix.jpg';
+import RabbitMix from '../assets/prodcuts/rabbitmix.jpg';
+import GuineaPigMix from '../assets/prodcuts/guineapigmix.jpg';
 
 export const rabbitProducts = [
   {
+    category: "Rabbits",
     name: "Rabbit Mix",
     price: "24.99$",
     slug: "rabbit-mix",
@@ -10,6 +11,7 @@ export const rabbitProducts = [
     image: RabbitMix
   },
   {
+    category: "Rabbits",
     name: "Guinea Pig Mix",
     price: "24.99$",
     slug: "rabbit-guinea-pig-mix",

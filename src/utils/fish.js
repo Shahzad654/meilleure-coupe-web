@@ -1,5 +1,6 @@
 export const fishProducts = [
   {
+    category: "Fish",
     name: "Premium Fish Food",
     price: 19.99,
     slug: "premium-fish-food",
@@ -7,6 +8,7 @@ export const fishProducts = [
     image: "https://images.unsplash.com/photo-1543466835-00a7907e9de1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
   },
   {
+    category: "Fish",
     name: "Aquarium Starter Kit",
     price: 89.99,
     slug: "aquarium-starter-kit",
@@ -14,6 +16,7 @@ export const fishProducts = [
     image: "https://images.unsplash.com/photo-1543466835-00a7907e9de1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
   },
   {
+    category: "Fish",
     name: "Fish Tank Decorations",
     price: 29.99,
     slug: "fish-tank-decorations",
@@ -21,6 +24,7 @@ export const fishProducts = [
     image: "https://images.unsplash.com/photo-1543466835-00a7907e9de1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
   },
   {
+    category: "Fish",
     name: "Water Testing Kit",
     price: 34.99,
     slug: "water-testing-kit",
@@ -28,6 +32,7 @@ export const fishProducts = [
     image: "https://images.unsplash.com/photo-1543466835-00a7907e9de1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
   },
   {
+    category: "Fish",
     name: "Aquarium Filter System",
     price: 49.99,
     slug: "aquarium-filter-system",
@@ -35,6 +40,7 @@ export const fishProducts = [
     image: "https://images.unsplash.com/photo-1543466835-00a7907e9de1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
   },
   {
+    category: "Fish",
     name: "Aquarium Heater",
     price: 39.99,
     slug: "aquarium-heater",
@@ -42,6 +48,7 @@ export const fishProducts = [
     image: "https://images.unsplash.com/photo-1543466835-00a7907e9de1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
   },
   {
+    category: "Fish",
     name: "Fish Net Set",
     price: 14.99,
     slug: "fish-net-set",
@@ -49,6 +56,7 @@ export const fishProducts = [
     image: "https://images.unsplash.com/photo-1543466835-00a7907e9de1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
   },
   {
+    category: "Fish",
     name: "Aquarium Gravel",
     price: 24.99,
     slug: "aquarium-gravel",
