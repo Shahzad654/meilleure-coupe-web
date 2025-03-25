@@ -5,6 +5,7 @@ import GrasseeBreedingPatee from '../assets/prodcuts/birds/GrasseBreedingPatee.j
 
 export const birdProducts = [
   {
+    id: 1,  
     category: "Birds",
     name: "Morbid Pearl",
     price: "29.99$",
@@ -13,6 +14,7 @@ export const birdProducts = [
     image: MorbidPearl
   },
   {
+    id: 2,
     category: "Birds",
     name: "Char Doner Mix",
     price: "89.99$",
@@ -21,6 +23,7 @@ export const birdProducts = [
     image: CharDonerMix
   },
   {
+    id: 3,
     category: "Birds",
     name: "Fruit Granule",
     price: "24.99$",
@@ -29,6 +32,7 @@ export const birdProducts = [
     image: FruitGranule
   },
   {   
+    id: 4,
     category: "Birds",  
     name: "Grasse Breeding Patee",
     price: "19.99$",

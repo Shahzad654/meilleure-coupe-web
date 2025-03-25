@@ -17,6 +17,8 @@ import ContactUs from './pages/ContactUs'
 import LoadingAnimation from './animations/loading.json'
 import Lottie from 'react-lottie-player'
 import Product from './pages/Product'
+import ScrollToTop from './components/ScrollToTop'
+import ProductDetail from './pages/ProductDetail'
 
 
 function App() {
@@ -66,6 +68,7 @@ function App() {
     return () => unsubscribe()
   }, [dispatch])
 
+
   if (loading) {
     return (
       <div style={{ 
@@ -86,7 +89,7 @@ function App() {
 
   return (
     <BrowserRouter>
-     
+    <ScrollToTop />
       <Routes>
         <Route path='/' element={<Home />}/>
         <Route path='/signup' element={<Signup />}/>
@@ -97,6 +100,7 @@ function App() {
         <Route path='/edit-profile' element={<EditProfile />}/>
         <Route path='/contact' element={<ContactUs />}/>
         <Route path='/products/:category' element={<Product />}/>
+        <Route path='/product-detail/:name' element={<ProductDetail />}/>
       </Routes>
       
     </BrowserRouter>

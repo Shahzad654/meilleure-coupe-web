@@ -55,9 +55,9 @@ body {
   font-family: 'Lato', sans-serif;
   background: var(--background-color);
   color: var(--text-color);
-  overflow-y: auto;
+  /* overflow-y: auto; */
   overflow-x: hidden;
-  height: 100vh;
+  /* height: 100vh; */
 }
 
 h1 {
