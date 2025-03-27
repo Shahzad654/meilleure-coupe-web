@@ -30,7 +30,7 @@ export default function ProfileSetup() {
   const user = useSelector(state => state.user.currentUser)
 
   useEffect(() => {
-    // If user is already logged in and has completed profile setup, redirect to home
+    
     if (user.email && !localStorage.getItem('user_info')) {
       navigate("/", { replace: true });
     }

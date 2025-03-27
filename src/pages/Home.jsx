@@ -32,7 +32,7 @@ export default function Home() {
         <div className="page_container">
           <div className="main_container">
             <div className="bg_image">
-              <img src={BgImg} alt="" />
+              <img loading="lazy" src={BgImg} alt="" />
             </div>
 
             <div className="card_container">

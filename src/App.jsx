@@ -19,6 +19,8 @@ import Lottie from 'react-lottie-player'
 import Product from './pages/Product'
 import ScrollToTop from './components/ScrollToTop'
 import ProductDetail from './pages/ProductDetail'
+import Cart from './pages/Cart'
+import Checkout from './pages/Checkout'
 
 
 function App() {
@@ -42,8 +44,13 @@ function App() {
             if (userDoc.exists()) {
               dispatch(userActions.setUserInfo(userDoc.data()));
             }
+
+            const userCart = await getDoc(doc(db, 'cart', user.uid));
+            if (userCart.exists()) {
+              dispatch(userActions.setCart(userCart.data()));
+            }
           } catch (error) {
-            console.error('Error fetching user info:', error);
+            console.error('Error fetching user data:', error);
           }
         } else {
           await signOut(auth)
@@ -101,6 +108,8 @@ function App() {
         <Route path='/contact' element={<ContactUs />}/>
         <Route path='/products/:category' element={<Product />}/>
         <Route path='/product-detail/:name' element={<ProductDetail />}/>
+        <Route path='/cart' element={<Cart />}/>
+        <Route path='/checkout' element={<Checkout />}/>
       </Routes>
       
     </BrowserRouter>
