@@ -1,76 +1,17 @@
-import React, { useMemo, useState } from "react";
+import React, { useState, useMemo } from "react";
 import styled from "styled-components";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import { CiSearch } from "react-icons/ci";
 import { birdProducts } from "../utils/birds";
-import { useDispatch, useSelector } from "react-redux";
-import Snackbar from "@mui/material/Snackbar";
-import { Alert } from "@mui/material";
-import { db } from "../firebase";
-import { doc, setDoc, getDoc, updateDoc } from "firebase/firestore";
-import { userActions } from "../store/userSlice";
-import { CircularProgress } from "@mui/material";
+
 
 export default function Product() {
   const { category } = useParams();
   const navigate = useNavigate();
-  const dispatch = useDispatch();
+  const [searchQuery, setSearchQuery] = useState('');
 
-  const [cartData, setCartData] = useState({});
-  const [open, setOpen] = useState(false);
-  const [alertType, setAlertType] = useState("warning");
-  const [loadingId, setLoadingId] = useState(null);
-
-  const user = useSelector((state) => state.user);
-  const currentCart = useSelector((state) => state.user.cart || {});
-
-  const handleClose = (event, reason) => {
-    if (reason === "clickaway") {
-      return;
-    }
-    setOpen(false);
-  };
-
-  const handleCartData = async (product) => {
-    setLoadingId(product.id);
-    try {
-      if (!user.uid) {
-        setAlertType("warning");
-        setLoadingId(null);
-        setOpen(true);
-        return;
-      }
-  
-     
-      const updatedCart = {
-        ...currentCart,
-        [product.id]: {
-          ...product,
-          
-          // quantity: (currentCart[product.id]?.quantity || 0) + 1
-        }
-      };
-      
-      
-      dispatch(userActions.setCart(updatedCart));
-  
-    
-      await setDoc(doc(db, 'cart', user.uid), updatedCart, { merge: true });
-  
-      setAlertType("success");
-      setOpen(true);
-    } catch (error) {
-      console.log(error);
-    } finally {
-      setLoadingId(null);
-    }
-  };
-
-  
-
-  console.log(cartData);
 
   const birdP = useMemo(() => {
     return category === "Birds"
@@ -78,13 +19,24 @@ export default function Product() {
       : [];
   }, [category]);
 
+  const filteredProducts = useMemo(() => {
+    return birdP.filter((product) =>
+      product.name.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+  }, [birdP, searchQuery]);
+
   return (
     <>
       <Navbar />
       <StyledProduct>
         <div className="product_container">
           <h3>{category}</h3>
+          <div className="searchFilter">
+              <input type="text" placeholder="Search any product" />
+              <button>Search</button>
+            </div>
           <div className="main_container">
+            
             <div className="product_card">
               {birdP.map((product) => (
                 <div className="card" key={product.id}>
@@ -95,35 +47,23 @@ export default function Product() {
                   />
                   <h5>{product.name}</h5>
                   <p>{product.price}</p>
-                  <button onClick={() => handleCartData(product)}>
-                    {loadingId === product.id ? <CircularProgress size={24} sx={{ color: "white" }}/> : "Add to Cart"}
-                  </button>
+                  {/* <button onClick={() => handleCartData(product)}>
+                    {loadingId === product.id ? (
+                      <CircularProgress size={24} sx={{ color: "white" }} />
+                    ) : (
+                      "Add to Cart"
+                    )}
+                  </button> */}
                 </div>
               ))}
             </div>
           </div>
         </div>
-
-        
-        <Snackbar
-          open={open}
-          autoHideDuration={6000}
-          onClose={handleClose}
-          anchorOrigin={{ vertical: "top", horizontal: "center" }}
-        >
-          <Alert onClose={handleClose} severity={alertType} sx={{ width: "100%" }}>
-            {alertType === "warning"
-              ? "You must be logged in to add items to the cart!"
-              : "Item added to cart successfully!"}
-          </Alert>
-        </Snackbar>
       </StyledProduct>
       <Footer />
     </>
   );
 }
-
-
 
 const StyledProduct = styled.div`
   .product_container {

@@ -5,7 +5,8 @@ import Avatar from "@mui/material/Avatar";
 import Stack from "@mui/material/Stack";
 import { deepOrange } from "@mui/material/colors";
 import { MdOutlineShoppingCart } from "react-icons/md";
-import { GiHamburgerMenu } from "react-icons/gi";
+import ToggleButton from "@mui/material/ToggleButton";
+import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { signOut } from "firebase/auth";
@@ -17,21 +18,25 @@ import CircularProgress from "@mui/material/CircularProgress";
 import Box from "@mui/material/Box";
 import BottomNavigation from "@mui/material/BottomNavigation";
 import BottomNavigationAction from "@mui/material/BottomNavigationAction";
-import HomeIcon from '@mui/icons-material/Home';
-import CategoryIcon from '@mui/icons-material/Category';
-import ContactIcon from '@mui/icons-material/ContactSupport';
+import HomeIcon from "@mui/icons-material/Home";
+import CategoryIcon from "@mui/icons-material/Category";
+import ContactIcon from "@mui/icons-material/ContactSupport";
+import { useTranslation } from "react-i18next";
+import i18n from "../locale/i18n";
 
 export default function Navbar() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const { t } = useTranslation()
   const user = useSelector((state) => state.user);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [isLoggingOut, setIsLoggingOut] = React.useState(false);
   const open = Boolean(anchorEl);
   const [value, setValue] = useState(0);
+  const [alignment, setAlignment] = useState("web");
 
-  const toggleDrawer = (newOpen) => () => {
-    setOpenDrawer(newOpen);
+  const handleChange = (event, newAlignment) => {
+    setAlignment(newAlignment);
   };
 
   const handleClick = (event) => {
@@ -84,10 +89,22 @@ export default function Navbar() {
           </div>
 
           <div className="links_container">
-            <Link to="/" className="link">Home</Link>
-            <a href="/categories" className="link">Categories</a>
-            <a href="/about" className="link">About Us</a>
-            <Link to="/contact" className="link">Contact Us</Link>
+            <Link to="/" className="link">
+              {/* Home */}
+              {t("homeLink")}
+            </Link>
+            <a href="/categories" className="link">
+              {/* Categories */}
+              {t("catLink")}
+            </a>
+            <a href="/about" className="link">
+              {/* About Us */}
+              {t("aboutLink")}
+            </a>
+            <Link to="/contact" className="link">
+              {/* Contact Us */}
+              {t("contactLink")}
+            </Link>
           </div>
 
           {user.uid ? (
@@ -106,6 +123,29 @@ export default function Navbar() {
                 >
                   {user.email[0].toUpperCase()}
                 </Avatar>
+
+                <ToggleButtonGroup
+                  color="primary"
+                  value={alignment}
+                  exclusive
+                  onChange={handleChange}
+                  aria-label="Platform"
+                  sx={{
+                    width: "20%",
+                    
+                    "& .MuiToggleButton-root": {
+                      padding: "4px 8px", 
+                      fontSize: "12px", 
+                      borderRadius: "20px", 
+                      minWidth: "40px",
+                      marginLeft:"5%"
+                    },
+                  }}
+                >
+                  <ToggleButton value="en" onClick={() => i18n.changeLanguage("en")}>en</ToggleButton>
+                  <ToggleButton value="fr" onClick={() => i18n.changeLanguage("fr")}>fr</ToggleButton>
+                </ToggleButtonGroup>
+
                 <Menu
                   id="basic-menu"
                   anchorEl={anchorEl}
@@ -169,19 +209,19 @@ export default function Navbar() {
               borderTopRightRadius: "var(--l-radius)",
             }}
           >
-            <BottomNavigationAction 
-              label="Home" 
-              icon={<HomeIcon />} 
+            <BottomNavigationAction
+              label="Home"
+              icon={<HomeIcon />}
               onClick={() => navigate("/")}
             />
-            <BottomNavigationAction 
-              label="Categories" 
-              icon={<CategoryIcon />} 
+            <BottomNavigationAction
+              label="Categories"
+              icon={<CategoryIcon />}
               // onClick={() => navigate("/categories")}
             />
-            <BottomNavigationAction 
-              label="Contact" 
-              icon={<ContactIcon />} 
+            <BottomNavigationAction
+              label="Contact"
+              icon={<ContactIcon />}
               onClick={() => navigate("/contact")}
             />
           </BottomNavigation>
@@ -199,7 +239,6 @@ const MobileNavbar = styled.div`
   z-index: 1000;
   display: none;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
-  
 
   @media (max-width: 830px) {
     display: block;
@@ -221,7 +260,6 @@ const StyledNavbar = styled.div`
     margin: auto;
 
     .logo_container {
-     
       img {
         max-width: 65px;
         height: 65px;
@@ -233,9 +271,9 @@ const StyledNavbar = styled.div`
       justify-content: space-between;
       align-items: center;
       gap: 2rem;
-      .link{  
+      .link {
         font-size: var(--text);
-        font-family: 'Poppins', sans-serif;
+        font-family: "Poppins", sans-serif;
         font-weight: 500;
         text-decoration: none;
         color: var(--text-color);
@@ -264,7 +302,6 @@ const StyledNavbar = styled.div`
 
   @media (max-width: 830px) {
     .main_container {
-     
       .links_container {
         display: none;
       }

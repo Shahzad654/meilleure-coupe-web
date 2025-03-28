@@ -13,12 +13,12 @@ export default function Checkout() {
   console.log("Selected items in checkout:", selectedItems);
 
   const subtotal = selectedItems
-    ? Object.values(selectedItems).reduce((sum, item) => {
-        const price = Number(item.price) || 0;
-        const quantity = Number(item.quantity) || 1;
-        return sum + price * quantity;
-      }, 0)
-    : 0;
+  ? Object.values(selectedItems).reduce((sum, item) => {
+      const price = parseFloat(item.price) || 0;  
+      const quantity = parseInt(item.quantity) || 1; 
+      return sum + (price * quantity);
+    }, 0)
+  : 0;
 
   const deliveryFee = 10;
   const total = subtotal + deliveryFee;
@@ -33,7 +33,8 @@ export default function Checkout() {
             {selectedItems ? (
               <>
                 <div className="items-list">
-                  {Object.values(selectedItems).map((item) => (
+                  {Object.values(selectedItems).map((item, index, array) => (
+                    <>
                     <div key={item.name} className="checkout-item">
                       <div className="item_image">
                         <img src={item.image} alt={item.name} width={100} />
@@ -44,8 +45,15 @@ export default function Checkout() {
                         <p>Price: ${item.price}</p>
                         <p>Quantity: {item.quantity || 1}</p>
                       </div>
+                      
                     </div>
+                    {index !== array.length - 1 && (
+                      <hr style={{ width: "100%" }} />
+                    )}
+                    </>
+                   
                   ))}
+                  
                 </div>
               </>
             ) : (
@@ -56,7 +64,9 @@ export default function Checkout() {
             )}
           </div>
 
-          <div className="right_side">
+          {selectedItems ? (
+            <>
+            <div className="right_side">
             <div className="order-summary">
               <h4>Order Summary</h4>
               <div className="summary-row">
@@ -83,6 +93,10 @@ export default function Checkout() {
 
             <button className="place-order-btn">Place Order</button>
           </div>
+            </>
+          ): null}
+
+          
         </div>
       </StyledCheckout>
       <Footer />

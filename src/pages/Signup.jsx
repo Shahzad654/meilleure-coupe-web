@@ -8,7 +8,7 @@ import {
 import { auth } from "../firebase";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import SignupImg from "../assets/signup.jpg";
-import CircularProgress from "@mui/material/CircularProgress";
+import { CircularProgress, Snackbar, Alert } from "@mui/material";
 import Logo from "../assets/logo.png";
 import { useSelector } from "react-redux";
 
@@ -17,13 +17,17 @@ export default function Signup() {
   const [password, setPassword] = useState("");
   const [verificationSent, setVerificationSent] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [snackbar, setSnackbar] = useState({ open: false, message: "", severity: "info" });
   const navigate = useNavigate();
   const location = useLocation();
+  
   const user = useSelector((state) => state.user.currentUser);
+  console.log(user)
 
   useEffect(() => {
-    // If user is already logged in, redirect to home
-    if (user.email) {
+   
+    if (user?.email) {
+
       navigate("/", { replace: true });
     }
   }, [user, navigate]);
@@ -41,10 +45,13 @@ export default function Signup() {
       await sendEmailVerification(userCredential.user);
       await signOut(auth);
       setVerificationSent(true);
-      alert("Please check your email to verify your account");
-      navigate("/profile-setup", { replace: true });
+      setSnackbar({ open: true, message: "Please check your email to verify your account.", severity: "success" });
+      setTimeout(() => {
+        navigate("/profile-setup", { replace: true });
+      }, 1500);
+      // navigate("/profile-setup", { replace: true });
     } catch (error) {
-      alert(error.message);
+      setSnackbar({ open: true, message: error.message, severity: "error" });
     } finally {
       setLoading(false);
     }
@@ -84,6 +91,17 @@ export default function Signup() {
           </p>
         </div>
       </div>
+
+      <Snackbar
+        open={snackbar.open}
+        autoHideDuration={4000}
+        onClose={() => setSnackbar({ ...snackbar, open: false })}
+        anchorOrigin={{ vertical: "top", horizontal: "center" }}
+      >
+        <Alert onClose={() => setSnackbar({ ...snackbar, open: false })} severity={snackbar.severity} variant="filled">
+          {snackbar.message}
+        </Alert>
+      </Snackbar>
     </StyledSignup>
   );
 }

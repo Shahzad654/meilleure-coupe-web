@@ -31,7 +31,7 @@ export default function ProfileSetup() {
 
   useEffect(() => {
     
-    if (user.email && !localStorage.getItem('user_info')) {
+    if (user?.email && !localStorage.getItem('user_info')) {
       navigate("/", { replace: true });
     }
   }, [user, navigate]);

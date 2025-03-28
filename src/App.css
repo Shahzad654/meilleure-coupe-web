@@ -127,17 +127,38 @@ button {
   background-color: var(--secondary-dark-color);
 }
 .outline-btn {
+  color: var(--secondary-color);
+  background-color: transparent;
+  border: 2px solid var(--secondary-color);
+  padding: 9px 12px;
+  min-width: 120px;
+  max-height: 45px;
+  touch-action: pinch-zoom;
+  /* font-weight: 600; */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.15s ease-in-out;
+}
+
+.outline-btn-primary {
   color: var(--primary-color);
   background-color: transparent;
   border: 2px solid var(--primary-color);
-  padding: 12px 24px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 1px;
+  padding: 9px 12px;
+  min-width: 120px;
+  max-height: 45px;
+  touch-action: pinch-zoom;
+  /* font-weight: 600; */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
+  transition: all 0.15s ease-in-out;
 }
 .outline-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  background-color: var(--secondary-color);
+  color: white;
+}
+
+.outline-btn-primary:hover {
   transform: translateY(-2px);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
   background-color: var(--primary-color);

@@ -12,83 +12,38 @@ import { userActions } from "../store/userSlice";
 import { useLocation } from "react-router-dom";
 
 export default function Cart() {
-  const [quantity, setQuantity] = useState(1);
+  const [quantities, setQuantities] = useState({});
   const cart = useSelector((state) => state.user.cart);
   const [data, setData] = useState({});
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const userId = auth.currentUser?.uid;
 
+
+
+  const handleQuantity = (type, name) => {
+    setQuantities((prev) => {
+      const currentQuantity = prev[name] || 1;
+      const newQuantity = type === "increment" ? currentQuantity + 1 : Math.max(1, currentQuantity - 1);
   
-
-  const handleDeleteSelected = async () => {
-  try {
-    if (!userId) {
-      console.log("User not authenticated");
-      return;
-    }
-
-    const cartDocRef = doc(db, "cart", userId);
-
-  
-    const updateObject = Object.keys(data).reduce((acc, itemName) => {
-      const keyToRemove = Object.keys(cart).find(
-        (key) => cart[key].name === itemName
-      );
-
-      if (keyToRemove) {
-        acc[`cart.${keyToRemove}`] = deleteField(); 
-      }
-
-      return acc;
-    }, {});
-
-    
-    if (Object.keys(updateObject).length === 0) {
-      return;
-    }
-
-   
-    await updateDoc(cartDocRef, updateObject);
-
-  
-    const updatedCart = { ...cart };
-    Object.keys(data).forEach((itemName) => {
-      const keyToRemove = Object.keys(updatedCart).find(
-        (key) => updatedCart[key].name === itemName
-      );
-
-      if (keyToRemove) {
-        delete updatedCart[keyToRemove];
-      }
+      return { ...prev, [name]: newQuantity };
     });
-
-    dispatch(userActions.setCart(updatedCart));
-
-    
-    setData({});
-
-    console.log("Selected items deleted successfully");
-  } catch (error) {
-    console.error("Error deleting items from cart:", error);
+  
    
-  }
-};
-
-
-
-  const handleQuantity = (type) => {
-    if (type === "increment") {
-      setQuantity((prev) => prev + 1);
-    } else {
-      setQuantity((prev) => (prev > 1 ? prev - 1 : 1));
-    }
+    setData((prevData) => {
+      if (prevData[name]) {
+        return { ...prevData, [name]: { ...prevData[name], quantity: type === "increment" ? prevData[name].quantity + 1 : Math.max(1, prevData[name].quantity - 1) } };
+      }
+      return prevData;
+    });
   };
+  
 
   const handleSelectAll = (isChecked) => {
     if (isChecked) {
       const selectedItems = Object.values(cart).reduce((acc, item) => {
-        acc[item.name] = { ...item, checked: true };
+        const quantity = quantities[item.name] || 1;
+        acc[item.name] = { ...item, checked: true, quantity};
         return acc;
       }, {});
       setData(selectedItems);
@@ -103,8 +58,10 @@ export default function Cart() {
 
       if (!item) return prevData;
 
+      const quantity = quantities[name] || 1;
+
       if (isChecked) {
-        return { ...prevData, [name]: { ...item, checked: true } };
+        return { ...prevData, [name]: { ...item, checked: true, quantity } };
       } else {
         const updatedData = { ...prevData };
         delete updatedData[name];
@@ -132,7 +89,7 @@ export default function Cart() {
         <div className="buy_now">
           <h1>Cart</h1>
           {Object.keys(data).length > 0 && (
-            <button className="outline-btn"  onClick={() => navigate('/checkout', { state: { selectedItems: data } })}>Checkout</button>
+            <button className="outline-btn-primary"  onClick={() => navigate('/checkout', { state: { selectedItems: data } })}>Checkout</button>
           )}
         </div>
         <div className="cart_container">
@@ -154,7 +111,7 @@ export default function Cart() {
                   color="red"
                   size={25}
                   style={{ cursor: "pointer" }}
-                  onClick={handleDeleteSelected}
+                  
                 />
               </div>
             )}
@@ -197,14 +154,14 @@ export default function Cart() {
                         <div className="quantity-container">
                           <div
                             className="quantity-btn"
-                            onClick={() => handleQuantity("decrement")}
+                            onClick={() => handleQuantity("decrement", item.name)}
                           >
                             <p>-</p>
                           </div>
-                          <p>{quantity}</p>
+                          <p>{quantities[item.name] || 1}</p>
                           <div
                             className="quantity-btn"
-                            onClick={() => handleQuantity("increment")}
+                            onClick={() => handleQuantity("increment", item.name)}
                           >
                             <p>+</p>
                           </div>

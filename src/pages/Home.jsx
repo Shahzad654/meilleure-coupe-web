@@ -17,9 +17,13 @@ import SearchImg from "../assets/search.png";
 import CartImg from "../assets/cart.png";
 import CheckoutImg from "../assets/checkout.png";
 import BgImg from "../assets/bg1.jpg";
+import { useTranslation } from "react-i18next";
+
 
 export default function Home() {
   const navigate = useNavigate()
+  const { t } = useTranslation()
+
   const handleCategoryClick = (category) => {
     console.log("Category clicked:", category);
     navigate(`/products/${category}`)
@@ -40,10 +44,17 @@ export default function Home() {
                 <div className="card_content">
                 
                   <h2>
-                    Premium Pet Products For Your Furry Friends
+                    {/* Premium Pet Products For Your Furry Friends */}
+                    {t("cardHeading")}
                   </h2>
-                  <p>Shop by pet, brands or products on sale</p>
-                  <button className="secondary-btn">Exporle Now</button>
+                  <p>
+                    {/* Shop by pet, brands or products on sale */}
+                    {t("sologan")}
+                    </p>
+                  <button className="secondary-btn">
+                    {/* Exporle Now */}
+                    {t("button")}
+                  </button>
                   
                 </div>
               </div>
@@ -51,7 +62,10 @@ export default function Home() {
           </div>
 
           <div className="working_container">
-            <h2>How it works?</h2>
+            <h2>
+              {t("workingHeading")}
+              {/* How it works? */}
+            </h2>
 
             <div className="content_container">
               <div className="card">
@@ -64,12 +78,16 @@ export default function Home() {
                     <div className="step_border">
                       <h4>1</h4>
                     </div>
-                    <h4>Search for products</h4>
+                    <h4>
+                      {/* Search for products */}
+                      {t("card1Heading")}
+                    </h4>
                   </div>
 
                   <p>
-                    Browse our extensive catalog of pet products using our easy
-                    search feature.
+                    {/* Browse our extensive catalog of pet products using our easy
+                    search feature. */}
+                    {t("card1desc")}
                   </p>
                 </div>
               </div>
@@ -84,11 +102,15 @@ export default function Home() {
                     <div className="step_border">
                       <h4>2</h4>
                     </div>
-                    <h4>Select your products</h4>
+                    <h4>
+                      {/* Select your products */}
+                      {t("card2Heading")}
+                      </h4>
                   </div>
                   <p>
-                    Add your favorite pet items to your cart with just one
-                    click.
+                    {/* Add your favorite pet items to your cart with just one
+                    click. */}
+                    {t("card2desc")}
                   </p>
                 </div>
               </div>
@@ -103,10 +125,14 @@ export default function Home() {
                     <div className="step_border">
                       <h4>3</h4>
                     </div>
-                    <h4>Checkout and pay</h4>
+                    <h4>
+                      {/* Checkout and pay */}
+                      {t("card3Heading")}
+                    </h4>
                   </div>
                   <p>
-                    Complete your purchase securely and wait for your delivery.
+                    {/* Complete your purchase securely and wait for your delivery. */}
+                    {t("card3desc")}
                   </p>
                 </div>
               </div>
@@ -115,7 +141,10 @@ export default function Home() {
 
           <div className="categories_container">
             <div className="categories_header">
-              <h2>Categories</h2>
+              <h2>
+                {/* Categories */}
+                {t("catHeading")}
+              </h2>
             </div>
 
             <div className="card_container">
@@ -123,35 +152,51 @@ export default function Home() {
                 <div className="image_wrapper">
                   <img loading="lazy" src={Cat1} alt="Cat" />
                 </div>
-                <h4>Cats</h4>
+                <h4>
+                  {/* Cats */}
+                  {t("cats")}
+                  
+                  </h4>
               </div>
 
               <div className="card" onClick={() => handleCategoryClick("Dogs")}>
                 <div className="image_wrapper">
                   <img loading="lazy" src={Cat2} alt="Dog" />
                 </div>
-                <h4>Dogs</h4>
+                <h4>
+                  {/* Dogs */}
+                  {t("dogs")}
+                  </h4>
               </div>
 
               <div className="card" onClick={() => handleCategoryClick("Birds")}>
                 <div className="image_wrapper">
                   <img loading="lazy" src={Cat3} alt="Bird" />
                 </div>
-                <h4>Birds</h4>
+                <h4>
+                  {/* Birds */}
+                  {t("birds")}
+                  </h4>
               </div>
 
               <div className="card" onClick={() => handleCategoryClick("Fish")}>
                 <div className="image_wrapper">
                   <img loading="lazy" src={Cat4} alt="fish" />
                 </div>
-                <h4>Fish</h4>
+                <h4>
+                  {/* Fish */}
+                  {t("fish")}
+                  </h4>
               </div>
 
               <div className="card" onClick={() => handleCategoryClick("Rabbit")}>
                 <div className="image_wrapper">
                   <img loading="lazy" src={Cat5} alt="Rabbit" />
                 </div>
-                <h4>Rabbit</h4>
+                <h4>
+                  {/* Rabbit */}
+                  {t("rabbits")}
+                  </h4>
               </div>
             </div>
 
