@@ -5,25 +5,49 @@ import Footer from "../components/Footer";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import { CiSearch } from "react-icons/ci";
 import { birdProducts } from "../utils/birds";
-
+import { fishProducts } from "../utils/fish";
+import { catProducts } from "../utils/cats";
+import { rabbitProducts } from "../utils/rabbit";
+import { dogProducts } from "../utils/dogs";
+import { useTranslation } from "react-i18next";
 
 export default function Product() {
   const { category } = useParams();
   const navigate = useNavigate();
-  const [searchQuery, setSearchQuery] = useState('');
+  const [searchQuery, setSearchQuery] = useState("");
+  const { t } = useTranslation()
 
+  // const birdP = useMemo(() => {
+  //   return category === "Birds"
+  //     ? birdProducts.filter((product) => product.category === category)
+  //     : [];
+  // }, [category]);
 
-  const birdP = useMemo(() => {
-    return category === "Birds"
-      ? birdProducts.filter((product) => product.category === category)
-      : [];
+  const productsByCategory = useMemo(() => {
+    if (category === "Birds") {
+      return birdProducts;
+    } else if (category === "Fish") {
+      return fishProducts;
+    }
+    else if (category === "Cats") {
+      return catProducts;
+    }
+    else if (category === "Rabbits") {
+      return rabbitProducts;
+    }
+    else if (category === "Dogs") {
+      return dogProducts;
+    }
+     else {
+      return [];
+    }
   }, [category]);
 
   const filteredProducts = useMemo(() => {
-    return birdP.filter((product) =>
+    return productsByCategory.filter((product) =>
       product.name.toLowerCase().includes(searchQuery.toLowerCase())
     );
-  }, [birdP, searchQuery]);
+  }, [productsByCategory, searchQuery]);
 
   return (
     <>
@@ -32,13 +56,17 @@ export default function Product() {
         <div className="product_container">
           <h3>{category}</h3>
           <div className="searchFilter">
-              <input type="text" placeholder="Search any product" />
-              <button>Search</button>
-            </div>
+            <input
+              type="text"
+              placeholder="Search any product"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+            />
+            {/* <button>Search</button> */}
+          </div>
           <div className="main_container">
-            
             <div className="product_card">
-              {birdP.map((product) => (
+              {/* {birdP.map((product) => (
                 <div className="card" key={product.id}>
                   <img
                     src={product.image}
@@ -47,13 +75,20 @@ export default function Product() {
                   />
                   <h5>{product.name}</h5>
                   <p>{product.price}</p>
-                  {/* <button onClick={() => handleCartData(product)}>
-                    {loadingId === product.id ? (
-                      <CircularProgress size={24} sx={{ color: "white" }} />
-                    ) : (
-                      "Add to Cart"
-                    )}
-                  </button> */}
+                  
+                </div>
+              ))} */}
+
+              {filteredProducts.map((product) => (
+                <div className="card" key={product.id}>
+                  <img
+                    src={product.image}
+                    alt={product.name}
+                    onClick={() => navigate(`/product-detail/${product.name}`)}
+                  />
+                  {/* <h5>{product.name}</h5> */}
+                  <h5>{t(product.name)}</h5>
+                  <p>{product.price}</p>
                 </div>
               ))}
             </div>

@@ -155,7 +155,7 @@ const StyledProfilePage = styled.div`
           margin-bottom: 1.5rem;
           
           img {
-            max-width: 150px;
+            max-width: 130px;
             height: auto;
             border-radius: 50%;
           }

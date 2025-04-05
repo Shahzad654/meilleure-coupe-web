@@ -4,6 +4,10 @@ import Footer from "../components/Footer";
 import styled from "styled-components";
 import { useParams } from "react-router-dom";
 import { birdProducts } from "../utils/birds";
+import { fishProducts } from "../utils/fish";
+import { catProducts } from "../utils/cats";
+import { rabbitProducts } from "../utils/rabbit";
+import { dogProducts } from "../utils/dogs";
 import { useDispatch, useSelector } from "react-redux";
 import Snackbar from "@mui/material/Snackbar";
 import { Alert } from "@mui/material";
@@ -16,6 +20,7 @@ import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import Fade from "@mui/material/Fade";
 import emailjs from "emailjs-com";
+import { useTranslation } from "react-i18next";
 
 const style = {
   position: "absolute",
@@ -40,6 +45,7 @@ export default function ProductDetail() {
   const [snackbarMessage, setSnackbarMessage] = useState("");
   const [snackbarSeverity, setSnackbarSeverity] = useState("success");
   const [loadingEmail, setLoadingEmail] = useState(false);
+  const {t} = useTranslation();
 
   const handleOpenModal = () => setOpenModal(true);
   const handleCloseModal = () => setOpenModal(false);
@@ -84,13 +90,15 @@ export default function ProductDetail() {
     }
   };
 
-  const product = birdProducts.find((product) => product.name === name);
-  console.log(product);
+  // const product = birdProducts.find((product) => product.name === name);
+  // console.log(product);
+  const allProducts = [...birdProducts, ...fishProducts, ...catProducts, ...rabbitProducts, ...dogProducts];
+  const product = allProducts.find((product) => product.name === name);
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
-    setLoadingEmail(true); 
-  
+    setLoadingEmail(true);
+
     emailjs
       .sendForm(
         "service_i2kwo8e",
@@ -115,10 +123,9 @@ export default function ProductDetail() {
       .finally(() => {
         setLoadingEmail(false);
       });
-  
+
     e.target.reset();
   };
-  
 
   return (
     <>
@@ -129,7 +136,7 @@ export default function ProductDetail() {
             <img src={product.image} alt={product.name} />
           </div>
           <div className="right-side">
-            <h3>{product.name}</h3>
+            <h3>{t(product.name)}</h3>
             <p>{product.description}</p>
             <h5>{product.price}</h5>
             <div className="action-container">
@@ -241,7 +248,6 @@ export default function ProductDetail() {
                       "Request"
                     )}
                   </button>
-                  
                 </form>
 
                 <p style={{ color: "orange", textAlign: "center" }}>

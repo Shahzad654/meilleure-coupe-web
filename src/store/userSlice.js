@@ -6,7 +6,8 @@ const user = createSlice({
     email: "",
     uid: null,
     userInfo: {},
-    cart:{},
+    cart: {},
+    orders: {},
   },
   reducers: {
     setCurrentUser(state, action) {
@@ -20,6 +21,9 @@ const user = createSlice({
     setCart(state, action) {
       state.cart = action.payload;
     },
+    setOrders(state, action) {
+      state.orders = action.payload;
+    }
   },
 });
 

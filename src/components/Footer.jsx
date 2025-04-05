@@ -10,8 +10,11 @@ import {
   FaMapMarkerAlt,
 } from "react-icons/fa";
 import { BiPhoneCall } from "react-icons/bi";
+import { useTranslation } from "react-i18next";
+import i18n from "../locale/i18n";
 
 export default function Footer() {
+  const {t} = useTranslation();
   return (
     <StyledFooter>
       <div className="footer_container">
@@ -19,8 +22,9 @@ export default function Footer() {
           <div className="left_side">
             <img src={Logo} alt="logo" />
             <p className="description">
-              Your one-stop shop for all pet supplies. We offer high-quality
-              products for your beloved pets at competitive prices.
+              {/* Your one-stop shop for all pet supplies. We offer high-quality
+              products for your beloved pets at competitive prices. */}
+              {t("footerHeading")}
             </p>
             <div className="icon_container">
               <div className="contact_item">
@@ -39,25 +43,31 @@ export default function Footer() {
           </div>
 
           <div className="mid_side">
-            <h3>Quick Links</h3>
+            <h3>
+              {/* Quick Links */}
+              {t("quickLinks")}
+            </h3>
             <ul>
               <li>
-                <a href="/">Home</a>
+                <a href="/">
+                
+                {t("homeLink")}
+                </a>
               </li>
               <li>
-                <a href="/categories">Categories</a>
+                <a href="/categories">{t("catLink")}</a>
               </li>
               <li>
-                <a href="/about">About Us</a>
+                <a href="/about">{t("aboutLink")}</a>
               </li>
               <li>
-                <a href="/contact">Contact Us</a>
+                <a href="/contact">{t("contactLink")}</a>
               </li>
             </ul>
           </div>
 
           <div className="right_side">
-            <h3>Follow Us</h3>
+            <h3>{t("follow")}</h3>
             <div className="social_links">
               <a href="#" className="social_icon">
                 <FaFacebookF />
@@ -73,20 +83,20 @@ export default function Footer() {
               </a>
             </div>
             <div className="newsletter">
-              <h3>Newsletter</h3>
+              <h3>{t("newsletter")}</h3>
               <p>
-                Subscribe to our newsletter for updates and exclusive offers!
+                {t("newletterPara")}
               </p>
               <div className="subscribe_form">
                 <input type="email" placeholder="Enter your email" />
-                <button>Subscribe</button>
+                <button>{t("subscribeBtn")}</button>
               </div>
             </div>
           </div>
         </div>
 
         <div className="bottom_section">
-          <p>&copy; 2025 La meilleure coupe. All rights reserved.</p>
+          <p>&copy; 2025 {t("copyright")}</p>
         </div>
       </div>
     </StyledFooter>

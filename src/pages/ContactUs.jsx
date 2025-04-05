@@ -2,8 +2,11 @@ import React from "react";
 import styled from "styled-components";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import i18n from "../locale/i18n";
+import { useTranslation } from "react-i18next";
 
 export default function ContactUs() {
+  const {t} = useTranslation();
   return (
     <>
       <Navbar />
@@ -12,40 +15,44 @@ export default function ContactUs() {
           {/* <h2>Contact Us</h2> */}
           <div className="contact_container">
             <div className="left_side">
-              <h3>Have Questions? Get in Touch!</h3>
+              <h3>
+                {/* Have Questions? Get in Touch! */}
+                {t("contactHeading")}
+                </h3>
 
               <p>
-                We're here to help! If you have any questions or concerns,
-                please don't hesitate to contact us.
+                {/* We're here to help! If you have any questions or concerns,
+                please don't hesitate to contact us. */}
+                {t("contactPara")}
               </p>
             </div>
 
             <div className="right_side">
               <form action="">
-                <label htmlFor="name">Name</label>
+                <label htmlFor="name">{t("name")}</label>
                 <input
                   type="text"
                   name="name"
                   id="name"
-                  placeholder="Enter your name"
+                  placeholder={t("placeholder1")}
                 />
 
-                <label htmlFor="email">Email</label>
+                <label htmlFor="email">{t("email")}</label>
                 <input
                   type="email"
                   name="email"
                   id="email"
-                  placeholder="Enter your email"
+                  placeholder={t("placeholder2")}
                 />
 
-                <label htmlFor="message">Message</label>
+                <label htmlFor="message">{t("message")}</label>
                 <textarea
                   name="message"
                   id="message"
-                  placeholder="Enter your message"
+                  placeholder={t("placeholder3")}
                 ></textarea>
 
-                <button type="submit">Submit</button>
+                <button type="submit">{t("submitBtn")}</button>
               </form>
             </div>
           </div>

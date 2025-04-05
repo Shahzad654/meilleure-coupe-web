@@ -1,15 +1,21 @@
-import React from "react";
+import React, {useState} from "react";
 import styled from "styled-components";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { db } from "../firebase";
+import { doc, setDoc } from "firebase/firestore";
+import axios from "axios";
+
 
 export default function Checkout() {
   const location = useLocation();
+  const navigate = useNavigate();
   const { selectedItems } = location.state || {};
   const userInfo = useSelector((state) => state.user.userInfo);
-
+  
+  
   console.log("Selected items in checkout:", selectedItems);
 
   const subtotal = selectedItems
@@ -22,6 +28,9 @@ export default function Checkout() {
 
   const deliveryFee = 10;
   const total = subtotal + deliveryFee;
+
+
+  
 
   return (
     <>
@@ -92,6 +101,7 @@ export default function Checkout() {
             </div>
 
             <button className="place-order-btn">Place Order</button>
+           
           </div>
             </>
           ): null}
