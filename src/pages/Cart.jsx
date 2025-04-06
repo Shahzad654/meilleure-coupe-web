@@ -87,7 +87,7 @@ export default function Cart() {
       <Navbar />
       <StyledCart>
         <div className="buy_now">
-          <h1>Cart</h1>
+          <h3>Cart</h3>
           {Object.keys(data).length > 0 && (
             <button className="outline-btn-primary"  onClick={() => navigate('/checkout', { state: { selectedItems: data } })}>Checkout</button>
           )}

@@ -136,7 +136,7 @@ export default function Login() {
             <img src={Logo} alt="" />
           </div>
 
-          <h2>Login</h2>
+          <h3>Login</h3>
           <input
             type="email"
             name="email"

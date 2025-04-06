@@ -221,7 +221,7 @@ export default function Home() {
                 toys and accessories */}
                 {t("bannerPara")}
               </p>
-              <button>
+              <button onClick={()=> navigate('/book-consultation')}>
                 {/* Shop Now */}
                 {t("bannerBtn")}
               </button>
@@ -329,7 +329,7 @@ const StyledHome = styled.div`
   .page_container {
     .main_container {
       position: relative;
-      min-height: 80vh;
+      min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -468,6 +468,8 @@ const StyledHome = styled.div`
         }
       }
     }
+
+
     .categories_container {
       width: 90%;
       margin: var(--section-margin) auto;
@@ -561,6 +563,7 @@ const StyledHome = styled.div`
         align-items: flex-start;
         justify-content: center;
         gap: 1.5rem;
+        
       }
     }
 

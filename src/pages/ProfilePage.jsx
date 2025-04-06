@@ -5,6 +5,7 @@ import Footer from "../components/Footer";
 import ProfileImg from "../assets/profile.png";
 import { useSelector } from "react-redux";
 import CircularProgress from "@mui/material/CircularProgress";
+import { MdEmail } from "react-icons/md";
 
 export default function ProfilePage() {
   const user = useSelector((state) => state.user.userInfo);
@@ -39,6 +40,7 @@ export default function ProfilePage() {
                     <img src={ProfileImg} alt="" />
                   </div>
                   <div className="user_info">
+                    
                     <h3>
                       {user.firstName} {user.lastName}
                     </h3>

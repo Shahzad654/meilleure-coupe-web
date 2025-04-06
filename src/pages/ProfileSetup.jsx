@@ -292,7 +292,7 @@ export default function ProfileSetup() {
     <StyledSetup>
       <div className="main_container">
         <div className="setup_paper">
-          <h2>Complete Your Profile</h2>
+          <h3>Complete Your Profile</h3>
           
           <div className="step_content">
             {getStepContent(activeStep)}

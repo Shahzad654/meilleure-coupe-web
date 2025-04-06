@@ -22,6 +22,7 @@ import ProductDetail from './pages/ProductDetail'
 import Cart from './pages/Cart'
 import Checkout from './pages/Checkout'
 import Success from './pages/Success'
+import Consultation from './pages/Consultation'
 
 
 function App() {
@@ -112,6 +113,7 @@ function App() {
         <Route path='/cart' element={<Cart />}/>
         <Route path='/checkout' element={<Checkout />}/>
         <Route path='/success' element={<Success/>}/>
+        <Route path='book-consultation' element={<Consultation/>} />
       </Routes>
       
     </BrowserRouter>

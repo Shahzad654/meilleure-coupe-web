@@ -19,9 +19,9 @@
     "birds": "Oiseaux",
     "fish": "Poisson",
     "rabbits": "Lapins",
-    "bannerHeading": "Bienvenue chez La Meilleure Coupe La solution parfaite pour votre site Web d'animalerie",
-    "bannerPara": "Nous proposons une large gamme de produits pour vos animaux de compagnie, de la nourriture aux jouets et accessoires",
-    "bannerBtn": "Achetez maintenant",
+    "bannerHeading": "Réservez un appel de consultation en ligne",
+    "bannerPara": "Planifiez une séance individuelle avec nos experts et obtenez des conseils personnalisés à votre convenance.",
+    "bannerBtn": "Réservez maintenant",
     "faqHeading": "Questions fréquemment posées",
     "faq1Q": "Comment choisir la bonne nourriture pour mon animal de compagnie ?",
     "faq1A": "Le choix de la nourriture adaptée dépend de l'âge, de la taille, de la race et des besoins de santé de votre animal. Privilégiez les produits conformes aux normes de l'AAFCO et contenant des ingrédients de haute qualité. Les chiots et les chatons ont besoin d'une alimentation adaptée à leur croissance, tandis que les animaux âgés ont besoin de formules qui soutiennent le vieillissement de leurs articulations et organes. Si votre animal présente des problèmes de santé particuliers, consultez votre vétérinaire pour des recommandations personnalisées.",
@@ -48,5 +48,14 @@
     "Aquarium Oxygen Bubbler": "Boulleur oxygène aquarium",
     "Decorative Plants": "Plantes décoratives",
     "Fighter Pellets": "Granulés pour combattant",
-    "Plastic Aquraium": "Aquarium Plastique"
+    "Plastic Aquraium": "Aquarium Plastique",
+    "consultHeading": "Consultation de livres",
+    "consultBanner": "Réservez une consultation pour vos animaux de compagnie dès aujourd'hui !",
+    "consultPara": "Bénéficiez de conseils d'experts pour vos animaux et oiseaux adorés. Des bilans de santé aux conseils d'entretien quotidien, nos professionnels sont là pour vous accompagner à chaque étape.",
+    "booking":"par réservation",
+    "l1": "Réservation en ligne transparente en quelques minutes",
+    "l2": "Appels vidéo individuels avec des experts",
+    "l3": "Pas de frais cachés ni de frais supplémentaires",
+    "l4": "Disponible pour tous les animaux de compagnie : oiseaux, chats, chiens et plus",
+    "bookBtn": "Réservez maintenant"
 }

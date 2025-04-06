@@ -19,9 +19,9 @@
     "birds": "Birds",
     "fish": "Fish",
     "rabbits": "Rabbits",
-    "bannerHeading": "Welcome to La Meilleure Coupe The perfect pet store website solution",
-    "bannerPara": " We offer a wide range of products for your pets, from food to toys and accessories",
-    "bannerBtn": "Shop Now",
+    "bannerHeading": "Book a Consultancy Call Online",
+    "bannerPara": "Schedule a one-on-one session with our experts and get personalized guidance at your convenience.",
+    "bannerBtn": "Book Now",
     "faqHeading": "Frequently Asked Questions",
     "faq1Q": "How do I choose the right food for my pet?",
     "faq1A": "Choosing the right food depends on your pet's age, size, breed, and health needs. Look for products that meet AAFCO standards and contain high-quality ingredients. Puppies and kittens need food formulated for growth, while senior pets benefit from formulas that support aging joints and organs. If your pet has specific health concerns, consult with your veterinarian for personalized recommendations.",
@@ -44,5 +44,14 @@
     "message": "Message",
     "placeholder1": "Enter your name",
     "placeholder2": "Enter your email",
-    "placeholder3": "Write your message"
+    "placeholder3": "Write your message",
+    "consultHeading": "Book Consultation",
+    "consultBanner": "Book a Consultation for Your Pets Today!",
+    "consultPara": "Get expert advice for your beloved animals and birds. From health checkups to daily care tips, our professionals are here to guide you every step of the way.",
+    "booking":"per booking",
+    "l1": "Seamless Online Booking in Minutes",
+    "l2": "One-on-One Video Calls with Experts",
+    "l3": "No Hidden Fees or Extra Charges",
+    "l4": "Available for All Pets Birds, Cats, Dogs & More",
+    "bookBtn": "Book Now"
 }

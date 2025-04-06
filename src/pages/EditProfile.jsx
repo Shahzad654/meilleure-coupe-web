@@ -293,7 +293,7 @@ export default function EditProfile() {
     <StyledSetup>
       <div className="main_container">
         <div className="setup_paper">
-          <h2>Edit Your Profile</h2>
+          <h3>Edit Your Profile</h3>
           
           <div className="step_content">
             {getStepContent(activeStep)}

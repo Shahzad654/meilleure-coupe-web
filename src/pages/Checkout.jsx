@@ -36,7 +36,7 @@ export default function Checkout() {
     <>
       <Navbar />
       <StyledCheckout>
-        <h1>Checkout</h1>
+        <h3>Checkout</h3>
         <div className="main_container">
           <div className="left_side">
             {selectedItems ? (
