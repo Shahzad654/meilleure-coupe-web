@@ -51,7 +51,7 @@ export default function Checkout() {
                       </div>
 
                       <div className="item_details">
-                        <p>Price: ${item.price}</p>
+                        <p>Price: {item.price}</p>
                         <p>Quantity: {item.quantity || 1}</p>
                       </div>
                       

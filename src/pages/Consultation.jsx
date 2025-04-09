@@ -1,12 +1,42 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { FaRegCheckCircle } from "react-icons/fa";
 import { useTranslation } from "react-i18next";
+import { loadStripe } from "@stripe/stripe-js";
+import axios from "axios";
+import { CircularProgress } from "@mui/material";
+
+const stripePromise = loadStripe(
+  "pk_test_51R7wE3R3krjsKrAQKqN32brLQYPr1nMsqRuPm5GhUNsdZBR6yTPzfzRAbSFgQXG9t4sbLZX40Lmf4xjLKYdix3Ry00zngHiwy4"
+);
 
 export default function Consultation() {
-    const {t} = useTranslation();
+  const { t } = useTranslation();
+  const [loading, setLoading] = useState(false);
+
+  const handleCheckout = async () => {
+    setLoading(true);
+    try {
+      const response = await axios.post(
+        "http://localhost:5000/create-checkout-session",
+        {}
+      );
+      const sessionId = response.data.id;
+      const stripe = await stripePromise;
+      const { error } = await stripe.redirectToCheckout({ sessionId });
+      if (error) {
+        alert(error.message);
+      }
+    } catch (error) {
+      console.error("Error creating Checkout Session:", error);
+      alert("An error occurred while redirecting to payment.");
+    } finally{
+        setLoading(false);
+    }
+  };
+
   return (
     <>
       <Navbar />
@@ -16,18 +46,14 @@ export default function Consultation() {
           <div className="consult_pricing">
             <div className="left_side">
               <h4>{t("consultBanner")}</h4>
-              <p>
-                {t("consultPara")}
-              </p>
+              <p>{t("consultPara")}</p>
             </div>
-
             <div className="right_side">
               <div className="heading">
-                <h2 style={{color: 'var(--primary-color)'}}>€5</h2>
+                <h2 style={{ color: "var(--primary-color)" }}>€5</h2>
                 <p className="booking">{t("booking")}</p>
                 <h5 className="old-price">€10</h5>
               </div>
-
               <div className="list_container">
                 <div className="list">
                   <FaRegCheckCircle
@@ -55,10 +81,16 @@ export default function Consultation() {
                 </div>
               </div>
               <div>
-              <button>{t("bookBtn")}</button>
+              <button onClick={handleCheckout}>
+                {loading ? (
+                  <CircularProgress size={24} sx={{ color: "white" }} />
+                ) : (
+                  "Book Now"
+                )}
+              </button>
+                {/* <button onClick={handleCheckout}>{t("bookBtn")}</button> */}
               </div>
             </div>
-            
           </div>
         </div>
       </StyledConsult>
@@ -71,7 +103,6 @@ const StyledConsult = styled.div`
   .main_container {
     width: 90%;
     margin: var(--section-margin) auto;
-   
 
     .consult_pricing {
       margin-top: var(--heading-margin);
@@ -84,14 +115,11 @@ const StyledConsult = styled.div`
       .left_side {
         flex-basis: 35%;
         display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
         flex-direction: column;
         gap: 1rem;
         p {
           max-width: 40ch;
         }
-       
       }
 
       .right_side {
@@ -100,18 +128,15 @@ const StyledConsult = styled.div`
         border: 2px solid var(--primary-color);
         border-radius: var(--l-radius);
         width: 100%;
-        height: 350px;
-        padding-top: 15px;
-        padding-left: 15px;
-        padding-bottom: 15px;
-        padding-right: 15px;
+        height: auto;
+        padding: 15px;
         display: flex;
         flex-direction: column;
         gap: 2rem;
         .heading {
           display: flex;
           gap: 1rem;
-          .booking{
+          .booking {
             margin-top: 15px;
             color: black;
           }
@@ -135,17 +160,15 @@ const StyledConsult = styled.div`
   }
 
   @media (max-width: 750px) {
-    .main_container{
-        .consult_pricing{
-            flex-direction: column;
-            align-items: flex-start;
-            .left_side{
-                flex-basis: 100%;
-            }
-            .right_side{
-                flex-basis: 100%;
-            }
+    .main_container {
+      .consult_pricing {
+        flex-direction: column;
+        align-items: flex-start;
+        .left_side,
+        .right_side {
+          flex-basis: 100%;
         }
+      }
     }
   }
 `;

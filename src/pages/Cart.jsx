@@ -14,6 +14,7 @@ import { useLocation } from "react-router-dom";
 export default function Cart() {
   const [quantities, setQuantities] = useState({});
   const cart = useSelector((state) => state.user.cart);
+  console.log(cart)
   const [data, setData] = useState({});
   const navigate = useNavigate();
   const dispatch = useDispatch();

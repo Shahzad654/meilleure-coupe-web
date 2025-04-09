@@ -8,6 +8,7 @@ const user = createSlice({
     userInfo: {},
     cart: {},
     orders: {},
+    bookings:{},
   },
   reducers: {
     setCurrentUser(state, action) {
@@ -23,6 +24,9 @@ const user = createSlice({
     },
     setOrders(state, action) {
       state.orders = action.payload;
+    },
+    setBookings(state, action){
+      state.bookings = action.payload;
     }
   },
 });

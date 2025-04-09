@@ -1,33 +1,39 @@
-// Success.jsx
 import React, { useEffect } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
+import { userActions } from '../store/userSlice';
 
 const Success = () => {
   const [searchParams] = useSearchParams();
+  const uid = useSelector((state)=> state.user.uid);
+  console.log(uid)
   const sessionId = searchParams.get('session_id');
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    const confirmOrder = async () => {
+    const confirmBooking = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/checkout-session/${sessionId}`);
-        const order = response.data.order;
-        
-        // Save to localStorage
-        const orders = JSON.parse(localStorage.getItem('orders') || []);
-        orders.push(order);
-        localStorage.setItem('orders', JSON.stringify(orders));
-        
-        navigate('/orders');
+        const { data } = await axios.post('http://localhost:5000/confirm-booking', { sessionId, uid });
+        dispatch(userActions.setBookings(data.booking));
+        if (data.success) {
+          navigate('/book-consultation');
+        } else {
+         
+          navigate('/');
+        }
       } catch (error) {
-        console.error('Error confirming order:', error);
-        navigate('/checkout/canceled');
+        console.error('Error confirming booking:', error);
+       
       }
     };
 
-    if (sessionId) confirmOrder();
-    else navigate('/');
+    if (sessionId) {
+      confirmBooking();
+    } else {
+      navigate('/');
+    }
   }, [sessionId, navigate]);
 
   return <div>Processing your payment...</div>;
