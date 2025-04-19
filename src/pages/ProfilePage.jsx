@@ -9,16 +9,18 @@ import { MdEmail } from "react-icons/md";
 
 export default function ProfilePage() {
   const user = useSelector((state) => state.user.userInfo);
-  const [loading, setLoading] = useState(true);
+  const orders = useSelector((state) => state.user.orders);
+  console.log(orders);
+  // const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    setLoading(true);
-    const timer = setTimeout(() => {
-      setLoading(false);
-    }, 3000);
+  // useEffect(() => {
+  //   setLoading(true);
+  //   const timer = setTimeout(() => {
+  //     setLoading(false);
+  //   }, 3000);
 
-    return () => clearTimeout(timer);
-  }, []);
+  //   return () => clearTimeout(timer);
+  // }, []);
 
   console.log(user);
 
@@ -26,11 +28,7 @@ export default function ProfilePage() {
     <>
       <Navbar />
       <StyledProfilePage>
-        {loading ? (
-          <div className="loader_container">
-            <CircularProgress size={40} sx={{ color: "#ff0000" }}/>
-          </div>
-        ) : (
+        
           <>
             {/* <h1>Profile</h1> */}
             <div className="main_container">
@@ -40,7 +38,6 @@ export default function ProfilePage() {
                     <img src={ProfileImg} alt="" />
                   </div>
                   <div className="user_info">
-                    
                     <h3>
                       {user.firstName} {user.lastName}
                     </h3>
@@ -54,7 +51,7 @@ export default function ProfilePage() {
                 </div>
                 {/* <hr /> */}
 
-                <div className="right_container">
+                {/* <div className="right_container">
                   <h3>Recent Orders</h3>
                   <div className="orders_list">
                     <div className="order_card">
@@ -95,14 +92,50 @@ export default function ProfilePage() {
                       </div>
                     </div>
                   </div>
+                </div> */}
+
+                <div className="right_container">
+                  <h3>Recent Orders</h3>
+                  <div className="orders_list">
+                    {orders && Object.keys(orders).length > 0 ? (
+                      Object.entries(orders).map(([orderId, order], index) => (
+                        <div key={orderId} className="order_card">
+                          <div className="order_header">
+                            <span className="order_id">Order #{orderId}</span>
+                            <span className="order_date">{new Date(order.createdAt).toLocaleString()}
+                            </span>
+                          </div>
+                          <div className="order_details">
+                            <div className="order_items">
+                              {order.items.map((item, idx) => (
+                                <span key={idx}>
+                                  {item.quantity}x {item.name}
+                                </span>
+                              ))}
+                            </div>
+                            {/* <div className="order_status">
+              <span className="status completed">Completed</span>
+            </div> */}
+                          </div>
+                          <div className="order_total">
+                            <span>
+                              Total: ${parseFloat(order.total).toFixed(2)}
+                            </span>
+                          </div>
+                        </div>
+                      ))
+                    ) : (
+                      <p>No orders found.</p>
+                    )}
+                  </div>
                 </div>
               </div>
             </div>
           </>
-        )}
+      
       </StyledProfilePage>
 
-      <Footer/>
+      <Footer />
     </>
   );
 }
@@ -113,7 +146,7 @@ const StyledProfilePage = styled.div`
   margin-top: var(--section-margin);
   min-height: 70vh;
   position: relative;
-  
+
   .loader_container {
     position: absolute;
     top: 50%;
@@ -123,7 +156,7 @@ const StyledProfilePage = styled.div`
     justify-content: center;
     align-items: center;
   }
-  
+
   h1 {
     text-align: center;
   }
@@ -149,13 +182,13 @@ const StyledProfilePage = styled.div`
         border-radius: var(--m-radius);
         box-shadow: 0 2px 8px var(--shadow-light);
         flex-basis: 45%;
-        
+
         .image {
           display: flex;
           justify-content: center;
           align-items: center;
           margin-bottom: 1.5rem;
-          
+
           img {
             max-width: 130px;
             height: auto;
@@ -170,7 +203,7 @@ const StyledProfilePage = styled.div`
           flex-direction: column;
           gap: 1rem;
           text-align: center;
-          
+
           h3 {
             color: var(--text-color);
             margin-bottom: 0.5rem;
@@ -297,13 +330,13 @@ const StyledProfilePage = styled.div`
         justify-content: center;
         align-items: center;
         width: 100%;
-        
+
         .left_container {
           width: 100%;
           max-width: 100%;
           flex: none;
         }
-        
+
         .right_container {
           width: 100%;
           max-width: 100%;
@@ -316,25 +349,22 @@ const StyledProfilePage = styled.div`
   @media (max-width: 380px) {
     .main_container {
       .profile_container {
-        .right_container{
-            .orders_list{
-                grid-template-columns: none;
-                .order_card{
-                    .order_header{
-                        justify-content: center;
-                        flex-direction: column;
-                        /* align-items: center; */
-                    }
-                    .order_total{
-                        text-align: left;
-                        
-                    }
-                }
+        .right_container {
+          .orders_list {
+            grid-template-columns: none;
+            .order_card {
+              .order_header {
+                justify-content: center;
+                flex-direction: column;
+                /* align-items: center; */
+              }
+              .order_total {
+                text-align: left;
+              }
             }
+          }
         }
+      }
     }
-}
   }
-  
-
 `;

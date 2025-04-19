@@ -218,13 +218,13 @@ export default function ProductDetail() {
                   <input
                     type="email"
                     name="email"
-                    placeholder="Enter you email"
+                    placeholder="Enter your email"
                     required
                   />
                   <input
                     type="text"
                     name="number"
-                    placeholder="Enter you contact number"
+                    placeholder="Enter your contact number"
                     required
                   />
                   <textarea
@@ -237,7 +237,7 @@ export default function ProductDetail() {
                       color: "var(--text-color)",
                       padding: "6px 16px",
                       border: "2px solid var(--border-color)",
-                      height: "38px",
+                      height: "120px",
                     }}
                   ></textarea>
 
@@ -275,12 +275,22 @@ const StyledDetail = styled.div`
     gap: 2rem;
     .left-side {
       flex-basis: 45%;
-      img {
+      /* img {
         width: 100%;
         height: 400px;
         object-fit: cover;
         border-radius: var(--l-radius);
-      }
+      } */
+
+        img {
+    max-width: 100%;
+    max-height: 400px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border-radius: var(--l-radius);
+  }
+
     }
     .right-side {
       flex-basis: 45%;

@@ -18,7 +18,7 @@ const Success = () => {
         const { data } = await axios.post('http://localhost:5000/confirm-booking', { sessionId, uid });
         dispatch(userActions.setBookings(data.booking));
         if (data.success) {
-          navigate('/book-consultation');
+          navigate('/schedule-consultation');
         } else {
          
           navigate('/');

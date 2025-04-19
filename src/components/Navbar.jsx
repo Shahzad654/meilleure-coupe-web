@@ -97,10 +97,11 @@ export default function Navbar() {
               {/* Categories */}
               {t("catLink")}
             </a>
-            <a href="/about" className="link">
-              {/* About Us */}
+
+            <Link to="/about" className="link">
+              {/* Contact Us */}
               {t("aboutLink")}
-            </a>
+            </Link>
             <Link to="/contact" className="link">
               {/* Contact Us */}
               {t("contactLink")}

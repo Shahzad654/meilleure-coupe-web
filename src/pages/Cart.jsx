@@ -48,6 +48,7 @@ export default function Cart() {
         return acc;
       }, {});
       setData(selectedItems);
+      
     } else {
       setData({});
     }

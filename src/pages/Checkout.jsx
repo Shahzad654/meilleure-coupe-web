@@ -4,16 +4,21 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { db } from "../firebase";
-import { doc, setDoc } from "firebase/firestore";
+import { loadStripe } from "@stripe/stripe-js";
+import { CircularProgress } from "@mui/material";
 import axios from "axios";
 
 
 export default function Checkout() {
   const location = useLocation();
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
   const { selectedItems } = location.state || {};
   const userInfo = useSelector((state) => state.user.userInfo);
+
+  const stripePromise = loadStripe(
+    "pk_test_51R7wE3R3krjsKrAQKqN32brLQYPr1nMsqRuPm5GhUNsdZBR6yTPzfzRAbSFgQXG9t4sbLZX40Lmf4xjLKYdix3Ry00zngHiwy4"
+  );
   
   
   console.log("Selected items in checkout:", selectedItems);
@@ -28,6 +33,29 @@ export default function Checkout() {
 
   const deliveryFee = 10;
   const total = subtotal + deliveryFee;
+
+
+  const handleCheckout = async () => {
+    setLoading(true);
+    console.log("Total being sent:", total); 
+    try {
+      const response = await axios.post(
+        "http://localhost:5000/shopping-payment",
+        { total,  items: Object.values(selectedItems), deliveryFee }
+      );
+      const sessionId = response.data.id;
+      const stripe = await stripePromise;
+      const { error } = await stripe.redirectToCheckout({ sessionId });
+      if (error) {
+        alert(error.message);
+      }
+    } catch (error) {
+      console.error("Error creating Checkout Session:", error.message);
+      alert("An error occurred while redirecting to payment.");
+    } finally {
+      setLoading(false);
+    }
+  };
 
 
   
@@ -100,7 +128,15 @@ export default function Checkout() {
               </p>
             </div>
 
-            <button className="place-order-btn">Place Order</button>
+            {/* <button className="place-order-btn">Place Order</button> */}
+
+            <button onClick={handleCheckout}>
+                {loading ? (
+                  <CircularProgress size={20} sx={{ color: "white" }} />
+                ) : (
+                  "Place Order"
+                )}
+              </button>
            
           </div>
             </>

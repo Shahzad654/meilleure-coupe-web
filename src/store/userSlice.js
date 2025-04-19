@@ -27,7 +27,7 @@ const user = createSlice({
     },
     setBookings(state, action){
       state.bookings = action.payload;
-    }
+    },
   },
 });
 
