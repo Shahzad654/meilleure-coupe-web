@@ -200,9 +200,9 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="button_container">
+            {/* <div className="button_container">
               <button className="secondary-btn">See More</button>
-            </div>
+            </div> */}
           </div>
 
           <div className="banner_container">
@@ -497,13 +497,9 @@ const StyledHome = styled.div`
           flex-direction: column;
           align-items: center;
           justify-content: center;
-          padding: 15px;
-          transition: transform 0.3s ease;
+          padding: 15px;  
           cursor: pointer;
 
-          &:hover {
-            transform: translateY(-5px);
-          }
 
           .image_wrapper {
             width: 90px;

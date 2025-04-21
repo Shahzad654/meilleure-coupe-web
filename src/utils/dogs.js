@@ -14,7 +14,7 @@ export const dogProducts = [
     id: 1,
     category: "Dogs",
     name: "Dog Beef Treats",
-    price: "49.99$",
+    price: "49.99€",
     slug: "dogs-beef-treats",
     description: "High-quality dog food made with real meat and essential nutrients for optimal health.",
     image: BeefTreat
@@ -23,7 +23,7 @@ export const dogProducts = [
     id: 2,
     category: "Dogs",
     name: "Chicken Treats",
-    price: "39.99$",
+    price: "39.99€",
     slug: "dogs-chicken-treats",
     description: "Delicious chicken-flavored treats that your dog will love.",
     image: ChickenTreat
@@ -32,7 +32,7 @@ export const dogProducts = [
     id: 3,
     category: "Dogs",
     name: "Chicken Flavor Treats",
-    price: "34.99$",
+    price: "34.99€",
     slug: "dogs-chicken-flavor-treats",
     description: "Premium chicken-flavored treats for your furry friend.",
     image: ChickenTreat2
@@ -41,7 +41,7 @@ export const dogProducts = [
     id: 4,
     category: "Dogs",
     name: "Dog Rope Toy",
-    price: "24.99$",
+    price: "24.99€",
     slug: "dogs-rope-toy",
     description: "Durable rope toy perfect for interactive play with your dog.",
     image: DogToy
@@ -50,7 +50,7 @@ export const dogProducts = [
     id: 5,
     category: "Dogs",
     name: "Beef Treats",
-    price: "24.99$",
+    price: "24.99€",
     slug: "beef-treats",
     description: "Durable rope toy perfect for interactive play with your dog.",
     image: BeefTreat2
@@ -59,7 +59,7 @@ export const dogProducts = [
     id: 6,
     category: "Dogs",
     name: "Rope Toy",
-    price: "24.99$",
+    price: "24.99€",
     slug: "rope-toy",
     description: "Durable rope toy perfect for interactive play with your dog.",
     image: DogToy2
@@ -68,7 +68,7 @@ export const dogProducts = [
     id: 7,
     category: "Dogs",
     name: "Chicken Slice",
-    price: "24.99$",
+    price: "24.99€",
     slug: "chicken-slice",
     description: "Durable rope toy perfect for interactive play with your dog.",
     image: ChickenSlice
@@ -77,7 +77,7 @@ export const dogProducts = [
     id: 8,
     category: "Dogs",
     name: "Tone Dog Hairs",
-    price: "24.99$",
+    price: "24.99€",
     slug: "tone-dog-hairs",
     description: "Durable rope toy perfect for interactive play with your dog.",
     image: ToneHair
@@ -86,7 +86,7 @@ export const dogProducts = [
     id: 9,
     category: "Dogs",
     name: "Treat Trips",
-    price: "24.99$",
+    price: "24.99€",
     slug: "treat-trips",
     description: "Durable rope toy perfect for interactive play with your dog.",
     image: TreatTrips

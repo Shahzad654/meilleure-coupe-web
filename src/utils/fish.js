@@ -9,7 +9,7 @@ export const fishProducts = [
     category: "Fish",
     french: "Boulleur oxygene aquarium",
     name: "Aquarium Oxygen Bubbler",
-    price: "29.99$",
+    price: "29.99€",
     slug: "aquarium-oxygen-bubbler",
     description: "High-quality fish food with balanced nutrients for all types of aquarium fish.",
     image: Oxygen
@@ -19,7 +19,7 @@ export const fishProducts = [
     category: "Fish",
     french: "Plants deco multi couleur",
     name: "Decorative Plants",
-    price: "29.99$",
+    price: "29.99€",
     slug: "decorative-plants",
     description: "Complete aquarium setup including tank, filter, heater, and decorations.",
     image: Plants
@@ -29,7 +29,7 @@ export const fishProducts = [
     category: "Fish",
     french: "Granules Combattant",
     name: "Fighter Pellets",
-    price: "29.99$",
+    price: "29.99€",
     slug: "fighter-pellets",
     description: "Set of artificial plants, rocks, and ornaments to create a natural underwater environment.",
     image: Pellets
@@ -39,7 +39,7 @@ export const fishProducts = [
     category: "Fish",
     french: "Aquarium Plastique",
     name: "Plastic Aquraium",
-    price: "29.99$",
+    price: "29.99€",
     slug: "plastic-aquraium",
     description: "Comprehensive kit to test pH, ammonia, nitrite, and nitrate levels in your aquarium.",
     image: Aquarium

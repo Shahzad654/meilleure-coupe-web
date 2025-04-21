@@ -108,15 +108,15 @@ export default function Checkout() {
               <h4>Order Summary</h4>
               <div className="summary-row">
                 <span>Subtotal</span>
-                <span>${subtotal.toFixed(2)}</span>
+                <span>€{subtotal.toFixed(2)}</span>
               </div>
               <div className="summary-row">
                 <span>Delivery Fee</span>
-                <span>${deliveryFee.toFixed(2)}</span>
+                <span>€{deliveryFee.toFixed(2)}</span>
               </div>
               <div className="summary-row total">
                 <span>Total</span>
-                <span>${total.toFixed(2)}</span>
+                <span>€{total.toFixed(2)}</span>
               </div>
             </div>
 

@@ -16,6 +16,7 @@ export default function CheckoutSuccess() {
 
   const dispatch = useDispatch();
   const uid = useSelector((state) => state.user.uid);
+  const userInfo = useSelector((state)=> state.user.userInfo);
   const [metadata, setMetadata] = useState(null);
   const [loading, setLoading] = useState(true);
   const [orderSaved, setOrderSaved] = useState(false);
@@ -66,7 +67,7 @@ export default function CheckoutSuccess() {
   // }, [sessionId, uid, dispatch, orderSaved]);
 
   useEffect(() => {
-    const abortController = new AbortController(); // Create an AbortController
+    const abortController = new AbortController(); 
   
     const fetchSessionMetadata = async () => {
       if (orderSaved || !sessionId || !uid) return;
@@ -74,7 +75,7 @@ export default function CheckoutSuccess() {
       try {
         const res = await axios.get(
           `http://localhost:5000/get-session?session_id=${sessionId}`,
-          { signal: abortController.signal } // Attach the signal to the request
+          { signal: abortController.signal } 
         );
         const meta = res.data.metadata;
         setMetadata(meta);
@@ -83,6 +84,14 @@ export default function CheckoutSuccess() {
   
         const order = {
           uid,
+          address: userInfo.streetAddress,
+          state: userInfo.state,
+          phoneNum: userInfo.phoneNumber,
+          firstName: userInfo.firstName,
+          lastName: userInfo.lastName,
+          email: userInfo.email,
+          city: userInfo.city,
+          country: userInfo.country,
           total: meta.total,
           deliveryFee: meta.deliveryFee,
           items: parsedItems,
@@ -91,7 +100,12 @@ export default function CheckoutSuccess() {
         };
   
         const docRef = await addDoc(collection(db, "orders"), order);
-        dispatch(userActions.setOrders({ [docRef.id]: order }));
+        // dispatch(userActions.setOrders({ [docRef.id]: order }));
+        dispatch(userActions.setOrders({
+          ...(state.user.orders || {}), 
+          [docRef.id]: order
+        }));
+        
         setOrderSaved(true);
       } catch (err) {
         if (axios.isCancel(err)) {
@@ -100,7 +114,7 @@ export default function CheckoutSuccess() {
           console.error("Error saving order:", err);
         }
       } finally {
-        if (!abortController.signal.aborted) { // Only update loading state if not aborted
+        if (!abortController.signal.aborted) { 
           setLoading(false);
         }
       }
@@ -109,7 +123,7 @@ export default function CheckoutSuccess() {
     fetchSessionMetadata();
   
     return () => {
-      abortController.abort(); // Abort the request on cleanup
+      abortController.abort(); 
     };
   }, [sessionId, uid, dispatch, orderSaved]);
   
@@ -121,7 +135,7 @@ export default function CheckoutSuccess() {
 
   return (
     <>
-      {/* <Navbar /> */}
+ 
       <Wrapper>
         <div className="main_container">
           <h3>
@@ -138,26 +152,26 @@ export default function CheckoutSuccess() {
               <ul>
                 {JSON.parse(metadata.items).map((item, i) => (
                   <li key={i}>
-                    {item.name} — {item.quantity} x ${item.price}
+                    {item.name} — {item.quantity} x €{item.price}
                   </li>
                 ))}
               </ul>
               <p>
-                <strong>Total:</strong> ${metadata.total}
+                <strong>Total:</strong> €{metadata.total}
               </p>
               <p>
-                <strong>Delivery Fee:</strong> ${metadata.deliveryFee}
+                <strong>Delivery Fee:</strong> €{metadata.deliveryFee}
               </p>
             </>
           )}
           <div className="back-btn">
-          <button onClick={()=> navigate('/profile')}>Back to Home</button>
+          <button onClick={()=> navigate('/my-orders')}>Back to Home</button>
           </div>
          
         </div>
 
       </Wrapper>
-      {/* <Footer /> */}
+      
     </>
   );
 }

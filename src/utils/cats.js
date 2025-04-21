@@ -7,7 +7,7 @@ export const catProducts = [
     id: 1,
     category: "Cats",
     name: "Cat Fish Treats",
-    price: "39.99$",
+    price: "39.99€",
     slug: "catfish-treats",
     description: "High-quality cat food made with real meat and essential nutrients for optimal health.",
     image: CatFishTreats
@@ -17,7 +17,7 @@ export const catProducts = [
     id: 2,
     category: "Cats",
     name: "Rabbit Treats",
-    price: "39.99$",
+    price: "39.99€",
     slug: "rabbit-treats",
     description: "High-quality cat food made with real meat and essential nutrients for optimal health.",
     image: RabbitTreats
@@ -27,7 +27,7 @@ export const catProducts = [
     id: 3,
     category: "Cats",
     name: "Turkey Treats",
-    price: "39.99$",
+    price: "39.99€",
     slug: "turkey-treats",
     description: "High-quality cat food made with real meat and essential nutrients for optimal health.",
     image: TreatsCats

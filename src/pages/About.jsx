@@ -17,15 +17,15 @@ export default function About() {
       <Navbar />
       <StyledAbout>
         <div className="main_container">
-          <h1>About Us</h1>
-          <h5>
+          {/* <h1>About Us</h1> */}
+          {/* <h5>
             Welcome to La Meilleure Coupe your one-stop destination for pets,
             birds, and premium pet care products. We are passionate about
             helping you find the perfect companion and providing everything you
             need to keep them healthy and happy. With trusted sellers, quality
             products, and an easy shopping experience, we make pet ownership
             simple and joyful.
-          </h5>
+          </h5> */}
 
           <div className="sections_container">
             <div className="section1">

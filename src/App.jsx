@@ -32,6 +32,8 @@ import Success from "./pages/Success";
 import Consultation from "./pages/Consultation";
 import CalendlyPage from "./pages/CalendlyPage";
 import CheckoutSuccess from "./pages/CheckoutSucess";
+import MyOrders from "./pages/MyOrders";
+import Bookings from "./pages/Bookings";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -59,11 +61,6 @@ function App() {
               dispatch(userActions.setCart(userCart.data()));
             }
 
-            // const userOrders = await getDoc(doc(db, "orders", user.uid));
-            // console.log(userOrders.data())
-            // if (userOrders.exists()) {
-            //   dispatch(userActions.setOrders(userOrders.data()));
-            // }
 
             const q = query(
               collection(db, "orders"),
@@ -93,13 +90,11 @@ function App() {
             const bookingsData = [];
             querySnapshot1.forEach((doc) => {
               const data = doc.data();
-              // Convert any Timestamp fields to serializable format
               const serializedData = {
                 id: doc.id,
                 ...data,
-                created: data.created?.toDate().toISOString() // Convert to ISO string
-                // If you have other Timestamp fields, convert them similarly
-                // updated: data.updated?.toDate().toISOString()
+                created: data.created?.toDate().toISOString() 
+                
               };
               bookingsData.push(serializedData);
             });
@@ -173,6 +168,8 @@ function App() {
         <Route path="/checkout-success" element={<CheckoutSuccess />} />
         <Route path="book-consultation" element={<Consultation />} />
         <Route path="/schedule-consultation" element={<CalendlyPage />} />
+        <Route path="/my-orders" element={<MyOrders />} />
+        <Route path="/my-bookings" element={<Bookings />} />
       </Routes>
     </BrowserRouter>
   );

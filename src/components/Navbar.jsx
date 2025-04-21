@@ -21,6 +21,7 @@ import BottomNavigationAction from "@mui/material/BottomNavigationAction";
 import HomeIcon from "@mui/icons-material/Home";
 import CategoryIcon from "@mui/icons-material/Category";
 import ContactIcon from "@mui/icons-material/ContactSupport";
+import ShoppingBagIcon from '@mui/icons-material/ShoppingBag';
 import { useTranslation } from "react-i18next";
 import i18n from "../locale/i18n";
 
@@ -29,6 +30,7 @@ export default function Navbar() {
   const dispatch = useDispatch();
   const { t } = useTranslation()
   const user = useSelector((state) => state.user);
+  const userInfo = useSelector((state)=> state.user.userInfo);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [isLoggingOut, setIsLoggingOut] = React.useState(false);
   const open = Boolean(anchorEl);
@@ -122,7 +124,7 @@ export default function Navbar() {
                   aria-expanded={open ? "true" : undefined}
                   onClick={handleClick}
                 >
-                  {user.email[0].toUpperCase()}
+                  {userInfo.firstName[0].toUpperCase()}
                 </Avatar>
 
                 <ToggleButtonGroup
@@ -152,7 +154,7 @@ export default function Navbar() {
                   anchorEl={anchorEl}
                   open={open}
                   onClose={handleClose}
-                  MenuListProps={{
+                  MenuList={{
                     "aria-labelledby": "basic-button",
                   }}
                   disableScrollLock
@@ -170,7 +172,7 @@ export default function Navbar() {
                   }}
                 >
                   <MenuItem onClick={handleCloseProfile}>Profile</MenuItem>
-                  <MenuItem onClick={handleCloseEdit}>Edit Profile</MenuItem>
+                  {/* <MenuItem onClick={handleCloseEdit}>Edit Profile</MenuItem> */}
                   <MenuItem onClick={handleSignOut} disabled={isLoggingOut}>
                     {isLoggingOut ? (
                       <div
@@ -216,9 +218,9 @@ export default function Navbar() {
               onClick={() => navigate("/")}
             />
             <BottomNavigationAction
-              label="Categories"
-              icon={<CategoryIcon />}
-              // onClick={() => navigate("/categories")}
+              label="Orders"
+              icon={<ShoppingBagIcon />}
+              onClick={() => navigate("/my-orders")}
             />
             <BottomNavigationAction
               label="Contact"

@@ -13,7 +13,7 @@ export const rabbitProducts = [
     id: 1,
     category: "Rabbits",
     name: "Rabbit Mix",
-    price: "24.99$",
+    price: "24.99€",
     slug: "rabbit-mix",
     description: "High-quality rabbit food with essential nutrients and fiber for optimal health.",
     image: RabbitMix
@@ -22,7 +22,7 @@ export const rabbitProducts = [
     id: 2,
     category: "Rabbits",
     name: "Guinea Pig Mix",
-    price: "24.99$",
+    price: "24.99€",
     slug: "rabbit-guinea-pig-mix",
     description: "High-quality guinea pig food with essential nutrients and fiber for optimal health.",
     image: GuineaPigMix
@@ -32,7 +32,7 @@ export const rabbitProducts = [
     id: 3,
     category: "Rabbits",
     name: "Complete Hamster Cage",
-    price: "24.99$",
+    price: "24.99€",
     slug: "complete-hamster-cage",
     description: "High-quality guinea pig food with essential nutrients and fiber for optimal health.",
     image: CageHamsterComplete
@@ -42,7 +42,7 @@ export const rabbitProducts = [
     id: 4,
     category: "Rabbits",
     name: "Complete Guinea Pig Cage",
-    price: "24.99$",
+    price: "24.99€",
     slug: "complete-guinea-pig-cage",
     description: "High-quality guinea pig food with essential nutrients and fiber for optimal health.",
     image: GuineaCage
@@ -52,7 +52,7 @@ export const rabbitProducts = [
     id: 5,
     category: "Rabbits",
     name: "Complete Rabbit Cage",
-    price: "24.99$",
+    price: "24.99€",
     slug: "complete-rabbit-cage",
     description: "High-quality guinea pig food with essential nutrients and fiber for optimal health.",
     image: RabbitCage
@@ -62,7 +62,7 @@ export const rabbitProducts = [
     id: 6,
     category: "Rabbits",
     name: "Single Rabbit Cage 90cm",
-    price: "24.99$",
+    price: "24.99€",
     slug: "single-rabbit-cage-90cm",
     description: "High-quality guinea pig food with essential nutrients and fiber for optimal health.",
     image: SingleRabbitCage
@@ -72,7 +72,7 @@ export const rabbitProducts = [
     id: 7,
     category: "Rabbits",
     name: "Rodent Transport Box",
-    price: "24.99$",
+    price: "24.99€",
     slug: "rodent-transport-box",
     description: "High-quality guinea pig food with essential nutrients and fiber for optimal health.",
     image: RodentTransportBox
@@ -82,7 +82,7 @@ export const rabbitProducts = [
     id: 8,
     category: "Rabbits",
     name: "Hamster Cage",
-    price: "24.99$",
+    price: "24.99€",
     slug: "hamster-cage",
     description: "High-quality guinea pig food with essential nutrients and fiber for optimal health.",
     image: CageHamster
