@@ -195,7 +195,29 @@ export default function Navbar() {
           ) : (
             <div className="auth_btn">
               <button onClick={() => navigate("/login")}>Get Started</button>
+              <ToggleButtonGroup
+                  color="primary"
+                  value={alignment}
+                  exclusive
+                  onChange={handleChange}
+                  aria-label="Platform"
+                  sx={{
+                    width: "20%",
+                    
+                    "& .MuiToggleButton-root": {
+                      padding: "4px 8px", 
+                      fontSize: "12px", 
+                      borderRadius: "20px", 
+                      minWidth: "40px",
+                      marginLeft:"5%"
+                    },
+                  }}
+                >
+                  <ToggleButton value="en" onClick={() => i18n.changeLanguage("en")}>en</ToggleButton>
+                  <ToggleButton value="fr" onClick={() => i18n.changeLanguage("fr")}>fr</ToggleButton>
+                </ToggleButtonGroup>
             </div>
+            
           )}
         </div>
       </StyledNavbar>

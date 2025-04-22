@@ -11,17 +11,18 @@ import { rabbitProducts } from "../utils/rabbit";
 import { dogProducts } from "../utils/dogs";
 import { useTranslation } from "react-i18next";
 
+
 export default function Product() {
   const { category } = useParams();
   const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState("");
   const { t } = useTranslation();
+  const [isLoading, setIsLoading] = useState(true);
 
-  // const birdP = useMemo(() => {
-  //   return category === "Birds"
-  //     ? birdProducts.filter((product) => product.category === category)
-  //     : [];
-  // }, [category]);
+  const handleImageLoad = () => {
+    setIsLoading(false); 
+  };
+
 
   const productsByCategory = useMemo(() => {
     if (category === "Birds") {
@@ -75,11 +76,17 @@ export default function Product() {
                 // </div>
 
                 <div className="card" key={product.id}>
-                  <span className="badge">Sale</span>{" "}
-                  
+                  <span className="badge">{t("SaleBadge")}</span>{" "}
+                  {isLoading && (
+                    <div className="image-loader">
+                      <div className="spinner"></div>{" "}
+                      {/* This can be any loader */}
+                    </div>
+                  )}
                   <img
                     src={product.image}
                     alt={product.name}
+                    onLoad={handleImageLoad}
                     loading="lazy"
                     onClick={() => navigate(`/product-detail/${product.name}`)}
                   />
@@ -153,6 +160,43 @@ const StyledProduct = styled.div`
         gap: 0.8rem;
         transition: all 0.3s ease;
         cursor: pointer;
+
+        .image-loader {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .spinner {
+          border: 4px solid #f3f3f3;
+          border-top: 4px solid #3498db;
+          border-radius: 50%;
+          width: 40px;
+          height: 40px;
+          animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+          0% {
+            transform: rotate(0deg);
+          }
+          100% {
+            transform: rotate(360deg);
+          }
+        }
+
+        .card img {
+          filter: blur(8px);
+          transition: filter 0.3s ease;
+        }
+
+        .card img.loaded {
+          filter: none;
+        }
 
         img {
           width: 100%;

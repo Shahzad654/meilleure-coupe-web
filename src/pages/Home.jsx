@@ -28,6 +28,7 @@ export default function Home() {
     console.log("Category clicked:", category);
     navigate(`/products/${category}`)
   }
+  
   return (
     <>
       <Navbar />
@@ -70,7 +71,7 @@ export default function Home() {
             <div className="content_container">
               <div className="card">
                 <div className="card_image">
-                  <img src={SearchImg} alt="" />
+                  <img src={SearchImg} alt="" loading="lazy" />
                 </div>
 
                 <div className="card_content">
@@ -94,7 +95,7 @@ export default function Home() {
 
               <div className="card">
                 <div className="card_image">
-                  <img src={CartImg} alt="" />
+                  <img src={CartImg} alt="" loading="lazy" />
                 </div>
 
                 <div className="card_content">
@@ -117,7 +118,7 @@ export default function Home() {
 
               <div className="card">
                 <div className="card_image">
-                  <img src={CheckoutImg} alt="" />
+                  <img src={CheckoutImg} alt="" loading="lazy" />
                 </div>
 
                 <div className="card_content">
@@ -148,7 +149,7 @@ export default function Home() {
             </div>
 
             <div className="card_container">
-              <div className="card" onClick={() => handleCategoryClick("Cats")}>
+              <div className="card" onClick={() => handleCategoryClick("cats")}>
                 <div className="image_wrapper">
                   <img loading="lazy" src={Cat1} alt="Cat" />
                 </div>
@@ -228,10 +229,10 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="faq_container">
+          {/* <div className="faq_container">
             <div className="faq_header">
               <h2>
-                {/* Frequently Asked Questions */}
+               
                 {t("faqHeading")}
                 </h2>
             </div>
@@ -243,20 +244,14 @@ export default function Home() {
                   aria-controls="panel1-content"
                   id="panel1-header"
                 >
-                  <h5 component="span">
-                    {/* How do I choose the right food for my pet? */}
+                  <h5 component="span" >
+                   
                     {t("faq1Q")}
                   </h5>
                 </AccordionSummary>
                 <AccordionDetails>
                   <p>
-                    {/* Choosing the right food depends on your pet's age, size,
-                    breed, and health needs. Look for products that meet AAFCO
-                    standards and contain high-quality ingredients. Puppies and
-                    kittens need food formulated for growth, while senior pets
-                    benefit from formulas that support aging joints and organs.
-                    If your pet has specific health concerns, consult with your
-                    veterinarian for personalized recommendations. */}
+               
                     {t("faq1A")}
                   </p>
                 </AccordionDetails>
@@ -269,20 +264,13 @@ export default function Home() {
                   id="panel2-header"
                 >
                   <h5 component="span">
-                    {/* What is your return and exchange policy? */}
+                    
                     {t("faq2Q")}
                   </h5>
                 </AccordionSummary>
                 <AccordionDetails>
                   <p>
-                    {/* We accept returns and exchanges within 30 days of purchase
-                    with a valid receipt. Unopened food and treats can be
-                    returned for a full refund. Opened consumables cannot be
-                    returned for health and safety reasons. For toys and
-                    accessories, items must be in original condition with
-                    packaging. Defective products can be exchanged or refunded
-                    at any time. Please contact our customer service team for
-                    assistance with returns. */}
+                    
                     {t("faq2A")}
                   </p>
                 </AccordionDetails>
@@ -295,25 +283,19 @@ export default function Home() {
                   id="panel3-header"
                 >
                   <h5 component="span">
-                    {/* Do you offer pet adoption services? */}
+                    
                     {t("faq3Q")}
                   </h5>
                 </AccordionSummary>
                 <AccordionDetails>
                   <p>
-                    {/* While we don't directly handle pet adoptions, we partner
-                    with local animal shelters and rescue organizations to host
-                    adoption events throughout the year. We can provide
-                    information about reputable adoption centers in your area
-                    and offer starter kits for new pet parents. We believe in
-                    supporting rescue efforts and encourage adoption over
-                    purchasing from breeders whenever possible. */}
+                  
                     {t("faq3A")}
                   </p>
                 </AccordionDetails>
               </Accordion>
             </div>
-          </div>
+          </div> */}
         </div>
       </StyledHome>
 
@@ -573,6 +555,11 @@ const StyledHome = styled.div`
           margin-bottom: var(--heading-margin);
         }
       }
+      .faq_content{
+        h5{
+          word-wrap: break-word; 
+        }
+      }
     }
   }
 
@@ -662,7 +649,7 @@ const StyledHome = styled.div`
       }
 
       .faq_container {
-        width: 80%;
+        width: 90%;
       }
     }
   }

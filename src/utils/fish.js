@@ -2,6 +2,7 @@ import Oxygen from '../assets/prodcuts/fish/Aquarium-oxygen-bubbler.jpg'
 import Plants from '../assets/prodcuts/fish/decorative-plants.jpg'
 import Pellets from '../assets/prodcuts/fish/Fighter-Pellets.jpg'
 import Aquarium from '../assets/prodcuts/fish/Plastic-Aquarium.jpg'
+import Cleaning from '../assets/prodcuts/fish/Aquarium Hose Cleaning.jpg'
 
 export const fishProducts = [
   {
@@ -43,5 +44,16 @@ export const fishProducts = [
     slug: "plastic-aquraium",
     description: "Comprehensive kit to test pH, ammonia, nitrite, and nitrate levels in your aquarium.",
     image: Aquarium
+  },
+
+  {
+    id: 5,
+    category: "Fish",
+    french: "Nettoyage des tuyaux d'aquarium",
+    name: "Aquarium Hose Cleaning",
+    price: "29.99€",
+    slug: "plastic-aquraium",
+    description: "Comprehensive kit to test pH, ammonia, nitrite, and nitrate levels in your aquarium.",
+    image: Cleaning
   }
 ]; 

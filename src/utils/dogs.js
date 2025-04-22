@@ -7,12 +7,14 @@ import DogToy2 from '../assets/prodcuts/dogs/dog-rope-toys.jpg';
 import ChickenSlice from '../assets/prodcuts/dogs/Chicken-Slice.jpg'
 import ToneHair from '../assets/prodcuts/dogs/tone-dog-hairs.jpg'
 import TreatTrips from '../assets/prodcuts/dogs/Treat-Trips.jpg'
+import HairRemover from '../assets/prodcuts/dogs/dog-haris-remover.jpg'
 
 
 export const dogProducts = [
   {
     id: 1,
     category: "Dogs",
+    french: "Friandises au bœuf pour chiens",
     name: "Dog Beef Treats",
     price: "49.99€",
     slug: "dogs-beef-treats",
@@ -22,6 +24,7 @@ export const dogProducts = [
   {
     id: 2,
     category: "Dogs",
+    french: "Friandises au poulet",
     name: "Chicken Treats",
     price: "39.99€",
     slug: "dogs-chicken-treats",
@@ -31,6 +34,7 @@ export const dogProducts = [
   {
     id: 3,
     category: "Dogs",
+    french: "Friandises au goût de poulet",
     name: "Chicken Flavor Treats",
     price: "34.99€",
     slug: "dogs-chicken-flavor-treats",
@@ -40,6 +44,7 @@ export const dogProducts = [
   {
     id: 4,
     category: "Dogs",
+    french: "Jouet de corde pour chien",
     name: "Dog Rope Toy",
     price: "24.99€",
     slug: "dogs-rope-toy",
@@ -49,6 +54,7 @@ export const dogProducts = [
   {
     id: 5,
     category: "Dogs",
+    french: "Friandises au bœuf",
     name: "Beef Treats",
     price: "24.99€",
     slug: "beef-treats",
@@ -58,6 +64,7 @@ export const dogProducts = [
   {
     id: 6,
     category: "Dogs",
+    french: "Jouet de corde",
     name: "Rope Toy",
     price: "24.99€",
     slug: "rope-toy",
@@ -67,6 +74,7 @@ export const dogProducts = [
   {
     id: 7,
     category: "Dogs",
+    french: "Tranche de poulet",
     name: "Chicken Slice",
     price: "24.99€",
     slug: "chicken-slice",
@@ -76,6 +84,7 @@ export const dogProducts = [
   {
     id: 8,
     category: "Dogs",
+    french: "Tonifier les poils de chien",
     name: "Tone Dog Hairs",
     price: "24.99€",
     slug: "tone-dog-hairs",
@@ -85,11 +94,23 @@ export const dogProducts = [
   {
     id: 9,
     category: "Dogs",
+    french: "Traiter les voyages",
     name: "Treat Trips",
     price: "24.99€",
     slug: "treat-trips",
     description: "Durable rope toy perfect for interactive play with your dog.",
     image: TreatTrips
+  },
+
+  {
+    id: 10,
+    category: "Dogs",
+    french: "Gant Brossage Poil Chien",
+    name: "Dog Hair Brushing Glove",
+    price: "24.99€",
+    slug: "treat-trips",
+    description: "Durable rope toy perfect for interactive play with your dog.",
+    image: HairRemover
   },
 
 ]; 

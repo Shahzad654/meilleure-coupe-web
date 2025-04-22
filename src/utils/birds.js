@@ -31,12 +31,30 @@ import ExoticMix from '../assets/prodcuts/birds/exotic-mix.jpg';
 import FruitHolder from '../assets/prodcuts/birds/fruit-holder.jpg';
 import FruttiPate from '../assets/prodcuts/birds/Frutti-Pate.jpg';
 import GoldFinchNest from '../assets/prodcuts/birds/GoldfinchNests.jpg';
-
+import Insectivore from '../assets/prodcuts/birds/Insectivore-Pate.jpg';
+import InseparableMix from '../assets/prodcuts/birds/Inseparable-Mix.jpg';
+import InseparableNest from '../assets/prodcuts/birds/inseparable-nests.jpg';
+import InseparableJute from '../assets/prodcuts/birds/InseparableJute.jpg';
+import JapaneseMillet from '../assets/prodcuts/birds/japanese-millet.jpg';
+import JuteClassic from '../assets/prodcuts/birds/Jute-classic.jpg';
+import JuteFinch from '../assets/prodcuts/birds/JuteGoldfinch.jpg';
+import LargeFeeder from '../assets/prodcuts/birds/largefeeder.jpg';
+import LargeParrotMix from '../assets/prodcuts/birds/largeparrotmix.jpg';
+import LinSeeds from '../assets/prodcuts/birds/Lin-Seeds.jpg';
+import MediumFeeder from '../assets/prodcuts/birds/MediumFeeder.jpg';
+import MediumFlat from '../assets/prodcuts/birds/MediumFlat Perch.jpg';
+import MilletHolder from '../assets/prodcuts/birds/millet-holder.jpg';
+import MineralMix from '../assets/prodcuts/birds/mineral-mix.jpg';
+import NigerSeeds from '../assets/prodcuts/birds/niger-seeds.jpg';
+import Oatmeal from '../assets/prodcuts/birds/Oatmeal.jpg';
+import OutdoorBath from '../assets/prodcuts/birds/Outdoorbathtub.jpg';
+import OutdoorFeederCage from '../assets/prodcuts/birds/OutdoorFeederCage.jpg';
 
 export const birdProducts = [
   {
     id: 1,  
     category: "Birds",
+    french: "Perle Morbide",
     name: "Morbid Pearl",
     price: "29.99€",
     slug: "birds-morbid-pearl",
@@ -46,7 +64,8 @@ export const birdProducts = [
   {
     id: 2,
     category: "Birds",
-    name: "Char Doner Mix",
+    french: "Melange Perroquet",
+    name: "Parrot Mix",
     price: "89.99€",
     slug: "birds-char-doner-mix",
     description: "Spacious and stylish bird cage with multiple perches, feeding stations, and easy-clean design.",
@@ -55,6 +74,7 @@ export const birdProducts = [
   {
     id: 3,
     category: "Birds",
+    french: "Granule Aux Fruits",
     name: "Fruit Granule",
     price: "24.99€",
     slug: "birds-fruit-granule",
@@ -63,7 +83,8 @@ export const birdProducts = [
   },
   {   
     id: 4,
-    category: "Birds",  
+    category: "Birds", 
+    "french": "Patee Elevage Grasse", 
     name: "Grasse Breeding Patee",
     price: "19.99€",
     slug: "birds-grasse-breeding-patee",
@@ -74,9 +95,10 @@ export const birdProducts = [
   {   
     id: 5,
     category: "Birds",  
-    name: "Aluminum Rings",
+    "french": "Bagues Alu Ouvete",
+    name: "Open Aluminum Rings",
     price: "19.99€",
-    slug: "aluminum-rings",
+    slug: "open-aluminum-rings",
     description: "Essential vitamin and mineral supplement to support your bird's health and vitality.",
     image: Rings
   },
@@ -84,6 +106,7 @@ export const birdProducts = [
   {   
     id: 6,
     category: "Birds",  
+    french:"Sable Anise Fond De Cage",
     name: "Anise Sand",
     price: "19.99€",
     slug: "anise-sand",
@@ -94,6 +117,7 @@ export const birdProducts = [
   {   
     id: 7,
     category: "Birds",  
+    french: "Voliere 145cm toit droit",
     name: "Aviary 145cm straight roof",
     price: "50.00€",
     slug: "Aviary-145cm-straight-roof",
@@ -103,7 +127,8 @@ export const birdProducts = [
 
   {   
     id: 8,
-    category: "Birds",  
+    category: "Birds", 
+    french: "voliere 160cm plavillon", 
     name: "Aviary 160cm",
     price: "30.00€",
     slug: "aviary-160cm",
@@ -113,7 +138,8 @@ export const birdProducts = [
 
   {   
     id: 9,
-    category: "Birds",  
+    category: "Birds", 
+    french: "Jouets Oiseaux Lot", 
     name: "Birds Toy",
     price: "10.00€",
     slug: "birds-toy",
@@ -123,7 +149,8 @@ export const birdProducts = [
 
   {   
     id: 10,
-    category: "Birds",  
+    category: "Birds", 
+    french: "Petit abreuvoir 50ml", 
     name: "Bottle 50ml",
     price: "10.00€",
     slug: "bottle-50ml",
@@ -134,6 +161,7 @@ export const birdProducts = [
   {   
     id: 11,
     category: "Birds",  
+    french: "Moyen Buvoir 100ML",
     name: "Bottle 100ml",
     price: "12.00€",
     slug: "bottle-100ml",
@@ -144,6 +172,7 @@ export const birdProducts = [
   {   
     id: 12,
     category: "Birds",  
+    french: "Reproduction Cage",
     name: "Cage Reproduction",
     price: "22.00€",
     slug: "cage-reproduction",
@@ -153,20 +182,22 @@ export const birdProducts = [
 
   {   
     id: 13,
-    category: "Birds",  
-    name: "Cage 55cm",
+    category: "Birds", 
+    french:"Cage Reproduction 55 cm",
+    name: "Reproduction Cage 55cm",
     price: "20.00€",
-    slug: "cage-55cm",
+    slug: "reproduction-cage-55cm",
     description: "Essential vitamin and mineral supplement to support your bird's health and vitality.",
     image: Cage55
   },
 
   {   
     id: 14,
-    category: "Birds",  
-    name: "Cage 90cm",
+    category: "Birds", 
+    french:"Cage Reproduction 90 cm", 
+    name: "Reproduction Cage 90cm",
     price: "25.00€",
-    slug: "cage-90cm",
+    slug: "reproduction-cage-90cm",
     description: "Essential vitamin and mineral supplement to support your bird's health and vitality.",
     image: Cage90
   },
@@ -174,6 +205,7 @@ export const birdProducts = [
   {   
     id: 15,
     category: "Birds",  
+    french: "Melange Canaris",
     name: "Canary Mix",
     price: "5.00€",
     slug: "canary-mix",
@@ -183,10 +215,11 @@ export const birdProducts = [
 
   {   
     id: 16,
-    category: "Birds",  
-    name: "Canary Nest",
+    category: "Birds",
+    french: "Mousse Pour Nids Canaris",  
+    name: "Foam Canary Nest",
     price: "6.00€",
-    slug: "canary-nest",
+    slug: "foam-canary-nest",
     description: "Essential vitamin and mineral supplement to support your bird's health and vitality.",
     image: CanaryNest
   },
@@ -194,6 +227,7 @@ export const birdProducts = [
   {   
     id: 17,
     category: "Birds",  
+    french: "Nid de canari en plastique",
     name: "Canary Nest Plastic",
     price: "5.00€",
     slug: "canary-nest-plastic",
@@ -204,6 +238,7 @@ export const birdProducts = [
   {   
     id: 18,
     category: "Birds",  
+    french: "Alpiste",
     name: "Canary Grass",
     price: "2.00€",
     slug: "canary-grass",
@@ -214,6 +249,7 @@ export const birdProducts = [
   {   
     id: 19,
     category: "Birds",  
+    french: "Chénévis",
     name: "Chenevis",
     price: "2.00€",
     slug: "chenevis",
@@ -224,6 +260,7 @@ export const birdProducts = [
   {   
     id: 20,
     category: "Birds",  
+    french: "Graines de Chia",
     name: "Chia Seeds",
     price: "5.00€",
     slug: "chia-seeds",
@@ -234,6 +271,7 @@ export const birdProducts = [
   {   
     id: 21,
     category: "Birds",  
+    french: "Chicorée",
     name: "Chicory",
     price: "5.00€",
     slug: "chicory",
@@ -243,10 +281,11 @@ export const birdProducts = [
 
   {   
     id: 22,
-    category: "Birds",  
-    name: "Coconut Fiber",
+    category: "Birds",
+    french: "Fibre De coc Clair",  
+    name: "Light Coconut Fiber",
     price: "5.00€",
-    slug: "coconut-fiber",
+    slug: "light-coconut-fiber",
     description: "Essential vitamin and mineral supplement to support your bird's health and vitality.",
     image: CoconutFiber
   },
@@ -254,6 +293,7 @@ export const birdProducts = [
   {   
     id: 23,
     category: "Birds",  
+    french: "Porte Biscuit",
     name: "Cookie Holder",
     price: "5.00€",
     slug: "cookie-holder",
@@ -264,6 +304,7 @@ export const birdProducts = [
   {   
     id: 24,
     category: "Birds",  
+    french: "Os de seiche",
     name: "Cuttle Bone",
     price: "5.00€",
     slug: "cuttle-bone",
@@ -273,7 +314,8 @@ export const birdProducts = [
 
   {   
     id: 25,
-    category: "Birds",  
+    category: "Birds", 
+    french: "Nids Chardon Eret", 
     name: "Gold Finch Nest",
     price: "5.00€",
     slug: "gold-finch-nest",
@@ -283,7 +325,8 @@ export const birdProducts = [
 
   {   
     id: 26,
-    category: "Birds",  
+    category: "Birds",
+    french: "Vers De Farine Seche",  
     name: "Dry Flour Worms",
     price: "5.00€",
     slug: "dry-flour-worms",
@@ -294,6 +337,7 @@ export const birdProducts = [
   {   
     id: 27,
     category: "Birds",  
+    french: "Porte Seche",
     name: "Dry Door",
     price: "5.00€",
     slug: "dry-door",
@@ -304,16 +348,18 @@ export const birdProducts = [
   {   
     id: 28,
     category: "Birds",  
-    name: "Egg Cup",
+    french: "Godet Oeuf Dur",
+    name: "Hard-boiled Egg Cup",
     price: "5.00€",
-    slug: "egg-cup",
+    slug: "hard-boiled-egg-cup",
     description: "Essential vitamin and mineral supplement to support your bird's health and vitality.",
     image: EggCup
   },
 
   {   
     id: 29,
-    category: "Birds",  
+    category: "Birds", 
+    french: "Patee Seche", 
     name: "Dry Patee",
     price: "5.00€",
     slug: "dry-patee",
@@ -324,6 +370,7 @@ export const birdProducts = [
   {   
     id: 30,
     category: "Birds",  
+    french: "Melange Exotiques",
     name: "Exotic Mix",
     price: "5.00€",
     slug: "exotic-mix",
@@ -334,6 +381,7 @@ export const birdProducts = [
   {   
     id: 31,
     category: "Birds",  
+    french: "Porte fruits",
     name: "Fruit Holder",
     price: "5.00€",
     slug: "fruit-holder",
@@ -343,7 +391,8 @@ export const birdProducts = [
 
   {   
     id: 32,
-    category: "Birds",  
+    category: "Birds",
+    french: "Paté di frutta",  
     name: "Frutti Patee",
     price: "5.00€",
     slug: "frutti-patee",
@@ -354,12 +403,215 @@ export const birdProducts = [
   {   
     id: 33,
     category: "Birds",  
+    french: "Nids Chardon Eret", 
     name: "Gold Finch Nest",
     price: "5.00€",
     slug: "gold-finch-nest",
     description: "Essential vitamin and mineral supplement to support your bird's health and vitality.",
     image: GoldFinchNest
   },
+
+
+  {   
+    id: 34,
+    category: "Birds",  
+    french: "Pâtée Insectivore",
+    name: "Insectivore Patee",
+    price: "5.00€",
+    slug: "insectivore-patee",
+    description: "Essential vitamin and mineral supplement to support your bird's health and vitality.",
+    image: Insectivore
+  },
+
+  {   
+    id: 35,
+    category: "Birds",  
+    french: "Melange Inseparable",
+    name: "Insparable Mix",
+    price: "5.00€",
+    slug: "insparable-mix",
+    description: "Essential vitamin and mineral supplement to support your bird's health and vitality.",
+    image: InseparableMix
+  },
+
+  {   
+    id: 36,
+    category: "Birds",
+    french: "Nids Inseparable",  
+    name: "Insparable Nests",
+    price: "5.00€",
+    slug: "insparable-nests",
+    description: "Essential vitamin and mineral supplement to support your bird's health and vitality.",
+    image: InseparableNest
+  },
+
+  {   
+    id: 37,
+    category: "Birds", 
+    french: "Jute Inseparable", 
+    name: "Insparable Jute",
+    price: "5.00€",
+    slug: "insparable-jute",
+    description: "Essential vitamin and mineral supplement to support your bird's health and vitality.",
+    image: InseparableJute
+  },
+
+  {   
+    id: 38,
+    category: "Birds",  
+    french: "Jute Classique",
+    name: "Jute Classic",
+    price: "5.00€",
+    slug: "jute-classic",
+    description: "Essential vitamin and mineral supplement to support your bird's health and vitality.",
+    image: JuteClassic
+  },
+
+  {   
+    id: 40,
+    category: "Birds",  
+    french: "Jute Chardonneret",
+    name: "Jute Gold Finch",
+    price: "5.00€",
+    slug: "jute-gold-finch",
+    description: "Essential vitamin and mineral supplement to support your bird's health and vitality.",
+    image: JuteFinch
+  },
+
+
+  {   
+    id: 41,
+    category: "Birds",
+    french: "Grand Mangeoire",  
+    name: "Large Feeder",
+    price: "5.00€",
+    slug: "large-feeder",
+    description: "Essential vitamin and mineral supplement to support your bird's health and vitality.",
+    image: LargeFeeder
+  },
+
+  {   
+    id: 42,
+    category: "Birds", 
+    french: "Melange Grand Perroquet", 
+    name: "Large Parrot Mix",
+    price: "5.00€",
+    slug: "large-parrot-mix",
+    description: "Essential vitamin and mineral supplement to support your bird's health and vitality.",
+    image: LargeParrotMix
+  },
+
+  {   
+    id: 43,
+    category: "Birds",
+    french: "Graine De Lin",  
+    name: "Lin Seeds",
+    price: "5.00€", 
+    slug: "lin-seeds",
+    description: "Essential vitamin and mineral supplement to support your bird's health and vitality.",
+    image: LinSeeds
+  },
+
+  {   
+    id: 44,
+    category: "Birds", 
+    french: "Mangeoire Moyen", 
+    name: "Medium Feeder",
+    price: "5.00€",
+    slug: "medium-feeder",
+    description: "Essential vitamin and mineral supplement to support your bird's health and vitality.",
+    image: MediumFeeder
+  },
+
+  {   
+    id: 45,
+    category: "Birds",  
+    french: "Moyen Perchoir Plat",
+    name: "Medium Flat Perch",
+    price: "5.00€",
+    slug: "medium-flat-perch",
+    description: "Essential vitamin and mineral supplement to support your bird's health and vitality.",
+    image: MediumFlat
+  },
+
+  {   
+    id: 46,
+    category: "Birds",  
+    french: "Porte Millet",
+    name: "Millet Holder",
+    price: "5.00€",
+    slug: "millet-holder",
+    description: "Essential vitamin and mineral supplement to support your bird's health and vitality.",
+    image: MilletHolder
+  },
+
+  {   
+    id: 47,
+    category: "Birds",
+    french: "Melange Mineral",  
+    name: "Mineral Mix",
+    price: "5.00€",
+    slug: "mineral-mix",
+    description: "Essential vitamin and mineral supplement to support your bird's health and vitality.",
+    image: MineralMix
+  },
+
+  {   
+    id: 48,
+    category: "Birds", 
+    french: "Millet Japonais", 
+    name: "Japanese Millet",
+    price: "5.00€",
+    slug: "japanese-millet",
+    description: "Essential vitamin and mineral supplement to support your bird's health and vitality.",
+    image: JapaneseMillet
+  },
+
+  {   
+    id: 49,
+    category: "Birds", 
+    french: "Graines du Niger", 
+    name: "Niger Seeds",
+    price: "5.00€",
+    slug: "niger-seeds",
+    description: "Essential vitamin and mineral supplement to support your bird's health and vitality.",
+    image: NigerSeeds
+  },
+
+  {   
+    id: 50,
+    category: "Birds", 
+    french: "Gruau", 
+    name: "Oatmeal",
+    price: "5.00€",
+    slug: "oatmeal",
+    description: "Essential vitamin and mineral supplement to support your bird's health and vitality.",
+    image: Oatmeal
+  },
+
+  {   
+    id: 51,
+    category: "Birds", 
+    french: "Baignoire extérieure", 
+    name: "Outdoor Bath Tub",
+    price: "5.00€",
+    slug: "outdoor-bath-tub",
+    description: "Essential vitamin and mineral supplement to support your bird's health and vitality.",
+    image: OutdoorBath
+  },
+
+  {   
+    id: 52,
+    category: "Birds", 
+    french: "Cage d'alimentation extérieure", 
+    name: "Outdoor Feeder Cage",
+    price: "5.00€",
+    slug: "outdoor-feeder-cage",
+    description: "Essential vitamin and mineral supplement to support your bird's health and vitality.",
+    image: OutdoorFeederCage
+  },
+
+
 
   
 ]; 

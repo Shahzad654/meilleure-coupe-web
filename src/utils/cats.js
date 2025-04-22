@@ -6,6 +6,7 @@ export const catProducts = [
   {
     id: 1,
     category: "Cats",
+    french: "Friandises au poisson pour chat",
     name: "Cat Fish Treats",
     price: "39.99€",
     slug: "catfish-treats",
@@ -16,6 +17,7 @@ export const catProducts = [
   {
     id: 2,
     category: "Cats",
+    french: "Friandises pour lapins",
     name: "Rabbit Treats",
     price: "39.99€",
     slug: "rabbit-treats",
@@ -26,6 +28,7 @@ export const catProducts = [
   {
     id: 3,
     category: "Cats",
+    french: "Friandises à la dinde",
     name: "Turkey Treats",
     price: "39.99€",
     slug: "turkey-treats",

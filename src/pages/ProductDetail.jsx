@@ -273,6 +273,7 @@ const StyledDetail = styled.div`
   width: 90%;
   margin: var(--section-margin) auto;
 
+
   .product-detail {
     display: flex;
     justify-content: center;

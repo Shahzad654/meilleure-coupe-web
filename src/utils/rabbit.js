@@ -12,6 +12,7 @@ export const rabbitProducts = [
   {
     id: 1,
     category: "Rabbits",
+    french: "Mélange de lapin",
     name: "Rabbit Mix",
     price: "24.99€",
     slug: "rabbit-mix",
@@ -21,6 +22,7 @@ export const rabbitProducts = [
   {
     id: 2,
     category: "Rabbits",
+    french: "Mélange de cochon d'Inde",
     name: "Guinea Pig Mix",
     price: "24.99€",
     slug: "rabbit-guinea-pig-mix",
@@ -31,6 +33,7 @@ export const rabbitProducts = [
   {
     id: 3,
     category: "Rabbits",
+    french: "Cage complète pour hamsters",
     name: "Complete Hamster Cage",
     price: "24.99€",
     slug: "complete-hamster-cage",
@@ -41,6 +44,7 @@ export const rabbitProducts = [
   {
     id: 4,
     category: "Rabbits",
+    french: "Cage complète pour cochon d'Inde",
     name: "Complete Guinea Pig Cage",
     price: "24.99€",
     slug: "complete-guinea-pig-cage",
@@ -51,6 +55,7 @@ export const rabbitProducts = [
   {
     id: 5,
     category: "Rabbits",
+    french: "Cage à Lapin Complète",
     name: "Complete Rabbit Cage",
     price: "24.99€",
     slug: "complete-rabbit-cage",
@@ -61,6 +66,7 @@ export const rabbitProducts = [
   {
     id: 6,
     category: "Rabbits",
+    french: "Cage à lapin simple 90 cm",
     name: "Single Rabbit Cage 90cm",
     price: "24.99€",
     slug: "single-rabbit-cage-90cm",
@@ -71,6 +77,7 @@ export const rabbitProducts = [
   {
     id: 7,
     category: "Rabbits",
+    french: "Boîte de transport pour rongeurs",
     name: "Rodent Transport Box",
     price: "24.99€",
     slug: "rodent-transport-box",
@@ -81,6 +88,7 @@ export const rabbitProducts = [
   {
     id: 8,
     category: "Rabbits",
+    french: "Cage à hamsters",
     name: "Hamster Cage",
     price: "24.99€",
     slug: "hamster-cage",
