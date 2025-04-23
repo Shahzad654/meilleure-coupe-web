@@ -149,7 +149,7 @@ export default function Home() {
             </div>
 
             <div className="card_container">
-              <div className="card" onClick={() => handleCategoryClick("cats")}>
+              <div className="card" onClick={() => handleCategoryClick("Cats")}>
                 <div className="image_wrapper">
                   <img loading="lazy" src={Cat1} alt="Cat" />
                 </div>

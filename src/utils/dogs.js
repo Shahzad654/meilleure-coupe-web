@@ -8,6 +8,8 @@ import ChickenSlice from '../assets/prodcuts/dogs/Chicken-Slice.jpg'
 import ToneHair from '../assets/prodcuts/dogs/tone-dog-hairs.jpg'
 import TreatTrips from '../assets/prodcuts/dogs/Treat-Trips.jpg'
 import HairRemover from '../assets/prodcuts/dogs/dog-haris-remover.jpg'
+import HairBrush from '../assets/prodcuts/cats/BrushRemove.jpg'
+import DogLeash from '../assets/prodcuts/dogs/DogLeash.jpg'
 
 
 export const dogProducts = [
@@ -111,6 +113,28 @@ export const dogProducts = [
     slug: "treat-trips",
     description: "Durable rope toy perfect for interactive play with your dog.",
     image: HairRemover
+  },
+
+  {
+    id: 11,
+    category: "Dogs",
+    french: "Brosse Pour Enlever Poils",
+    name: "Hair Removal Brush",
+    price: "39.99€",
+    slug: "hair-removal-brush",
+    description: "High-quality cat food made with real meat and essential nutrients for optimal health.",
+    image: HairBrush
+  },
+
+  {
+    id: 12,
+    category: "Dogs",
+    french: "Laisse Réfléchissant Pour Chiens",
+    name: "Reflective Dog Leash",
+    price: "39.99€",
+    slug: "reflective-dog-leash",
+    description: "High-quality cat food made with real meat and essential nutrients for optimal health.",
+    image: DogLeash
   },
 
 ]; 
