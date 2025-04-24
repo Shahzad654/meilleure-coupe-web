@@ -74,5 +74,8 @@
     "w2": "Reliable",
     "w3": "Easy",
     "w4": "Affordable",
-    "SaleBadge": "Sale"
+    "SaleBadge": "Sale",
+    "privacyLink": "Privacy Policy",
+    "termsLink": "Terms of Service"
+
 }

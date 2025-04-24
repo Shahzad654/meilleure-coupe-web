@@ -21,6 +21,7 @@ import Modal from "@mui/material/Modal";
 import Fade from "@mui/material/Fade";
 import emailjs from "emailjs-com";
 import { useTranslation } from "react-i18next";
+import SimilarProducts from "./SimilarProducts";
 
 const style = {
   position: "absolute",
@@ -170,6 +171,8 @@ export default function ProductDetail() {
             </div>
           </div>
         </div>
+
+        <SimilarProducts/>
 
         <Snackbar
           open={open}

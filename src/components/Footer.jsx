@@ -12,9 +12,10 @@ import {
 import { BiPhoneCall } from "react-icons/bi";
 import { useTranslation } from "react-i18next";
 import i18n from "../locale/i18n";
+import { Link } from "react-router-dom";
 
 export default function Footer() {
-  const {t} = useTranslation();
+  const { t } = useTranslation();
   return (
     <StyledFooter>
       <div className="footer_container">
@@ -48,21 +49,22 @@ export default function Footer() {
               {t("quickLinks")}
             </h3>
             <ul>
-              <li>
-                <a href="/">
-                
+              <Link to='/' className="link">
                 {t("homeLink")}
-                </a>
-              </li>
-              <li>
-                <a href="/categories">{t("catLink")}</a>
-              </li>
-              <li>
-                <a href="/about">{t("aboutLink")}</a>
-              </li>
-              <li>
-                <a href="/contact">{t("contactLink")}</a>
-              </li>
+              </Link>
+              
+              <Link to='/about'  className="link">
+                {t("aboutLink")}
+              </Link>
+              <Link to='/contact'  className="link">
+                {t("contactLink")}
+              </Link>
+
+              <Link to="/privacy-policy"  className="link">
+                {t("privacyLink")}
+              </Link>
+
+              <Link to="/terms-of-service"  className="link">{t("termsLink")}</Link>
             </ul>
           </div>
 
@@ -84,9 +86,7 @@ export default function Footer() {
             </div>
             <div className="newsletter">
               <h3>{t("newsletter")}</h3>
-              <p>
-                {t("newletterPara")}
-              </p>
+              <p>{t("newletterPara")}</p>
               <div className="subscribe_form">
                 <input type="email" placeholder="Enter your email" />
                 <button>{t("subscribeBtn")}</button>
@@ -165,19 +165,21 @@ const StyledFooter = styled.div`
           list-style: none;
           padding: 0;
           margin: 0;
+          display: flex;
+          justify-content: center;
+          align-items: start;
+          flex-direction: column;
 
-          li {
+          .link {
             margin-bottom: 0.8rem;
-
-            a {
-              color: #b3b3b3;
+            color: #b3b3b3;
               text-decoration: none;
               transition: color 0.3s ease;
 
               &:hover {
                 color: #ffffff;
               }
-            }
+            
           }
         }
       }

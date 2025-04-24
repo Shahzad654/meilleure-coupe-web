@@ -34,6 +34,8 @@ import CalendlyPage from "./pages/CalendlyPage";
 import CheckoutSuccess from "./pages/CheckoutSucess";
 import MyOrders from "./pages/MyOrders";
 import Bookings from "./pages/Bookings";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import TermsOfService from "./pages/TermsOfService";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -170,6 +172,8 @@ function App() {
         <Route path="/schedule-consultation" element={<CalendlyPage />} />
         <Route path="/my-orders" element={<MyOrders />} />
         <Route path="/my-bookings" element={<Bookings />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        <Route path="/terms-of-service" element={<TermsOfService />} />
       </Routes>
     </BrowserRouter>
   );
