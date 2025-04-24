@@ -85,7 +85,7 @@ export default function Consultation() {
                 {loading ? (
                   <CircularProgress size={24} sx={{ color: "white" }} />
                 ) : (
-                  "Book Now"
+                  t("bookBtn")
                 )}
               </button>
                 {/* <button onClick={handleCheckout}>{t("bookBtn")}</button> */}

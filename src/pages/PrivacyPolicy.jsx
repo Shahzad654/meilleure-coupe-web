@@ -7,120 +7,120 @@ export default function PrivacyPolicy() {
   return (
     <>
     <Navbar/>
-    <StyledPrivacy>
-    <h3>Privacy Policy</h3>
-      <div className="main_container">
-       
-        <Card>
-          <Section>
-            <h4>Introduction</h4>
-            <p>
-              La Meilleure Coupe ("we," "us," or "our") is committed to respecting and protecting your privacy.
-              This Privacy Policy outlines how we collect, use, and disclose your information when you visit our
-              website, make a purchase, or interact with our services.
-            </p>
-          </Section>
+    <Main>
+        <div className="content">
+          <h4>Privacy Policy for La merilleure coupe</h4>
 
-          <Section>
-            <h4>Information We Collect</h4>
-            <ul>
-              <li><strong>Personal Information:</strong> Name, email, address, phone number, payment info</li>
-              <li><strong>Usage Data:</strong> Pages viewed, interactions, time on site</li>
-              <li><strong>Device Info:</strong> IP address, browser, operating system</li>
-            </ul>
-          </Section>
+          <h5>Introduction</h5>
+          <p>
+          La merilleure coupe ("we," "us," or "our") is committed to respecting and protecting your privacy. This Privacy Policy outlines how we collect, use, and disclose your information when you visit our website, make a purchase, or otherwise interact with our services (collectively, the "Services").
+          </p>
 
-          <Section>
-            <h4>How We Collect Information</h4>
-            <ul>
-              <li><strong>Directly:</strong> Via forms, orders, or inquiries</li>
-              <li><strong>Automatically:</strong> Through cookies, analytics, and tracking tools</li>
-            </ul>
-          </Section>
+          <h5>Information We Collect</h5>
+          <p>
+            We may collect the following types of information from you: Personal
+            Information: This includes information that can be used to identify
+            you, such as your name, email address, phone number, postal address,
+            and any other details you provide when creating an account or
+            interacting with our Services. Usage Data: This includes information
+            about how you interact with our Services, such as the pages you
+            visit, the features you use, and the time you spend on our platform.
+            Device Information: This includes details about your device, such as
+            your IP address, browser type, operating system, and other technical
+            information.
+          </p>
 
-          <Section>
-            <h4>How We Use Your Information</h4>
-            <ul>
-              <li>Process and ship orders</li>
-              <li>Send updates and offers</li>
-              <li>Improve website and user experience</li>
-              <li>Meet legal requirements</li>
-            </ul>
-          </Section>
+          <h5>How We Collect Information</h5>
+          <p>
+            We collect information from you in the following ways: When You
+            Provide It: We collect information directly from you when you sign
+            up, contact us, book services, or otherwise use our Services.
+            Automatically: We may automatically collect certain information when
+            you interact with our Services through technologies like cookies,
+            web beacons, and similar tracking mechanisms.
+          </p>
 
-          <Section>
-            <h4>Sharing Your Information</h4>
-            <p>We may share your data with service providers, marketing partners (with consent), or legal authorities as required.</p>
-          </Section>
+          <h5>How We Use Your Information</h5>
+          <p>
+            We may use your information for the following purposes: To provide
+            and manage the Services, including connecting users with mowing
+            service providers. To personalize your experience and enhance our
+            Services. To communicate with you about updates, offers, or other
+            information related to our Services. To monitor and analyze usage
+            trends to improve our platform. To comply with legal and regulatory
+            obligations.
+          </p>
 
-          <Section>
-            <h4>Your Rights</h4>
-            <p>You may request to access, update, or delete your data. Contact us at <strong>admin@lamerilleurecoupe.com</strong>.</p>
-          </Section>
+          <h5>Disclosure of Your Information</h5>
+          <p>
+            We may share your information in the following ways: To help us
+            operate, improve, and provide our Services. To offer complementary
+            services or products that may interest you. If required to comply
+            with applicable laws or respond to valid legal requests.
+          </p>
 
-          <Section>
-            <h4>Cookies & Tracking</h4>
-            <p>We use cookies to personalize your experience. You can manage cookie settings in your browser.</p>
-          </Section>
+          <h5>Your Rights</h5>
+          <p>
+            Depending on your jurisdiction, you may have rights regarding your
+            personal information, such as: The right to access, update, or
+            delete your information. The right to restrict or object to certain
+            data processing activities.
+          </p>
 
-          <Section>
-            <h4>Security</h4>
-            <p>We use industry-standard practices to protect your data, but no method is 100% secure.</p>
-          </Section>
+          <h5>Cookies and Tracking Technologies</h5>
+          <p>
+            We use cookies and similar technologies to collect information about
+            your usage patterns on our platform. You can control your cookie
+            preferences through your browser settings.
+          </p>
 
-          <Section>
-            <h4>Policy Updates</h4>
-            <p>This policy may be updated occasionally. Changes will be posted here.</p>
-          </Section>
+          <h5>Security</h5>
+          <p>
+            We take reasonable measures to protect your information against
+            unauthorized access, misuse, or disclosure. However, no method of
+            data transmission or storage can be guaranteed as 100% secure.
+          </p>
 
-          <Section>
-            <h4>Contact Us</h4>
-            <p>If you have any concerns or questions, email us at <strong>admin@lamerilleurecoupe.com</strong>.</p>
-          </Section>
-        </Card>
-      </div>
-    </StyledPrivacy>
+          <h5>Changes to This Privacy Policy</h5>
+          <p>
+            We may modify this Privacy Policy from time to time. If we make
+            material changes, we will notify you by updating this page or
+            providing additional notice via our Services.
+          </p>
+
+          <h5>Contact Us</h5>
+          <p>
+            If you have any questions or concerns about this Privacy Policy,
+            please contact us at admin@lamerilleurecoupe.com.
+          </p>
+        </div>
+      </Main>
     <Footer/>
     </>
   )
 }
+const Main = styled.div`
+  max-width: 800px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  border-radius: var(--s-radius);
+  margin: var(--section-margin) auto;
+  min-height: var(--section-height);
 
-const StyledPrivacy = styled.div`
-  width: 90%;
-  margin: var(--section-margin)auto;
- 
-  
-
-  .main_container {
-    max-width: 900px;
-    margin: 0 auto;
-  }
-
-`
-
-const Card = styled.div`
-  background-color: white;
-  padding: 2rem;
-  border-radius: 1rem;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
-  margin-top: 1rem;
-`
-
-const Section = styled.section`
-  margin-bottom: 2rem;
-
-  ul {
-    padding-left: 1.2rem;
-    list-style-type: disc;
-
-    li {
-      font-size: 1rem;
-      margin-bottom: 0.5rem;
-      color: #555;
+  .content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+    flex-direction: column;
+    padding: 20px;
+    h4 {
+      font-weight: bold;
+    }
+    h5 {
+      font-weight: 600;
+    }
+    p {
+      color: var(--text-light-color);
     }
   }
-
-  strong {
-    color: #2c3e50;
-  }
-`
+`;

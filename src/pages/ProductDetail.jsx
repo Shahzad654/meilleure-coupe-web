@@ -43,7 +43,7 @@ export default function ProductDetail() {
   const [alertType, setAlertType] = useState("warning");
   const [loadingId, setLoadingId] = useState(null);
   const [openModal, setOpenModal] = useState(false);
-  const [snackbarMessage, setSnackbarMessage] = useState("");
+  const [snackbarMessage, setSnackbarMessage] = useState("Added to cart successfully");
   const [snackbarSeverity, setSnackbarSeverity] = useState("success");
   const [loadingEmail, setLoadingEmail] = useState(false);
   const { t } = useTranslation();
@@ -101,6 +101,11 @@ export default function ProductDetail() {
     ...dogProducts,
   ];
   const product = allProducts.find((product) => product.name === name);
+
+  const similarProducts = allProducts.filter(
+    (p) => p.category === product?.category && p.id !== product?.id
+  ).slice(0, 4);
+  console.log(similarProducts)
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
@@ -172,7 +177,7 @@ export default function ProductDetail() {
           </div>
         </div>
 
-        <SimilarProducts/>
+        <SimilarProducts similarProducts={similarProducts}/>
 
         <Snackbar
           open={open}
