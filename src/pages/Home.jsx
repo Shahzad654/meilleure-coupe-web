@@ -18,19 +18,48 @@ import CartImg from "../assets/cart.png";
 import CheckoutImg from "../assets/checkout.png";
 import BgImg from "../assets/bg1.jpg";
 import { useTranslation } from "react-i18next";
-
+import Marquee from "react-fast-marquee";
 
 export default function Home() {
-  const navigate = useNavigate()
-  const { t } = useTranslation()
+  const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const handleCategoryClick = (category) => {
     console.log("Category clicked:", category);
-    navigate(`/products/${category}`)
-  }
-  
+    navigate(`/products/${category}`);
+  };
+
   return (
     <>
+      <marquee
+        behavior="scroll" 
+        direction="left" 
+        scrollamount="12"
+        style={{
+          backgroundColor: "#ff4d4f",
+          color: "white",
+          padding: "8px 0",
+          fontWeight: "bold",
+          letterSpacing: "1px",
+          fontFamily: "Arial, sans-serif",
+          textTransform: "uppercase",
+        }}
+      >
+        🚚 Enjoy Free Delivery on Orders Over €99! 🎉
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        🚚 Enjoy Free Delivery on Orders Over €99! 🎉
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        🚚 Enjoy Free Delivery on Orders Over €99! 🎉
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        🚚 Enjoy Free Delivery on Orders Over €99! 🎉
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        🚚 Enjoy Free Delivery on Orders Over €99! 🎉
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        🚚 Enjoy Free Delivery on Orders Over €99! 🎉
+      </marquee>
+
+      
+
       <Navbar />
 
       <StyledHome>
@@ -43,7 +72,6 @@ export default function Home() {
             <div className="card_container">
               <div className="card">
                 <div className="card_content">
-                
                   <h2>
                     {/* Premium Pet Products For Your Furry Friends */}
                     {t("cardHeading")}
@@ -51,12 +79,11 @@ export default function Home() {
                   <p>
                     {/* Shop by pet, brands or products on sale */}
                     {t("sologan")}
-                    </p>
+                  </p>
                   <button className="secondary-btn">
                     {/* Exporle Now */}
                     {t("button")}
                   </button>
-                  
                 </div>
               </div>
             </div>
@@ -106,7 +133,7 @@ export default function Home() {
                     <h4>
                       {/* Select your products */}
                       {t("card2Heading")}
-                      </h4>
+                    </h4>
                   </div>
                   <p>
                     {/* Add your favorite pet items to your cart with just one
@@ -156,8 +183,7 @@ export default function Home() {
                 <h4>
                   {/* Cats */}
                   {t("cats")}
-                  
-                  </h4>
+                </h4>
               </div>
 
               <div className="card" onClick={() => handleCategoryClick("Dogs")}>
@@ -167,17 +193,20 @@ export default function Home() {
                 <h4>
                   {/* Dogs */}
                   {t("dogs")}
-                  </h4>
+                </h4>
               </div>
 
-              <div className="card" onClick={() => handleCategoryClick("Birds")}>
+              <div
+                className="card"
+                onClick={() => handleCategoryClick("Birds")}
+              >
                 <div className="image_wrapper">
                   <img loading="lazy" src={Cat3} alt="Bird" />
                 </div>
                 <h4>
                   {/* Birds */}
                   {t("birds")}
-                  </h4>
+                </h4>
               </div>
 
               <div className="card" onClick={() => handleCategoryClick("Fish")}>
@@ -187,17 +216,20 @@ export default function Home() {
                 <h4>
                   {/* Fish */}
                   {t("fish")}
-                  </h4>
+                </h4>
               </div>
 
-              <div className="card" onClick={() => handleCategoryClick("Rabbits")}>
+              <div
+                className="card"
+                onClick={() => handleCategoryClick("Rabbits")}
+              >
                 <div className="image_wrapper">
                   <img loading="lazy" src={Cat5} alt="Rabbit" />
                 </div>
                 <h4>
                   {/* Rabbit */}
                   {t("rabbits")}
-                  </h4>
+                </h4>
               </div>
             </div>
 
@@ -222,7 +254,7 @@ export default function Home() {
                 toys and accessories */}
                 {t("bannerPara")}
               </p>
-              <button onClick={()=> navigate('/book-consultation')}>
+              <button onClick={() => navigate("/book-consultation")}>
                 {/* Shop Now */}
                 {t("bannerBtn")}
               </button>
@@ -324,15 +356,19 @@ const StyledHome = styled.div`
         width: 100%;
         height: 100%;
         z-index: 0;
-        
+
         &::after {
-          content: '';
+          content: "";
           position: absolute;
           top: 0;
           left: 0;
           width: 100%;
           height: 100%;
-          background: linear-gradient(135deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.5) 100%);
+          background: linear-gradient(
+            135deg,
+            rgba(0, 0, 0, 0.8) 0%,
+            rgba(0, 0, 0, 0.5) 100%
+          );
         }
 
         img {
@@ -351,16 +387,12 @@ const StyledHome = styled.div`
         max-width: 600px;
         margin: 0 auto;
         padding: 2rem;
-        
 
         .card {
           background: var(--primary-color);
           border-radius: 20px;
           padding: 3rem 2rem;
           box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-          
-
-          
 
           .card_content {
             display: flex;
@@ -371,7 +403,6 @@ const StyledHome = styled.div`
             text-align: center;
 
             h2 {
-              
               color: white;
               margin: 0;
               line-height: 1.2;
@@ -379,13 +410,10 @@ const StyledHome = styled.div`
             }
 
             p {
-             
               color: rgba(255, 255, 255, 0.9);
               margin: 0;
               max-width: 80%;
             }
-
-           
           }
         }
       }
@@ -451,7 +479,6 @@ const StyledHome = styled.div`
       }
     }
 
-
     .categories_container {
       width: 90%;
       margin: var(--section-margin) auto;
@@ -479,9 +506,8 @@ const StyledHome = styled.div`
           flex-direction: column;
           align-items: center;
           justify-content: center;
-          padding: 15px;  
+          padding: 15px;
           cursor: pointer;
-
 
           .image_wrapper {
             width: 90px;
@@ -541,7 +567,6 @@ const StyledHome = styled.div`
         align-items: flex-start;
         justify-content: center;
         gap: 1.5rem;
-        
       }
     }
 
@@ -555,9 +580,9 @@ const StyledHome = styled.div`
           margin-bottom: var(--heading-margin);
         }
       }
-      .faq_content{
-        h5{
-          word-wrap: break-word; 
+      .faq_content {
+        h5 {
+          word-wrap: break-word;
         }
       }
     }
@@ -592,7 +617,7 @@ const StyledHome = styled.div`
 
         .card_container {
           padding: 1rem;
-          
+
           .card {
             padding: 2rem 1.5rem;
 
@@ -653,5 +678,4 @@ const StyledHome = styled.div`
       }
     }
   }
-
 `;
