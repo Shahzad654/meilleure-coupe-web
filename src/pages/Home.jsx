@@ -34,7 +34,7 @@ export default function Home() {
       <marquee
         behavior="scroll" 
         direction="left" 
-        scrollamount="12"
+        scrollamount="10"
         style={{
           backgroundColor: "#ff4d4f",
           color: "white",
@@ -45,17 +45,17 @@ export default function Home() {
           textTransform: "uppercase",
         }}
       >
-        🚚 Enjoy Free Delivery on Orders Over €99! 🎉
+        🚚 {t("flashBanner")} 🎉
         &nbsp;&nbsp;&nbsp;&nbsp;
-        🚚 Enjoy Free Delivery on Orders Over €99! 🎉
+        🚚 {t("flashBanner")}  🎉
         &nbsp;&nbsp;&nbsp;&nbsp;
-        🚚 Enjoy Free Delivery on Orders Over €99! 🎉
+        🚚 {t("flashBanner")}  🎉
         &nbsp;&nbsp;&nbsp;&nbsp;
-        🚚 Enjoy Free Delivery on Orders Over €99! 🎉
+        🚚 {t("flashBanner")}  🎉
         &nbsp;&nbsp;&nbsp;&nbsp;
-        🚚 Enjoy Free Delivery on Orders Over €99! 🎉
+        🚚 {t("flashBanner")}  🎉
         &nbsp;&nbsp;&nbsp;&nbsp;
-        🚚 Enjoy Free Delivery on Orders Over €99! 🎉
+        🚚 {t("flashBanner")}  🎉
       </marquee>
 
       
