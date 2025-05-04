@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
@@ -7,7 +7,6 @@ import { useSelector } from "react-redux";
 import { loadStripe } from "@stripe/stripe-js";
 import { CircularProgress } from "@mui/material";
 import axios from "axios";
-
 
 export default function Checkout() {
   const location = useLocation();
@@ -19,29 +18,29 @@ export default function Checkout() {
   const stripePromise = loadStripe(
     "pk_test_51R7wE3R3krjsKrAQKqN32brLQYPr1nMsqRuPm5GhUNsdZBR6yTPzfzRAbSFgQXG9t4sbLZX40Lmf4xjLKYdix3Ry00zngHiwy4"
   );
-  
-  
+
   console.log("Selected items in checkout:", selectedItems);
 
   const subtotal = selectedItems
-  ? Object.values(selectedItems).reduce((sum, item) => {
-      const price = parseFloat(item.price) || 0;  
-      const quantity = parseInt(item.quantity) || 1; 
-      return sum + (price * quantity);
-    }, 0)
-  : 0;
+    ? Object.values(selectedItems).reduce((sum, item) => {
+        const price = parseFloat(item.price) || 0;
+        const quantity = parseInt(item.quantity) || 1;
+        return sum + price * quantity;
+      }, 0)
+    : 0;
 
-  const deliveryFee = 10;
+  // const deliveryFee = 10;
+  // const total = subtotal + deliveryFee;
+  const deliveryFee = subtotal >= 99 ? 0 : 10;
   const total = subtotal + deliveryFee;
-
 
   const handleCheckout = async () => {
     setLoading(true);
-    console.log("Total being sent:", total); 
+    console.log("Total being sent:", total);
     try {
       const response = await axios.post(
         "http://localhost:5000/shopping-payment",
-        { total,  items: Object.values(selectedItems), deliveryFee }
+        { total, items: Object.values(selectedItems), deliveryFee }
       );
       const sessionId = response.data.id;
       const stripe = await stripePromise;
@@ -57,9 +56,6 @@ export default function Checkout() {
     }
   };
 
-
-  
-
   return (
     <>
       <Navbar />
@@ -72,25 +68,22 @@ export default function Checkout() {
                 <div className="items-list">
                   {Object.values(selectedItems).map((item, index, array) => (
                     <>
-                    <div key={item.name} className="checkout-item">
-                      <div className="item_image">
-                        <img src={item.image} alt={item.name} width={100} />
-                        <h5>{item.name}</h5>
-                      </div>
+                      <div key={item.name} className="checkout-item">
+                        <div className="item_image">
+                          <img src={item.image} alt={item.name} width={100} />
+                          <h5>{item.name}</h5>
+                        </div>
 
-                      <div className="item_details">
-                        <p>Price: {item.price}</p>
-                        <p>Quantity: {item.quantity || 1}</p>
+                        <div className="item_details">
+                          <p>Price: {item.price}</p>
+                          <p>Quantity: {item.quantity || 1}</p>
+                        </div>
                       </div>
-                      
-                    </div>
-                    {index !== array.length - 1 && (
-                      <hr style={{ width: "100%" }} />
-                    )}
+                      {index !== array.length - 1 && (
+                        <hr style={{ width: "100%" }} />
+                      )}
                     </>
-                   
                   ))}
-                  
                 </div>
               </>
             ) : (
@@ -103,46 +96,43 @@ export default function Checkout() {
 
           {selectedItems ? (
             <>
-            <div className="right_side">
-            <div className="order-summary">
-              <h4>Order Summary</h4>
-              <div className="summary-row">
-                <span>Subtotal</span>
-                <span>€{subtotal.toFixed(2)}</span>
-              </div>
-              <div className="summary-row">
-                <span>Delivery Fee</span>
-                <span>€{deliveryFee.toFixed(2)}</span>
-              </div>
-              <div className="summary-row total">
-                <span>Total</span>
-                <span>€{total.toFixed(2)}</span>
-              </div>
-            </div>
+              <div className="right_side">
+                <div className="order-summary">
+                  <h4>Order Summary</h4>
+                  <div className="summary-row">
+                    <span>Subtotal</span>
+                    <span>€{subtotal.toFixed(2)}</span>
+                  </div>
+                  <div className="summary-row">
+                    <span>Delivery Fee</span>
+                    <span>€{deliveryFee.toFixed(2)}</span>
+                  </div>
+                  <div className="summary-row total">
+                    <span>Total</span>
+                    <span>€{total.toFixed(2)}</span>
+                  </div>
+                </div>
 
-            <div className="address-section">
-              <h4>Shipping Address</h4>
-              <p>
-                {userInfo.streetAddress}, {userInfo.city}, {userInfo.state},{" "}
-                {userInfo.zipCode}
-              </p>
-            </div>
+                <div className="address-section">
+                  <h4>Shipping Address</h4>
+                  <p>
+                    {userInfo.streetAddress}, {userInfo.city}, {userInfo.state},{" "}
+                    {userInfo.zipCode}
+                  </p>
+                </div>
 
-            {/* <button className="place-order-btn">Place Order</button> */}
+                {/* <button className="place-order-btn">Place Order</button> */}
 
-            <button onClick={handleCheckout}>
-                {loading ? (
-                  <CircularProgress size={20} sx={{ color: "white" }} />
-                ) : (
-                  "Place Order"
-                )}
-              </button>
-           
-          </div>
+                <button onClick={handleCheckout}>
+                  {loading ? (
+                    <CircularProgress size={20} sx={{ color: "white" }} />
+                  ) : (
+                    "Place Order"
+                  )}
+                </button>
+              </div>
             </>
-          ): null}
-
-          
+          ) : null}
         </div>
       </StyledCheckout>
       <Footer />

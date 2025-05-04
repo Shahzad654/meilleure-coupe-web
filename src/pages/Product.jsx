@@ -49,6 +49,32 @@ export default function Product() {
   return (
     <>
       <Navbar />
+      <marquee
+        behavior="scroll" 
+        direction="left" 
+        scrollamount="10"
+        style={{
+          backgroundColor: "#ff4d4f",
+          color: "white",
+          padding: "1px 0",
+          fontWeight: "bold",
+          letterSpacing: "1px",
+          fontFamily: "Arial, sans-serif",
+          textTransform: "uppercase",
+        }}
+      >
+        🚚 {t("flashBanner")} 🎉
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        🚚 {t("flashBanner")}  🎉
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        🚚 {t("flashBanner")}  🎉
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        🚚 {t("flashBanner")}  🎉
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        🚚 {t("flashBanner")}  🎉
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        🚚 {t("flashBanner")}  🎉
+      </marquee>
       <StyledProduct>
         <div className="product_container">
           <h3>{category}</h3>
@@ -92,7 +118,7 @@ export default function Product() {
                   />
                   <h5>{t(product.name)}</h5>
                   <p className="description">Premium quality product</p>
-                  <p className="old-price">120.99€</p>{" "}
+                  <p className="old-price">{product.cutPrice}</p>{" "}
                   <p className="price">{product.price}</p>
                 </div>
               ))}
@@ -227,7 +253,7 @@ const StyledProduct = styled.div`
         }
 
         p.old-price {
-          color: #999;
+          color: red;
           text-decoration: line-through;
         }
 

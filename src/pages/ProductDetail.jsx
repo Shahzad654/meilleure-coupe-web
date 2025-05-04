@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import styled from "styled-components";
@@ -22,6 +22,8 @@ import Fade from "@mui/material/Fade";
 import emailjs from "emailjs-com";
 import { useTranslation } from "react-i18next";
 import SimilarProducts from "./SimilarProducts";
+import ToggleButton from "@mui/material/ToggleButton";
+import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 
 const style = {
   position: "absolute",
@@ -43,10 +45,15 @@ export default function ProductDetail() {
   const [alertType, setAlertType] = useState("warning");
   const [loadingId, setLoadingId] = useState(null);
   const [openModal, setOpenModal] = useState(false);
-  const [snackbarMessage, setSnackbarMessage] = useState("Added to cart successfully");
+  const [snackbarMessage, setSnackbarMessage] = useState(
+    "Added to cart successfully"
+  );
   const [snackbarSeverity, setSnackbarSeverity] = useState("success");
   const [loadingEmail, setLoadingEmail] = useState(false);
   const { t } = useTranslation();
+  const [selectedWeight, setSelectedWeight] = useState("1kg");
+  const [alignment, setAlignment] = useState("left");
+  const [selectedVariant, setSelectedVariant] = useState(null);
 
   const handleOpenModal = () => setOpenModal(true);
   const handleCloseModal = () => setOpenModal(false);
@@ -61,6 +68,39 @@ export default function ProductDetail() {
     setOpen(false);
   };
 
+  // const handleCartData = async (product) => {
+  //   if (!product?.id) return;
+  //   setLoadingId(product.id);
+  //   try {
+  //     if (!user.uid) {
+  //       setAlertType("warning");
+  //       setLoadingId(null);
+  //       setOpen(true);
+  //       return;
+  //     }
+
+  //     const updatedCart = {
+  //       ...currentCart,
+  //       [product.id]: {
+  //         ...product,
+  //         // selectedWeight: isSeedProduct ? selectedWeight : undefined,
+  //         // price: `${weightPrice.toFixed(2)}€`,
+  //       },
+  //     };
+
+  //     dispatch(userActions.setCart(updatedCart));
+
+  //     await setDoc(doc(db, "cart", user.uid), updatedCart, { merge: true });
+
+  //     setAlertType("success");
+  //     setOpen(true);
+  //   } catch (error) {
+  //     console.log(error);
+  //   } finally {
+  //     setLoadingId(null);
+  //   }
+  // };
+
   const handleCartData = async (product) => {
     setLoadingId(product.id);
     try {
@@ -70,29 +110,45 @@ export default function ProductDetail() {
         setOpen(true);
         return;
       }
-
+  
+      // Generate unique key
+      const variantKey = product.variants?.length > 0
+        ? `${product.id}_${selectedVariant.weight}`
+        : product.id;
+  
+      // Get existing item if any
+      const existingItem = currentCart[variantKey] || { quantity: 0 };
+  
+      // Create cart item
+      const cartItem = {
+        ...product,
+        selectedVariant: product.variants?.length > 0 ? selectedVariant : null,
+        price: product.variants?.length > 0 ? selectedVariant.price : product.price,
+        quantity: existingItem.quantity + 1
+      };
+  
+      // Update cart
       const updatedCart = {
         ...currentCart,
-        [product.id]: {
-          ...product,
-        },
+        [variantKey]: cartItem
       };
-
+  
       dispatch(userActions.setCart(updatedCart));
-
       await setDoc(doc(db, "cart", user.uid), updatedCart, { merge: true });
-
-      setAlertType("success");
+  
+      setSnackbarMessage("Added to cart successfully");
+      setSnackbarSeverity("success");
       setOpen(true);
     } catch (error) {
       console.log(error);
+      setSnackbarMessage("Failed to add to cart");
+      setSnackbarSeverity("error");
+      setOpen(true);
     } finally {
       setLoadingId(null);
     }
   };
 
-  // const product = birdProducts.find((product) => product.name === name);
-  // console.log(product);
   const allProducts = [
     ...birdProducts,
     ...fishProducts,
@@ -102,10 +158,12 @@ export default function ProductDetail() {
   ];
   const product = allProducts.find((product) => product.name === name);
 
-  const similarProducts = allProducts.filter(
-    (p) => p.category === product?.category && p.id !== product?.id
-  ).slice(0, 4);
-  console.log(similarProducts)
+  const similarProducts = allProducts
+    .filter((p) => p.category === product?.category && p.id !== product?.id)
+    .sort(() => Math.random() - 0.5)
+    .slice(0, 4);
+
+  console.log(similarProducts);
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
@@ -139,6 +197,33 @@ export default function ProductDetail() {
     e.target.reset();
   };
 
+  const isSeedProduct = product?.isSeed;
+
+  const basePrice = parseFloat(product.price);
+  const weightPrice = selectedWeight === "5kg" ? basePrice * 5 : basePrice;
+
+  const handleAlignment = (event, newAlignment) => {
+    if (newAlignment !== null) {
+      setAlignment(newAlignment);
+      setSelectedWeight(newAlignment);
+    }
+  };
+
+  useEffect(() => {
+    if (product?.variants?.length > 0) {
+      setSelectedVariant(product.variants[0]);
+    }
+  }, [product]);
+
+  const handleVariantChange = (event, newVariantWeight) => {
+    if (newVariantWeight !== null) {
+      const variant = product.variants.find(
+        (v) => v.weight === newVariantWeight
+      );
+      setSelectedVariant(variant);
+    }
+  };
+
   return (
     <>
       <Navbar />
@@ -149,19 +234,50 @@ export default function ProductDetail() {
           </div>
           <div className="right-side">
             <h3>{t(product.name)}</h3>
-            <p>{product.description}</p>
-            <h5>{product.price}</h5>
+            <p>{t(product.description)}</p>
+
+            <h5>{selectedVariant ? selectedVariant.price : product.price}</h5>
+
+            {product.variants && product.variants.length > 0 && (
+              <div
+                style={{ display: "flex", alignItems: "center", gap: "1rem" }}
+              >
+                <div style={{ display: "flex", alignItems: "flex-start" }}>
+                  <p style={{ margin: 0, fontSize: "0.9rem" }}>Option:</p>
+                </div>
+                <ToggleButtonGroup
+                  value={selectedVariant?.weight}
+                  exclusive
+                  onChange={handleVariantChange}
+                  aria-label="Option"
+                  size="small"
+                  sx={{ alignSelf: "flex-start" }}
+                >
+                  {product.variants.map((variant) => (
+                    <ToggleButton
+                      key={variant.weight}
+                      value={variant.weight}
+                      sx={{
+                        px: 1,
+                        py: 0.5,
+                        fontSize: "0.75rem",
+                        minHeight: "28px",
+                        minWidth: "40px",
+                        "&.Mui-selected": {
+                          backgroundColor: "#1976d2",
+                          color: "#fff",
+                          "&:hover": { backgroundColor: "#1565c0" },
+                        },
+                      }}
+                    >
+                      {variant.weight}
+                    </ToggleButton>
+                  ))}
+                </ToggleButtonGroup>
+              </div>
+            )}
+
             <div className="action-container">
-              {/* <div className="quantity-container">
-                <div className="quantity-btn" onClick={() => handleQuantity("decrement")}   >
-                  <p>-</p>
-                </div>
-                <p>{quantity}</p>
-                <div className="quantity-btn" onClick={() => handleQuantity("increment")}>
-                  <p>+</p>
-                </div>
-              </div> */}
-              {/* <button>Add to cart</button> */}
               <button onClick={() => handleCartData(product)}>
                 {loadingId === product.id ? (
                   <CircularProgress size={24} sx={{ color: "white" }} />
@@ -177,7 +293,7 @@ export default function ProductDetail() {
           </div>
         </div>
 
-        <SimilarProducts similarProducts={similarProducts}/>
+        <SimilarProducts similarProducts={similarProducts} />
 
         <Snackbar
           open={open}
@@ -281,7 +397,6 @@ const StyledDetail = styled.div`
   width: 90%;
   margin: var(--section-margin) auto;
 
-
   .product-detail {
     display: flex;
     justify-content: center;
@@ -315,18 +430,15 @@ const StyledDetail = styled.div`
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 
       h3 {
-       
         font-weight: 600;
       }
 
       p {
-      
         color: var(--text-color);
         line-height: 1.6;
       }
 
       h5 {
-       
         font-weight: bold;
         color: var(--primary-color);
       }
@@ -335,7 +447,6 @@ const StyledDetail = styled.div`
         display: flex;
         gap: 1rem;
         /* flex-wrap: wrap; */
-
       }
     }
   }
@@ -350,113 +461,3 @@ const StyledDetail = styled.div`
     }
   }
 `;
-
-
-// const StyledDetail = styled.div`
-//   width: 90%;
-//   margin: var(--section-margin) auto;
-
-//   .product-detail {
-//     display: flex;
-//     justify-content: space-between;
-//     align-items: center;
-//     flex-wrap: wrap;
-//     gap: 2rem;
-//     .left-side {
-//       flex-basis: 45%;
-//       /* img {
-//         width: 100%;
-//         height: 400px;
-//         object-fit: cover;
-//         border-radius: var(--l-radius);
-//       } */
-
-//       img {
-//         max-width: 100%;
-//         max-height: 400px;
-//         width: auto;
-//         height: auto;
-//         object-fit: contain;
-//         border-radius: var(--l-radius);
-//       }
-//     }
-//     .right-side {
-//       flex-basis: 45%;
-//       display: flex;
-//       justify-content: space-between;
-//       align-items: flex-start;
-//       flex-direction: column;
-//       gap: 1rem;
-//       .action-container {
-//         display: flex;
-//         justify-content: space-between;
-//         align-items: center;
-//         gap: 2rem;
-//         .quantity-container {
-//           display: flex;
-//           justify-content: space-between;
-//           align-items: center;
-//           gap: 1rem;
-//           border: 1px solid var(--primary-color);
-//           border-radius: var(--l-radius);
-//           padding: 0.5rem 1rem;
-//           background-color: #f8f8f8;
-
-//           p {
-//             font-weight: bold;
-//             min-width: 20px;
-//             text-align: center;
-//           }
-
-//           .quantity-btn {
-//             cursor: pointer;
-//             width: 25px;
-//             height: 25px;
-//             display: flex;
-//             align-items: center;
-//             justify-content: center;
-//             border-radius: 50%;
-//             background-color: var(--primary-color);
-//             color: var(--white-color);
-//             font-size: 18px;
-//             font-weight: bold;
-//             p {
-//               color: white;
-//               cursor: pointer;
-//             }
-//           }
-//         }
-//       }
-//       h5 {
-//         font-weight: bold;
-//       }
-//       p {
-//         max-width: 45ch;
-//       }
-//     }
-//   }
-
-//   @media (max-width: 700px) {
-//     .product-detail {
-//       justify-content: center;
-//       .left-side {
-//         flex-basis: 100%;
-//       }
-//       .right-side {
-//         flex-basis: 100%;
-//         justify-content: center;
-//         align-items: center;
-
-//         h2,
-//         p {
-//           text-align: center;
-//         }
-
-//         .action-container {
-//           justify-content: center;
-//           flex-direction: column;
-//         }
-//       }
-//     }
-//   }
-// `;

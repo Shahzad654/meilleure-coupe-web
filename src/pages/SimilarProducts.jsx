@@ -33,7 +33,7 @@ export default function SimilarProducts({ similarProducts }) {
             />
             <h5>{t(product.name)}</h5>
             <p className="description">Premium quality product</p>
-            <p className="old-price">120.99€</p>{" "}
+            <p className="old-price">{product.cutPrice}</p>{" "}
             <p className="price">{product.price}</p>
           </div>
         ))}
@@ -135,7 +135,7 @@ const StyledProducts = styled.div`
       }
 
       p.old-price {
-        color: #999;
+        color: red;
         text-decoration: line-through;
       }
 

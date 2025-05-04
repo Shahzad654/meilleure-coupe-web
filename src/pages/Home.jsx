@@ -6,19 +6,18 @@ import Cat2 from "../assets/dog.svg";
 import Cat3 from "../assets/birds.svg";
 import Cat4 from "../assets/fish.png";
 import Cat5 from "../assets/rabit.png";
-import Banner from "../assets/accent.jpg";
+import Banner from "../assets/accent.webp";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import SearchImg from "../assets/search.png";
-import CartImg from "../assets/cart.png";
-import CheckoutImg from "../assets/checkout.png";
-import BgImg from "../assets/bg1.jpg";
+import SearchImg from "../assets/search.webp";
+import CartImg from "../assets/cart.webp";
+import CheckoutImg from "../assets/checkout.webp";
+import BgImg from "../assets/bg1.webp";
 import { useTranslation } from "react-i18next";
-import Marquee from "react-fast-marquee";
 
 export default function Home() {
   const navigate = useNavigate();
@@ -38,7 +37,7 @@ export default function Home() {
         style={{
           backgroundColor: "#ff4d4f",
           color: "white",
-          padding: "8px 0",
+          padding: "4px 0",
           fontWeight: "bold",
           letterSpacing: "1px",
           fontFamily: "Arial, sans-serif",

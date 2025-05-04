@@ -20,8 +20,6 @@ export default function Cart() {
   const dispatch = useDispatch();
   const userId = auth.currentUser?.uid;
 
-
-
   const handleQuantity = (type, name) => {
     setQuantities((prev) => {
       const currentQuantity = prev[name] || 1;
@@ -39,7 +37,6 @@ export default function Cart() {
     });
   };
   
-
   const handleSelectAll = (isChecked) => {
     if (isChecked) {
       const selectedItems = Object.values(cart).reduce((acc, item) => {
@@ -78,12 +75,8 @@ export default function Cart() {
 
   console.log("Selected items", data);
 
-  function Checkout() {
-    const location = useLocation();
-    const selectedItems = location.state?.selectedItems || {};
-    
-  }
-
+  
+  
   return (
     <>
       <Navbar />
@@ -113,7 +106,6 @@ export default function Cart() {
                   color="red"
                   size={25}
                   style={{ cursor: "pointer" }}
-                  
                 />
               </div>
             )}

@@ -14,20 +14,30 @@ export const rabbitProducts = [
     category: "Rabbits",
     french: "Mélange de lapin",
     name: "Rabbit Mix",
-    price: "24.99€",
+    cutPrice: "5.40€",
+    price: "4.50€",
     slug: "rabbit-mix",
     description: "High-quality rabbit food with essential nutrients and fiber for optimal health.",
-    image: RabbitMix
+    image: RabbitMix,
+    variants: [
+      { weight: "1kg", price: "4.50€" },
+      { weight: "4kg", price: "14.90€" }
+    ]
   },
   {
     id: 2,
     category: "Rabbits",
     french: "Mélange de cochon d'Inde",
     name: "Guinea Pig Mix",
-    price: "24.99€",
+    cutPrice: "4.40€",
+    price: "3.90€",
     slug: "rabbit-guinea-pig-mix",
     description: "High-quality guinea pig food with essential nutrients and fiber for optimal health.",
-    image: GuineaPigMix
+    image: GuineaPigMix,
+    variants: [
+      { weight: "1kg", price: "3.90€" },
+      { weight: "5kg", price: "10.90€" }
+    ]
   },
 
   {
@@ -35,10 +45,12 @@ export const rabbitProducts = [
     category: "Rabbits",
     french: "Cage complète pour hamsters",
     name: "Complete Hamster Cage",
-    price: "24.99€",
+    cutPrice: "21.55€",
+    price: "19.90€",
     slug: "complete-hamster-cage",
-    description: "High-quality guinea pig food with essential nutrients and fiber for optimal health.",
-    image: CageHamsterComplete
+    description: "35 cm high-quality guinea pig food with essential nutrients and fiber for optimal health.",
+    image: CageHamsterComplete,
+    
   },
 
   {
@@ -46,10 +58,11 @@ export const rabbitProducts = [
     category: "Rabbits",
     french: "Cage complète pour cochon d'Inde",
     name: "Complete Guinea Pig Cage",
-    price: "24.99€",
+    cutPrice: "81.00€",
+    price: "79.00€",
     slug: "complete-guinea-pig-cage",
-    description: "High-quality guinea pig food with essential nutrients and fiber for optimal health.",
-    image: GuineaCage
+    description: "60cm high-quality guinea pig food with essential nutrients and fiber for optimal health.",
+    image: GuineaCage,
   },
 
   {
@@ -57,9 +70,10 @@ export const rabbitProducts = [
     category: "Rabbits",
     french: "Cage à Lapin Complète",
     name: "Complete Rabbit Cage",
-    price: "24.99€",
+    cutPrice: "102.00€",
+    price: "99.0€",
     slug: "complete-rabbit-cage",
-    description: "High-quality guinea pig food with essential nutrients and fiber for optimal health.",
+    description: "90 cm high-quality guinea pig food with essential nutrients and fiber for optimal health.",
     image: RabbitCage
   },
 
@@ -68,9 +82,10 @@ export const rabbitProducts = [
     category: "Rabbits",
     french: "Cage à lapin simple 90 cm",
     name: "Single Rabbit Cage 90cm",
-    price: "24.99€",
+    cutPrice: "58.00€",
+    price: "55.00€",
     slug: "single-rabbit-cage-90cm",
-    description: "High-quality guinea pig food with essential nutrients and fiber for optimal health.",
+    description: "90cm high-quality guinea pig food with essential nutrients and fiber for optimal health.",
     image: SingleRabbitCage
   },
 
@@ -79,7 +94,8 @@ export const rabbitProducts = [
     category: "Rabbits",
     french: "Boîte de transport pour rongeurs",
     name: "Rodent Transport Box",
-    price: "24.99€",
+    cutPrice: "20.00€",
+    price: "18.90€",
     slug: "rodent-transport-box",
     description: "High-quality guinea pig food with essential nutrients and fiber for optimal health.",
     image: RodentTransportBox
@@ -90,9 +106,10 @@ export const rabbitProducts = [
     category: "Rabbits",
     french: "Cage à hamsters",
     name: "Hamster Cage",
-    price: "24.99€",
+    cutPrice: "42.00€",
+    price: "39.0€",
     slug: "hamster-cage",
-    description: "High-quality guinea pig food with essential nutrients and fiber for optimal health.",
+    description: "45 cm high-quality guinea pig food with essential nutrients and fiber for optimal health.",
     image: CageHamster
   },
 ]; 

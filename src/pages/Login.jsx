@@ -12,15 +12,19 @@ import Snackbar from "@mui/material/Snackbar";
 import Logo from "../assets/logo.png";
 import { doc, setDoc, getDoc } from "firebase/firestore";
 import { db } from "../firebase";
+import ForgotPassword from "../components/ForgotPassword";
+
 
 const Alert = React.forwardRef(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
 });
 
+
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
+  const [showForgotModal, setShowForgotModal] = useState(false);
   const [snackbar, setSnackbar] = useState({
     open: false,
     message: "",
@@ -29,6 +33,8 @@ export default function Login() {
   const navigate = useNavigate();
   const location = useLocation();
   const dispatch = useDispatch();
+
+  
 
   const handleCloseSnackbar = (event, reason) => {
     if (reason === "clickaway") {
@@ -158,10 +164,13 @@ export default function Login() {
               "Login"
             )}
           </button>
-          <p>Forget Password?</p>
+          <p onClick={() => setShowForgotModal(true)}>Forget Password?</p>
           <p className="signup_link">Don't have an account? <Link to="/signup">Signup</Link></p>
         </div>
       </div>
+
+      <ForgotPassword open={showForgotModal} onClose={() => setShowForgotModal(false)} />
+
       <Snackbar
         open={snackbar.open}
         autoHideDuration={3000}

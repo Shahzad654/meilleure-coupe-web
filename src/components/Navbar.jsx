@@ -5,6 +5,7 @@ import Avatar from "@mui/material/Avatar";
 import Stack from "@mui/material/Stack";
 import { deepOrange } from "@mui/material/colors";
 import { MdOutlineShoppingCart } from "react-icons/md";
+import Badge from "@mui/material/Badge";
 import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import { Link, useNavigate } from "react-router-dom";
@@ -21,21 +22,23 @@ import BottomNavigationAction from "@mui/material/BottomNavigationAction";
 import HomeIcon from "@mui/icons-material/Home";
 import CategoryIcon from "@mui/icons-material/Category";
 import ContactIcon from "@mui/icons-material/ContactSupport";
-import ShoppingBagIcon from '@mui/icons-material/ShoppingBag';
+import ShoppingBagIcon from "@mui/icons-material/ShoppingBag";
 import { useTranslation } from "react-i18next";
 import i18n from "../locale/i18n";
 
 export default function Navbar() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { t } = useTranslation()
+  const { t } = useTranslation();
   const user = useSelector((state) => state.user);
-  const userInfo = useSelector((state)=> state.user.userInfo);
+  const userInfo = useSelector((state) => state.user.userInfo);
+  const cart = useSelector((state) => state.user.cart);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [isLoggingOut, setIsLoggingOut] = React.useState(false);
   const open = Boolean(anchorEl);
   const [value, setValue] = useState(0);
   const [alignment, setAlignment] = useState("web");
+  const cartLength = cart ? Object.keys(cart).length : 0;
 
   const handleChange = (event, newAlignment) => {
     setAlignment(newAlignment);
@@ -112,10 +115,32 @@ export default function Navbar() {
 
           {user.uid ? (
             <div className="profile_container">
+              {/*               
               <MdOutlineShoppingCart
                 style={{ width: "25px", height: "25px", cursor: "pointer" }}
                 onClick={() => navigate("/cart")}
-              />
+              /> */}
+
+              <Badge
+                badgeContent={cartLength}
+                color="primary"
+                invisible={cartLength === 0}
+                overlap="circular"
+                anchorOrigin={{
+                  vertical: "top",
+                  horizontal: "right",
+                }}
+              >
+                <MdOutlineShoppingCart
+                  style={{
+                    width: "25px",
+                    height: "25px",
+                    cursor: "pointer",
+                    position: "relative",
+                  }}
+                  onClick={() => navigate("/cart")}
+                />
+              </Badge>
               <Stack direction="row" spacing={2} sx={{ marginRight: "20px" }}>
                 <Avatar
                   sx={{ bgcolor: deepOrange[500], cursor: "pointer" }}
@@ -135,18 +160,28 @@ export default function Navbar() {
                   aria-label="Platform"
                   sx={{
                     width: "20%",
-                    
+
                     "& .MuiToggleButton-root": {
-                      padding: "4px 8px", 
-                      fontSize: "12px", 
-                      borderRadius: "20px", 
+                      padding: "4px 8px",
+                      fontSize: "12px",
+                      borderRadius: "20px",
                       minWidth: "40px",
-                      marginLeft:"5%"
+                      marginLeft: "5%",
                     },
                   }}
                 >
-                  <ToggleButton value="en" onClick={() => i18n.changeLanguage("en")}>en</ToggleButton>
-                  <ToggleButton value="fr" onClick={() => i18n.changeLanguage("fr")}>fr</ToggleButton>
+                  <ToggleButton
+                    value="en"
+                    onClick={() => i18n.changeLanguage("en")}
+                  >
+                    en
+                  </ToggleButton>
+                  <ToggleButton
+                    value="fr"
+                    onClick={() => i18n.changeLanguage("fr")}
+                  >
+                    fr
+                  </ToggleButton>
                 </ToggleButtonGroup>
 
                 <Menu
@@ -196,28 +231,37 @@ export default function Navbar() {
             <div className="auth_btn">
               <button onClick={() => navigate("/login")}>Get Started</button>
               <ToggleButtonGroup
-                  color="primary"
-                  value={alignment}
-                  exclusive
-                  onChange={handleChange}
-                  aria-label="Platform"
-                  sx={{
-                    width: "20%",
-                    
-                    "& .MuiToggleButton-root": {
-                      padding: "4px 8px", 
-                      fontSize: "12px", 
-                      borderRadius: "20px", 
-                      minWidth: "40px",
-                      marginLeft:"5%"
-                    },
-                  }}
+                color="primary"
+                value={alignment}
+                exclusive
+                onChange={handleChange}
+                aria-label="Platform"
+                sx={{
+                  width: "20%",
+
+                  "& .MuiToggleButton-root": {
+                    padding: "4px 8px",
+                    fontSize: "12px",
+                    borderRadius: "20px",
+                    minWidth: "40px",
+                    marginLeft: "5%",
+                  },
+                }}
+              >
+                <ToggleButton
+                  value="en"
+                  onClick={() => i18n.changeLanguage("en")}
                 >
-                  <ToggleButton value="en" onClick={() => i18n.changeLanguage("en")}>en</ToggleButton>
-                  <ToggleButton value="fr" onClick={() => i18n.changeLanguage("fr")}>fr</ToggleButton>
-                </ToggleButtonGroup>
+                  en
+                </ToggleButton>
+                <ToggleButton
+                  value="fr"
+                  onClick={() => i18n.changeLanguage("fr")}
+                >
+                  fr
+                </ToggleButton>
+              </ToggleButtonGroup>
             </div>
-            
           )}
         </div>
       </StyledNavbar>
